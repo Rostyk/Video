@@ -52,6 +52,7 @@
 		474468B31EF1A01A00857770 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4744689B1EF1A01900857770 /* CTPersistanceTable.m */; };
 		474468B41EF1A01A00857770 /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4744689E1EF1A01900857770 /* CTPersistanceTransaction.m */; };
 		474468B61EF1A0ED00857770 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 474468B51EF1A0ED00857770 /* libsqlite3.tbd */; };
+		474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468B81EF1AB2F00857770 /* MTVideoView.m */; };
 		BB7527943AB9C043600CCAD8 /* libPods-Video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E00119268C5C57AFB29ED15 /* libPods-Video.a */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,8 @@
 		4744689D1EF1A01900857770 /* CTPersistanceTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTransaction.h; sourceTree = "<group>"; };
 		4744689E1EF1A01900857770 /* CTPersistanceTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTransaction.m; sourceTree = "<group>"; };
 		474468B51EF1A0ED00857770 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		474468B71EF1AB2F00857770 /* MTVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideoView.h; sourceTree = "<group>"; };
+		474468B81EF1AB2F00857770 /* MTVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideoView.m; sourceTree = "<group>"; };
 		AB65290A52A26C3B0E8F4E7F /* Pods-Video.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.debug.xcconfig"; sourceTree = "<group>"; };
 		EFE2F435AFD6761B7D587C44 /* Pods-Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.release.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,6 +216,8 @@
 		4744680D1EF19E6400857770 /* CTVideoView */ = {
 			isa = PBXGroup;
 			children = (
+				474468B71EF1AB2F00857770 /* MTVideoView.h */,
+				474468B81EF1AB2F00857770 /* MTVideoView.m */,
 				474468541EF1A01900857770 /* CTPersistance */,
 				4744684D1EF19F1900857770 /* HandyFrame */,
 				4744680E1EF19E6400857770 /* Categories */,
@@ -818,6 +823,7 @@
 				474468AF1EF1A01A00857770 /* CTPersistanceTable+Delete.m in Sources */,
 				4744689F1EF1A01A00857770 /* CTPersistanceAsyncExecutor.m in Sources */,
 				474468AA1EF1A01A00857770 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
+				474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */,
 				474468531EF19F1900857770 /* UIView+LayoutMethods.m in Sources */,
 				474468A11EF1A01A00857770 /* NSString+ReqularExpression.m in Sources */,
 				474468481EF19E6400857770 /* CTVideoView.m in Sources */,

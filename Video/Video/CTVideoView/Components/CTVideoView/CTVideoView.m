@@ -12,7 +12,6 @@
 #import "CTVideoView+Download.h"
 #import "CTVideoView+VideoCoverView.h"
 #import "CTVideoView+OperationButtons.h"
-#import "CTVideoView+PlayControlPrivate.h"
 
 #import "AVAsset+CTVideoView.h"
 
@@ -110,7 +109,6 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     [self initDownload];
     [self initVideoCoverView];
     [self initOperationButtons];
-    [self initPlayControlGestures];
 
     [self stopWithReleaseVideo:YES];
 }
