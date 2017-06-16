@@ -100,7 +100,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
         self.playerLayer.player = self.player;
     }
     
-    _shouldPlayAfterPrepareFinished = YES;
+    _shouldPlayAfterPrepareFinished = NO;
     _shouldReplayWhenFinish = YES;
     _shouldChangeOrientationToFitVideo = NO;
     _prepareStatus = CTVideoViewPrepareStatusNotPrepared;

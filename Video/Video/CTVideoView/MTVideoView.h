@@ -7,7 +7,21 @@
 //
 
 #import "CTVideoView.h"
+typedef enum {
+    SwipeLeft = 1,
+    SwipeRight
+} SwipeDirection;
+
+@protocol MTVideoDelegate
+- (void)isMovingForDistance:(CGFloat)distance
+                  direction:(SwipeDirection)direction;
+- (void)videoSwiped:(SwipeDirection)direction;
+- (void)videoReleasedWithNoSwipeWhileAnimatedTo:(SwipeDirection)direction;
+@end
 
 @interface MTVideoView : CTVideoView
+@property (nonatomic, weak) id<MTVideoDelegate>delegate;
 
+@property (nonatomic) BOOL leftSwipeDisabled;
+@property (nonatomic) BOOL rightSwipeDisabled;
 @end

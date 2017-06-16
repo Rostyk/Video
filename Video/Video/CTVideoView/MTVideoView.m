@@ -10,11 +10,6 @@
 #define STEP_VALUE                        20
 #define LIMIT_DISTANCE                    100
 
-typedef enum {
-    SwipeLeft = 1,
-    SwipeRight
-} SwipeDirection;
-
 @interface MTVideoView()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
@@ -86,18 +81,12 @@ typedef enum {
 #pragma mark - event response
 - (void)didRecognizedPanRecognizer:(UIPanGestureRecognizer *)panRecognizer
 {
-    
-    CGPoint velocityPoint = [panRecognizer velocityInView:self];
+    //CGPoint velocityPoint = [panRecognizer velocityInView:self];
     
     NSLog(@"[Pan] x: %f", [panRecognizer locationInView:self].x);
-    
     switch (panRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             self.startX = [panRecognizer locationInView:self].x;
-            
-            CGFloat absoluteX = fabs(velocityPoint.x);
-            CGFloat absoluteY = fabs(velocityPoint.y);
-            
             break;
         }
             
@@ -108,10 +97,18 @@ typedef enum {
             CGFloat distance = x - self.startX;
             
             if (distance > 0) {
-                [self shrink:distance direction:SwipeRight];
+                if (self.rightSwipeDisabled == NO) {
+                    [self.delegate isMovingForDistance:distance
+                                           direction:SwipeRight];
+                    [self shrink:distance direction:SwipeRight];
+                }
             }
             else {
-                [self shrink:fabs(distance) direction:SwipeLeft];
+                if (self.leftSwipeDisabled == NO) {
+                    [self.delegate isMovingForDistance:distance
+                                             direction:SwipeLeft];
+                    [self shrink:fabs(distance) direction:SwipeLeft];
+                }
             }
             
             break;
@@ -125,10 +122,12 @@ typedef enum {
             CGFloat distance = x - self.startX;
             
             if (distance > 0) {
-                [self resolveAnimation:SwipeRight];
+                if (self.rightSwipeDisabled == NO)
+                  [self resolveAnimation:SwipeRight];
             }
             else {
-                [self resolveAnimation:SwipeLeft];
+                if (self.leftSwipeDisabled == NO)
+                   [self resolveAnimation:SwipeLeft];
             }
             break;
         }
@@ -144,8 +143,6 @@ typedef enum {
     if (fabs(distance) > LIMIT_DISTANCE) {
         if (direction == SwipeRight) {
             [self.timer invalidate];
-            
-            
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                           target:self
                                                         selector:@selector(animateRight)
@@ -164,6 +161,7 @@ typedef enum {
     }
     else {
         if(direction == SwipeRight) {
+            [self.delegate videoReleasedWithNoSwipeWhileAnimatedTo:SwipeRight];
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                           target:self
                                                         selector:@selector(restoreByExpandingToLeft)
@@ -171,6 +169,7 @@ typedef enum {
                                                          repeats:YES];
         }
         if(direction == SwipeLeft) {
+            [self.delegate videoReleasedWithNoSwipeWhileAnimatedTo:SwipeLeft];
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                           target:self
                                                         selector:@selector(restoreByExpandingToRight)
@@ -217,12 +216,14 @@ typedef enum {
         [self.timer invalidate];
         self.timer = nil;
         
-        [self stopWithReleaseVideo:YES];
+        [self.delegate videoSwiped:SwipeRight];
+        
+        [self pause];
         [self clearMask];
+        
     }
     else {
         [self shrink:distance direction:SwipeRight];
-
     }
 }
 
@@ -230,11 +231,13 @@ typedef enum {
     self.currentX -= STEP_VALUE;
     CGFloat distance = fabs(self.startX - self.currentX);
     
-    if (distance == self.frame.size.width) {
+    if (distance > self.frame.size.width) {
         [self.timer invalidate];
         self.timer = nil;
         
-        [self stopWithReleaseVideo:YES];
+        [self.delegate videoSwiped:SwipeLeft];
+        
+        [self pause];
         [self clearMask];
     }
     else {

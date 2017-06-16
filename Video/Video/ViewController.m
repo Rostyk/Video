@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "MTVideoView.h"
+#import "MTPodscastsView.h"
 
-@interface ViewController ()
-
+@interface ViewController () <MTPodcastDataSource>
+@property (nonatomic, weak) IBOutlet MTPodscastsView *podcastsView;
+@property (nonatomic, strong) NSArray *videoURLs;
 @end
 
 @implementation ViewController
@@ -21,27 +23,21 @@
 }
 
 - (void)setup {
-    CGRect videoFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300);
-    MTVideoView *videoView1 = [[MTVideoView alloc] initWithFrame:videoFrame];
-    
-    [self.view addSubview:videoView1];
-    
-    videoView1.videoUrl = [NSURL URLWithString:@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"];
-    videoView1.userInteractionEnabled = false;
-
-    [videoView1 play];
-    
-    
-    CGRect videoFrame2 = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300);
-    MTVideoView *videoView2 = [[MTVideoView alloc] initWithFrame:videoFrame2];
-    
-    [self.view addSubview:videoView2];
-    
-    videoView2.videoUrl = [NSURL URLWithString:@"http://sachinchoolur.github.io/lightGallery/static/videos/video2.mp4"];
-    [videoView2 play];
-    
-    [self.view bringSubviewToFront:videoView2];
+    self.videoURLs = @[@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4",
+                       @"http://sachinchoolur.github.io/lightGallery/static/videos/video2.mp4",
+                       @"http://www.html5videoplayer.net/videos/toystory.mp4",
+                       @"http://html5videoformatconverter.com/data/images/happyfit2.mp4"];
+    self.podcastsView.datasource = self;
 }
 
+#pragma mark - MTPodcastDataSource
+
+- (NSString *)videoUrlForIndex:(NSInteger)index {
+    return self.videoURLs[index];
+}
+
+- (NSUInteger)numberOfVideos {
+    return self.videoURLs.count;
+}
 
 @end
