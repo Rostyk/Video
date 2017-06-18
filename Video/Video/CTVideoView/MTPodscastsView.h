@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MTInfo;
 
 @protocol MTPodcastDataSource
-- (NSString *)videoUrlForIndex:(NSInteger)index;
+- (MTInfo *)videoInfoForIndex:(NSInteger)index;
 - (NSUInteger)numberOfVideos;
 @end
 

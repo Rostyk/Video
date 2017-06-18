@@ -54,6 +54,9 @@
 		474468B61EF1A0ED00857770 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 474468B51EF1A0ED00857770 /* libsqlite3.tbd */; };
 		474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468B81EF1AB2F00857770 /* MTVideoView.m */; };
 		47A977241EF44B0C00621404 /* MTPodscastsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A977231EF44B0C00621404 /* MTPodscastsView.m */; };
+		47A977271EF6956B00621404 /* MTInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A977261EF6956B00621404 /* MTInfoView.xib */; };
+		47A9772A1EF6958000621404 /* MTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A977291EF6958000621404 /* MTInfoView.m */; };
+		47A9772E1EF699A100621404 /* MTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A9772D1EF699A100621404 /* MTInfo.m */; };
 		BB7527943AB9C043600CCAD8 /* libPods-Video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E00119268C5C57AFB29ED15 /* libPods-Video.a */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +159,11 @@
 		474468B81EF1AB2F00857770 /* MTVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideoView.m; sourceTree = "<group>"; };
 		47A977221EF44B0C00621404 /* MTPodscastsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPodscastsView.h; sourceTree = "<group>"; };
 		47A977231EF44B0C00621404 /* MTPodscastsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPodscastsView.m; sourceTree = "<group>"; };
+		47A977261EF6956B00621404 /* MTInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTInfoView.xib; sourceTree = "<group>"; };
+		47A977281EF6958000621404 /* MTInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInfoView.h; sourceTree = "<group>"; };
+		47A977291EF6958000621404 /* MTInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInfoView.m; sourceTree = "<group>"; };
+		47A9772C1EF699A100621404 /* MTInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInfo.h; sourceTree = "<group>"; };
+		47A9772D1EF699A100621404 /* MTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInfo.m; sourceTree = "<group>"; };
 		AB65290A52A26C3B0E8F4E7F /* Pods-Video.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.debug.xcconfig"; sourceTree = "<group>"; };
 		EFE2F435AFD6761B7D587C44 /* Pods-Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.release.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +202,8 @@
 		474467F51EF19CE900857770 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				47A9772B1EF6998F00621404 /* Model */,
+				47A977251EF6955600621404 /* View */,
 				4744680D1EF19E6400857770 /* CTVideoView */,
 				474467F91EF19CE900857770 /* AppDelegate.h */,
 				474467FA1EF19CE900857770 /* AppDelegate.m */,
@@ -685,6 +695,27 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
+		47A977251EF6955600621404 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47A977281EF6958000621404 /* MTInfoView.h */,
+				47A977291EF6958000621404 /* MTInfoView.m */,
+				47A977261EF6956B00621404 /* MTInfoView.xib */,
+			);
+			name = View;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/View;
+			sourceTree = "<group>";
+		};
+		47A9772B1EF6998F00621404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47A9772C1EF699A100621404 /* MTInfo.h */,
+				47A9772D1EF699A100621404 /* MTInfo.m */,
+			);
+			name = Model;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/Model;
+			sourceTree = "<group>";
+		};
 		777D0C1B4272F6885C198567 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,6 +798,7 @@
 				474468061EF19CE900857770 /* LaunchScreen.storyboard in Resources */,
 				474468031EF19CE900857770 /* Assets.xcassets in Resources */,
 				474468011EF19CE900857770 /* Main.storyboard in Resources */,
+				47A977271EF6956B00621404 /* MTInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +896,9 @@
 				474468AC1EF1A01A00857770 /* CTPersistanceQueryCommand+Status.m in Sources */,
 				474468A01EF1A01A00857770 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				474468521EF19F1900857770 /* UIView+HandyAutoLayout.m in Sources */,
+				47A9772A1EF6958000621404 /* MTInfoView.m in Sources */,
 				4744683F1EF19E6400857770 /* AVAsset+CTVideoView.m in Sources */,
+				47A9772E1EF699A100621404 /* MTInfo.m in Sources */,
 				474468471EF19E6400857770 /* UIPanGestureRecognizer+ExtraMethods.m in Sources */,
 				4744684B1EF19E6400857770 /* CTVideoTable.m in Sources */,
 				474468B31EF1A01A00857770 /* CTPersistanceTable.m in Sources */,

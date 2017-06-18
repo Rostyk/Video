@@ -8,6 +8,11 @@
 
 #import "MTPodscastsView.h"
 #import "MTVideoView.h"
+#import "MTInfo.h"
+#import "MTInfoView.h"
+
+// video takes half of the view
+#define VIDEO_AREA_PROPRTION                      0.5
 
 @interface MTPodscastsView() <MTVideoDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
@@ -18,6 +23,7 @@
 @property (nonatomic, strong) UIView *nextInfoView;
 
 @property (nonatomic) NSUInteger currentVideoIndex;
+@property (nonatomic) CGRect viewFrame;
 @end
 
 @implementation MTPodscastsView
@@ -41,22 +47,36 @@
     [self commonInit];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (CGRectEqualToRect(self.viewFrame, CGRectZero)) {
+        self.viewFrame = self.frame;
+        
+        [self updateVideoFrames];
+    }
+}
+
+- (void)updateVideoFrames {
+    self.previousVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
+    self.currentVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
+    self.nextVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
+}
+
 - (void)commonInit {
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    self.viewFrame = CGRectZero;
     
-    self.previousVideoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, width, 280)];
-    self.nextVideoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, width, 280)];
-    self.currentVideoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, width, 280)];
-    
-    self.previousVideoView.delegate = self;
-    self.currentVideoView.delegate = self;
-    self.nextVideoView.delegate = self;
-    
-    [self addSubview:self.previousVideoView];
-    [self addSubview:self.nextVideoView];
+    self.currentVideoView = [self createVideoForIndex:0];
     [self addSubview:self.currentVideoView];
     
-    [self loadVideoURLs];
+    self.nextVideoView = [self createVideoForIndex:1];
+    [self addSubview:self.nextVideoView];
+    
+    self.currentVideoView.rightSwipeDisabled = YES;
+    self.currentVideoView.leftSwipeDisabled = [self.datasource numberOfVideos] == 1;
+    [self bringSubviewToFront:self.currentVideoView];
+    
+    [self.currentVideoView play];
 }
 
 - (void)keepNextBelowCurrent {
@@ -66,21 +86,6 @@
 
 - (void)keepPreviousBelowCurrent {
     [self bringSubviewToFront:self.previousVideoView];
-    [self bringSubviewToFront:self.currentVideoView];
-}
-
-- (void)loadVideoURLs {
-    self.currentVideoView.rightSwipeDisabled = YES;
-    self.currentVideoView.leftSwipeDisabled = [self.datasource numberOfVideos] == 1;
-    
-    self.currentVideoView.videoUrl = [NSURL URLWithString:[self.datasource videoUrlForIndex:0]];
-    [self.currentVideoView play];
-    
-    if ([self.datasource numberOfVideos] > 0) {
-        self.nextVideoView.videoUrl = [NSURL URLWithString:[self.datasource videoUrlForIndex:1]];
-        [self.nextVideoView prepare];
-    }
-    
     [self bringSubviewToFront:self.currentVideoView];
 }
 
@@ -99,12 +104,20 @@
         [self keepNextBelowCurrent];
         [self.nextVideoView play];
         [self.previousVideoView pause];
+        
+        self.previousVideoView.hidden = YES;
+        self.nextVideoView.hidden = NO;
+        self.currentVideoView.hidden = NO;
     }
     
     if(direction == SwipeRight) {
         [self keepPreviousBelowCurrent];
         [self.previousVideoView play];
         [self.nextVideoView pause];
+        
+        self.nextVideoView.hidden = YES;
+        self.previousVideoView.hidden = NO;
+        self.currentVideoView.hidden = NO;
     }
 }
 
@@ -121,15 +134,10 @@
         self.previousVideoView = self.currentVideoView;
         self.currentVideoView = self.nextVideoView;
         
-        
         //loading next view
         if ([self.datasource numberOfVideos] > self.currentVideoIndex + 1) {
-            self.nextVideoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 280)];
-            self.nextVideoView.delegate = self;
+            self.nextVideoView = [self createVideoForIndex:self.currentVideoIndex + 1];
             [self addSubview:self.nextVideoView];
-            
-            self.nextVideoView.videoUrl = [NSURL URLWithString:[self.datasource videoUrlForIndex:self.currentVideoIndex + 1]];
-            [self.nextVideoView prepare];
         }
         else {
             self.nextVideoView = nil;
@@ -150,13 +158,9 @@
         self.currentVideoView = self.previousVideoView;
         
         //loading previous view
-        if (self.currentVideoIndex > 0 ) {
-            self.previousVideoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 280)];
-            self.previousVideoView.delegate = self;
+        if (self.currentVideoIndex > 0) {
+            self.previousVideoView = [self createVideoForIndex:self.currentVideoIndex - 1];
             [self addSubview:self.previousVideoView];
-            
-            self.previousVideoView.videoUrl = [NSURL URLWithString:[self.datasource videoUrlForIndex:self.currentVideoIndex - 1]];
-            [self.previousVideoView prepare];
         }
         else {
             self.previousVideoView = nil;
@@ -164,7 +168,7 @@
         }
     }
     
-    [self performSelector:@selector(updateUserInteractions) withObject:nil afterDelay:0.3];
+    [self updateUserInteractions];
     [self bringSubviewToFront:self.currentVideoView];
     
     self.currentVideoView.rightSwipeDisabled = self.currentVideoIndex == 0;
@@ -179,6 +183,30 @@
     if (direction == SwipeRight) {
         [self.previousVideoView pause];
     }
+}
+
+#pragma mark - creating new video
+
+- (MTVideoView *)createVideoForIndex:(NSUInteger)index {
+    MTVideoView *videoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION)];
+    videoView.delegate = self;
+    videoView.videoContentMode = CTVideoViewContentModeResizeAspectFill;
+    
+    if (index < [self.datasource numberOfVideos]) {
+        MTInfo *info = [self.datasource videoInfoForIndex:index];
+        videoView.videoUrl = [NSURL URLWithString:info.videoURL];
+        [videoView prepare];
+    }
+    
+    return videoView;
+}
+
+#pragma mark - info view
+
+- (MTInfoView *)infoViewWithInfo:(MTInfo *)info {
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"Your_nib_name" owner:self options:nil];
+    UIView *view = [subviewArray objectAtIndex:0];
+    return (MTInfoView *)view;
 }
 
 @end
