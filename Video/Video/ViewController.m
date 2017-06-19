@@ -31,7 +31,7 @@
                                          videoUrl:@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"];
     
     MTInfo *info2 = [[MTInfo alloc] initWithTitle:@"Lorem ipsum dolor sit amet consectetur adipiscing"
-                                          channel:@"Some moview title or something"
+                                          channel:@"Here goes the channel name"
                                      channelImage:nil
                                       bottomImage:nil
                                          videoUrl:@"http://sachinchoolur.github.io/lightGallery/static/videos/video2.mp4"];

@@ -47,18 +47,23 @@
 }
 
 - (void)handleTouchEnded:(CGFloat)x {
-    self.currentX = x;
     NSLog(@"[Pan] ended");
-    
+    self.currentX = x;
     CGFloat distance = x - self.startX;
+
+    NSLog(@"Distnace: %f", distance);
     
     if (distance > 0) {
         if (self.rightSwipeDisabled == NO)
-        [self resolveAnimation:SwipeRight];
+            [self resolveAnimation:SwipeRight];
+        else
+            [self clearMask];
     }
     else {
         if (self.leftSwipeDisabled == NO)
-        [self resolveAnimation:SwipeLeft];
+            [self resolveAnimation:SwipeLeft];
+        else
+            [self clearMask];
     }
 }
 
