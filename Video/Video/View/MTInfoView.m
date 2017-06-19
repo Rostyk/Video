@@ -8,7 +8,16 @@
 
 #import "MTInfoView.h"
 
+@interface MTInfoView()
+@property (nonatomic, weak)IBOutlet UIView *dimView;
+@end
+
 @implementation MTInfoView
 
+- (void)setAnimationValue:(CGFloat)animationValue {
+    _animationValue = animationValue;
+    
+    self.dimView.alpha = 1 - animationValue;
+}
 
 @end

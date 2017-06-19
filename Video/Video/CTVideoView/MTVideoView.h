@@ -13,8 +13,10 @@ typedef enum {
 } SwipeDirection;
 
 @protocol MTVideoDelegate
-- (void)isMovingForDistance:(CGFloat)distance
-                  direction:(SwipeDirection)direction;
+- (void)isMovingManuallyForDistance:(CGFloat)distance
+                          direction:(SwipeDirection)direction;
+- (void)isAnimatingForDistance:(CGFloat)distance
+                     direction:(SwipeDirection)direction;
 - (void)videoSwiped:(SwipeDirection)direction;
 - (void)videoReleasedWithNoSwipeWhileAnimatedTo:(SwipeDirection)direction;
 @end

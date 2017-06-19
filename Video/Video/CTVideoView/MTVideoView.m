@@ -83,7 +83,7 @@
 {
     //CGPoint velocityPoint = [panRecognizer velocityInView:self];
     
-    NSLog(@"[Pan] x: %f", [panRecognizer locationInView:self].x);
+    //NSLog(@"[Pan] x: %f", [panRecognizer locationInView:self].x);
     switch (panRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             self.startX = [panRecognizer locationInView:self].x;
@@ -98,15 +98,15 @@
             
             if (distance > 0) {
                 if (self.rightSwipeDisabled == NO) {
-                    [self.delegate isMovingForDistance:distance
-                                           direction:SwipeRight];
+                    [self.delegate isMovingManuallyForDistance:distance
+                                                     direction:SwipeRight];
                     [self shrink:distance direction:SwipeRight];
                 }
             }
             else {
                 if (self.leftSwipeDisabled == NO) {
-                    [self.delegate isMovingForDistance:distance
-                                             direction:SwipeLeft];
+                    [self.delegate isMovingManuallyForDistance:distance
+                                                     direction:SwipeLeft];
                     [self shrink:fabs(distance) direction:SwipeLeft];
                 }
             }
@@ -187,9 +187,10 @@
         self.timer = nil;
         
         [self clearMask];
-        
+        [self.delegate isAnimatingForDistance:0 direction:SwipeLeft];
     }
     else {
+        [self.delegate isAnimatingForDistance:distance direction:SwipeLeft];
         [self shrink:distance direction:SwipeRight];
     }
 }
@@ -201,9 +202,11 @@
         self.timer = nil;
         
         [self clearMask];
+        [self.delegate isAnimatingForDistance:0 direction:SwipeRight];
     }
     else {
         CGFloat distance =  self.currentX - self.startX;
+        [self.delegate isAnimatingForDistance:distance direction:SwipeRight];
         [self shrink:distance direction:SwipeLeft];
     }
 }
@@ -216,13 +219,13 @@
         [self.timer invalidate];
         self.timer = nil;
         
-        [self.delegate videoSwiped:SwipeRight];
-        
         [self pause];
         [self clearMask];
-        
+        [self.delegate isAnimatingForDistance:self.frame.size.width direction:SwipeRight];
+        [self.delegate videoSwiped:SwipeRight];
     }
     else {
+        [self.delegate isAnimatingForDistance:distance direction:SwipeRight];
         [self shrink:distance direction:SwipeRight];
     }
 }
@@ -235,12 +238,13 @@
         [self.timer invalidate];
         self.timer = nil;
         
-        [self.delegate videoSwiped:SwipeLeft];
-        
         [self pause];
         [self clearMask];
+        [self.delegate isAnimatingForDistance:self.frame.size.width direction:SwipeLeft];
+        [self.delegate videoSwiped:SwipeLeft];
     }
     else {
+        [self.delegate isAnimatingForDistance:distance direction:SwipeLeft];
         [self shrink:distance direction:SwipeLeft];
     }
 }

@@ -14,4 +14,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *channelImage;
 
 @property (nonatomic, weak) IBOutlet UIImageView *bottomImage;
+
+// from 0 to 1
+@property (nonatomic) CGFloat animationValue;
 @end

@@ -21,17 +21,17 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Zlk-sn-saW"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vii-5I-Lg5">
                     <rect key="frame" x="163" y="58" width="49" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="49" id="uKn-Wr-0kH"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="uKn-Wr-0kH"/>
                         <constraint firstAttribute="height" constant="24" id="vCt-F4-1FY"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z1r-8c-BsU">
@@ -48,8 +48,13 @@
                         <constraint firstAttribute="height" constant="80" id="RYi-Tk-yk3"/>
                     </constraints>
                 </imageView>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oas-Xt-QXf">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>
                 <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="16" id="DGQ-hH-rwY"/>

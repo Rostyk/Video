@@ -12,7 +12,9 @@
 #import "MTInfoView.h"
 
 // video takes half of the view
-#define VIDEO_AREA_PROPRTION                      0.5
+#define VIDEO_AREA_PROPRTION                                                      0.5
+
+#define VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW                         0.4
 
 @interface MTPodscastsView() <MTVideoDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
@@ -21,6 +23,8 @@
 
 @property (nonatomic, strong) UIView *currentInfoView;
 @property (nonatomic, strong) UIView *nextInfoView;
+
+@property (nonatomic) BOOL nextInfoViewAboutToShow;
 
 @property (nonatomic) NSUInteger currentVideoIndex;
 @property (nonatomic) CGRect viewFrame;
@@ -61,6 +65,8 @@
     self.previousVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
     self.currentVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
     self.nextVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
+    
+    self.currentInfoView.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
 }
 
 - (void)commonInit {
@@ -68,6 +74,7 @@
     
     self.currentVideoView = [self createVideoForIndex:0];
     [self addSubview:self.currentVideoView];
+    [self.currentVideoView play];
     
     self.nextVideoView = [self createVideoForIndex:1];
     [self addSubview:self.nextVideoView];
@@ -76,7 +83,8 @@
     self.currentVideoView.leftSwipeDisabled = [self.datasource numberOfVideos] == 1;
     [self bringSubviewToFront:self.currentVideoView];
     
-    [self.currentVideoView play];
+    self.currentInfoView = [self createInfoViewWithIndex:0];
+    [self addSubview:self.currentInfoView];
 }
 
 - (void)keepNextBelowCurrent {
@@ -97,8 +105,8 @@
 
 #pragma mark - MTVIdeoDelegate
 
-- (void)isMovingForDistance:(CGFloat)distance
-                  direction:(SwipeDirection)direction {
+- (void)isMovingManuallyForDistance:(CGFloat)distance
+                          direction:(SwipeDirection)direction {
     
     if (direction == SwipeLeft) {
         [self keepNextBelowCurrent];
@@ -119,6 +127,12 @@
         self.previousVideoView.hidden = NO;
         self.currentVideoView.hidden = NO;
     }
+    
+    [self moveInfoViewFor:distance direction:direction];
+}
+
+- (void)isAnimatingForDistance:(CGFloat)distance direction:(SwipeDirection)direction {
+     [self moveInfoViewFor:distance direction:direction];
 }
 
 - (void)videoSwiped:(SwipeDirection)direction {
@@ -126,9 +140,7 @@
         self.currentVideoIndex++;
         
         //remove previous view
-        [self.previousVideoView stopWithReleaseVideo:YES];
-        [self.previousVideoView removeFromSuperview];
-        self.previousVideoView = nil;
+        [self destroyPreviousVideo];
         
         //shift video
         self.previousVideoView = self.currentVideoView;
@@ -149,9 +161,7 @@
         self.currentVideoIndex--;
         
         //remove next view
-        [self.nextVideoView stopWithReleaseVideo:YES];
-        [self.nextVideoView removeFromSuperview];
-        self.nextVideoView = nil;
+        [self destroyNextVideo];
         
         //shift to previous
         self.nextVideoView = self.currentVideoView;
@@ -185,7 +195,7 @@
     }
 }
 
-#pragma mark - creating new video
+#pragma mark - creating/removing video
 
 - (MTVideoView *)createVideoForIndex:(NSUInteger)index {
     MTVideoView *videoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION)];
@@ -201,12 +211,89 @@
     return videoView;
 }
 
+- (void)destroyNextVideo {
+    [self.nextVideoView stopWithReleaseVideo:YES];
+    [self.nextVideoView removeFromSuperview];
+    self.nextVideoView = nil;
+    
+    [self placeNewInfoView];
+}
+
+- (void)destroyPreviousVideo {
+    [self.previousVideoView stopWithReleaseVideo:YES];
+    [self.previousVideoView removeFromSuperview];
+    self.previousVideoView = nil;
+    
+    [self placeNewInfoView];
+}
+
+- (void)placeNewInfoView {
+    [self.currentInfoView removeFromSuperview];
+    self.currentInfoView = nil;
+    
+    self.currentInfoView = self.nextInfoView;
+    self.nextInfoView = nil;
+}
+
 #pragma mark - info view
 
-- (MTInfoView *)infoViewWithInfo:(MTInfo *)info {
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"Your_nib_name" owner:self options:nil];
+- (MTInfoView *)createInfoViewWithIndex:(NSUInteger)index {
+    MTInfo *info = [self.datasource videoInfoForIndex:index];
+    
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MTInfoView" owner:self options:nil];
     UIView *view = [subviewArray objectAtIndex:0];
-    return (MTInfoView *)view;
+    
+    view.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
+    
+    MTInfoView *infoView = (MTInfoView *)view;
+    infoView.titleLabel.text = info.title;
+    infoView.channelLabel.text = info.channel;
+    infoView.channelImage.image = info.channelImage;
+    infoView.bottomImage.image = info.bottomImage;
+    
+    return infoView;
+}
+
+- (void)moveInfoViewFor:(CGFloat)distance direction:(SwipeDirection)direction {
+    
+    //Move the current view
+    CGFloat x = distance;
+    
+    CGRect shiftedFrame = self.currentInfoView.frame;
+    shiftedFrame.origin.x = x;
+    self.currentInfoView.frame = shiftedFrame;
+    
+    //Handle the next view
+    CGFloat shiftPercent = fabs(distance) / self.frame.size.width;
+    
+    if (shiftPercent > VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) {
+        if (!self.nextInfoViewAboutToShow) {
+            self.nextInfoViewAboutToShow = YES;
+            
+            NSUInteger nextIndex = [self getNextInfoViewIndexOfDirection:direction];
+            self.nextInfoView = [self createInfoViewWithIndex:nextIndex];
+            [self addSubview:self.nextInfoView];
+            
+            self.nextInfoView.alpha = 0.0;
+        }
+        else {
+            self.nextInfoView.alpha = (shiftPercent - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) / (1.0 - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW);
+        }
+    }
+    else {
+        if (self.nextInfoViewAboutToShow) {
+            [self.nextInfoView removeFromSuperview];
+            self.nextInfoViewAboutToShow = NO;
+        }
+    }
+}
+
+- (NSUInteger)getNextInfoViewIndexOfDirection:(SwipeDirection)direction {
+    if (direction == SwipeLeft) {
+        return self.currentVideoIndex + 1;
+    }
+    
+    return self.currentVideoIndex - 1;
 }
 
 @end
