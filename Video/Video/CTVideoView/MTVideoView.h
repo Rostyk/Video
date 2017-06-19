@@ -7,10 +7,7 @@
 //
 
 #import "CTVideoView.h"
-typedef enum {
-    SwipeLeft = 1,
-    SwipeRight
-} SwipeDirection;
+#import "Constants.h"
 
 @protocol MTVideoDelegate
 - (void)isMovingManuallyForDistance:(CGFloat)distance

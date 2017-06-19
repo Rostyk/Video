@@ -7,7 +7,6 @@
 //
 
 #import "CTVideoView+Time.h"
-#import "CTVideoView+OperationButtons.h"
 #import "CTVideoView+VideoCoverView.h"
 #import <objc/runtime.h>
 
@@ -56,7 +55,7 @@ static void * CTVideoViewTimePrivatePropertyVideoStartTimeObserverToken;
             if ([strongSelf.operationDelegate respondsToSelector:@selector(videoViewDidStartPlaying:)]) {
                 [strongSelf.operationDelegate videoViewDidStartPlaying:strongSelf];
             }
-            [strongSelf hidePlayButton];
+            //[strongSelf hidePlayButton];
             [strongSelf hideCoverView];
             [strongSelf removeVideoStartTimeObserver];
         }

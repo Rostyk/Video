@@ -24,19 +24,19 @@
 }
 
 - (void)setup {
-    MTInfo *info1 = [[MTInfo alloc] initWithTitle:@"Video 1"
-                                          channel:@"Vevo"
+    MTInfo *info1 = [[MTInfo alloc] initWithTitle:@"Some decription of the video goes here. Lorem ipsum"
+                                          channel:@"Channel name"
                                      channelImage:nil
                                       bottomImage:nil
                                          videoUrl:@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"];
     
-    MTInfo *info2 = [[MTInfo alloc] initWithTitle:@"Video 2"
-                                          channel:@"Movies"
+    MTInfo *info2 = [[MTInfo alloc] initWithTitle:@"Lorem ipsum dolor sit amet consectetur adipiscing"
+                                          channel:@"Some moview title or something"
                                      channelImage:nil
                                       bottomImage:nil
                                          videoUrl:@"http://sachinchoolur.github.io/lightGallery/static/videos/video2.mp4"];
     
-    MTInfo *info3 = [[MTInfo alloc] initWithTitle:@"Video 3"
+    MTInfo *info3 = [[MTInfo alloc] initWithTitle:@"Duis aute irure dolor in reprehenderit in voluptate"
                                           channel:@"Some channel"
                                      channelImage:nil
                                       bottomImage:nil

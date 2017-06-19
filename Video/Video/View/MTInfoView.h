@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Constants.h"
 
 @interface MTInfoView : UIView
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -17,4 +18,5 @@
 
 // from 0 to 1
 @property (nonatomic) CGFloat animationValue;
+@property (nonatomic) SwipeDirection moveDirection;
 @end

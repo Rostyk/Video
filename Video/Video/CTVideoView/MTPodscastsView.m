@@ -10,19 +10,19 @@
 #import "MTVideoView.h"
 #import "MTInfo.h"
 #import "MTInfoView.h"
-
+#import "HandyFrame/UIView+LayoutMethods.h"
 // video takes half of the view
 #define VIDEO_AREA_PROPRTION                                                      0.5
 
 #define VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW                         0.4
 
-@interface MTPodscastsView() <MTVideoDelegate>
+@interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
 @property (nonatomic, strong) MTVideoView *previousVideoView;
 @property (nonatomic, strong) MTVideoView *currentVideoView;
 
-@property (nonatomic, strong) UIView *currentInfoView;
-@property (nonatomic, strong) UIView *nextInfoView;
+@property (nonatomic, strong) MTInfoView *currentInfoView;
+@property (nonatomic, strong) MTInfoView *nextInfoView;
 
 @property (nonatomic) BOOL nextInfoViewAboutToShow;
 
@@ -132,7 +132,10 @@
 }
 
 - (void)isAnimatingForDistance:(CGFloat)distance direction:(SwipeDirection)direction {
-     [self moveInfoViewFor:distance direction:direction];
+     if(direction == SwipeLeft)
+        [self moveInfoViewFor:-distance direction:direction];
+    
+     [self moveInfoViewFor:-distance direction:direction];
 }
 
 - (void)videoSwiped:(SwipeDirection)direction {
@@ -201,7 +204,6 @@
     MTVideoView *videoView = [[MTVideoView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION)];
     videoView.delegate = self;
     videoView.videoContentMode = CTVideoViewContentModeResizeAspectFill;
-    
     if (index < [self.datasource numberOfVideos]) {
         MTInfo *info = [self.datasource videoInfoForIndex:index];
         videoView.videoUrl = [NSURL URLWithString:info.videoURL];
@@ -248,19 +250,21 @@
     MTInfoView *infoView = (MTInfoView *)view;
     infoView.titleLabel.text = info.title;
     infoView.channelLabel.text = info.channel;
-    infoView.channelImage.image = info.channelImage;
-    infoView.bottomImage.image = info.bottomImage;
+    //infoView.channelImage.image = info.channelImage;
+    //infoView.bottomImage.image = info.bottomImage;
     
     return infoView;
 }
 
 - (void)moveInfoViewFor:(CGFloat)distance direction:(SwipeDirection)direction {
-    
     //Move the current view
     CGFloat x = distance;
     
     CGRect shiftedFrame = self.currentInfoView.frame;
+    
     shiftedFrame.origin.x = x;
+    
+    NSLog(@"Curent info shift: %f", x);
     self.currentInfoView.frame = shiftedFrame;
     
     //Handle the next view
@@ -274,10 +278,11 @@
             self.nextInfoView = [self createInfoViewWithIndex:nextIndex];
             [self addSubview:self.nextInfoView];
             
+            self.nextInfoView.moveDirection = direction;
             self.nextInfoView.alpha = 0.0;
         }
         else {
-            self.nextInfoView.alpha = (shiftPercent - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) / (1.0 - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW);
+            self.nextInfoView.animationValue = (shiftPercent - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) / (1.0 - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW);
         }
     }
     else {
@@ -294,6 +299,28 @@
     }
     
     return self.currentVideoIndex - 1;
+}
+
+#pragma mark - button delegate
+
+- (void)videoView:(CTVideoView *)videoView layoutPlayButton:(UIButton *)playButton
+{
+    CGRect frame = playButton.frame;
+    frame.size = CGSizeMake(100, 60);
+    playButton.frame = frame;
+    
+    [playButton rightInContainer:5 shouldResize:NO];
+   	[playButton bottomInContainer:5 shouldResize:NO];
+}
+
+- (void)videoView:(CTVideoView *)videoView layoutRetryButton:(UIButton *)retryButton
+{
+    CGRect frame = retryButton.frame;
+    frame.size = CGSizeMake(100, 60);
+    retryButton.frame = frame;
+    
+    [retryButton rightInContainer:5 shouldResize:NO];
+   	[retryButton bottomInContainer:5 shouldResize:NO];
 }
 
 @end

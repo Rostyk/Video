@@ -7,7 +7,6 @@
 //
 
 #import "CTVideoView+Download.h"
-#import "CTVideoView+OperationButtons.h"
 #import <objc/runtime.h>
 #import "CTVideoManager.h"
 #import "UIView+LayoutMethods.h"
@@ -106,8 +105,8 @@ static void * CTVideoViewDownloadPrivatePropertyDownloadView;
                 [strongSelf.downloadingView videoViewStartDownload:strongSelf];
             }
             
-            [strongSelf hidePlayButton];
-            [strongSelf hideRetryButton];
+            //[strongSelf hidePlayButton];
+            //[strongSelf hideRetryButton];
             
             if ([strongSelf.downloadDelegate respondsToSelector:@selector(videoViewWillStartDownload:)]) {
                 [strongSelf.downloadDelegate videoViewWillStartDownload:strongSelf];
@@ -129,7 +128,7 @@ static void * CTVideoViewDownloadPrivatePropertyDownloadView;
                 [strongSelf.downloadingView videoViewFinishDownload:strongSelf];
             }
             
-            [strongSelf showPlayButton];
+            //[strongSelf showPlayButton];
             
             if ([strongSelf.downloadDelegate respondsToSelector:@selector(videoViewDidFinishDownload:)]) {
                 [strongSelf.downloadDelegate videoViewDidFinishDownload:strongSelf];
@@ -171,7 +170,7 @@ static void * CTVideoViewDownloadPrivatePropertyDownloadView;
                 [strongSelf.downloadingView videoViewFailedDownload:strongSelf];
             }
             
-            [strongSelf showRetryButton];
+            //[strongSelf showRetryButton];
             
             if ([strongSelf.downloadDelegate respondsToSelector:@selector(videoViewDidFailDownload:)]) {
                 [strongSelf.downloadDelegate videoViewDidFailDownload:strongSelf];

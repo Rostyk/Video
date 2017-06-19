@@ -16,9 +16,6 @@
 		4744683F1EF19E6400857770 /* AVAsset+CTVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468111EF19E6400857770 /* AVAsset+CTVideoView.m */; };
 		474468401EF19E6400857770 /* CTVideoView+Download.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468151EF19E6400857770 /* CTVideoView+Download.m */; };
 		474468411EF19E6400857770 /* CTVideoView+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468181EF19E6400857770 /* CTVideoView+FullScreen.m */; };
-		474468421EF19E6400857770 /* CTVideoView+OperationButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 4744681B1EF19E6400857770 /* CTVideoView+OperationButtons.m */; };
-		474468431EF19E6400857770 /* CTVideoView+PlayControlPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4744681F1EF19E6400857770 /* CTVideoView+PlayControlPrivate.m */; };
-		474468441EF19E6400857770 /* CTVideoView+PlayControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468221EF19E6400857770 /* CTVideoView+PlayControl.m */; };
 		474468451EF19E6400857770 /* CTVideoView+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468251EF19E6400857770 /* CTVideoView+Time.m */; };
 		474468461EF19E6400857770 /* CTVideoView+VideoCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474468281EF19E6400857770 /* CTVideoView+VideoCoverView.m */; };
 		474468471EF19E6400857770 /* UIPanGestureRecognizer+ExtraMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4744682B1EF19E6400857770 /* UIPanGestureRecognizer+ExtraMethods.m */; };
@@ -78,12 +75,6 @@
 		474468151EF19E6400857770 /* CTVideoView+Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+Download.m"; sourceTree = "<group>"; };
 		474468171EF19E6400857770 /* CTVideoView+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+FullScreen.h"; sourceTree = "<group>"; };
 		474468181EF19E6400857770 /* CTVideoView+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+FullScreen.m"; sourceTree = "<group>"; };
-		4744681A1EF19E6400857770 /* CTVideoView+OperationButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+OperationButtons.h"; sourceTree = "<group>"; };
-		4744681B1EF19E6400857770 /* CTVideoView+OperationButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+OperationButtons.m"; sourceTree = "<group>"; };
-		4744681E1EF19E6400857770 /* CTVideoView+PlayControlPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+PlayControlPrivate.h"; sourceTree = "<group>"; };
-		4744681F1EF19E6400857770 /* CTVideoView+PlayControlPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+PlayControlPrivate.m"; sourceTree = "<group>"; };
-		474468211EF19E6400857770 /* CTVideoView+PlayControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+PlayControl.h"; sourceTree = "<group>"; };
-		474468221EF19E6400857770 /* CTVideoView+PlayControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+PlayControl.m"; sourceTree = "<group>"; };
 		474468241EF19E6400857770 /* CTVideoView+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+Time.h"; sourceTree = "<group>"; };
 		474468251EF19E6400857770 /* CTVideoView+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTVideoView+Time.m"; sourceTree = "<group>"; };
 		474468271EF19E6400857770 /* CTVideoView+VideoCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTVideoView+VideoCoverView.h"; sourceTree = "<group>"; };
@@ -164,6 +155,7 @@
 		47A977291EF6958000621404 /* MTInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInfoView.m; sourceTree = "<group>"; };
 		47A9772C1EF699A100621404 /* MTInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInfo.h; sourceTree = "<group>"; };
 		47A9772D1EF699A100621404 /* MTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInfo.m; sourceTree = "<group>"; };
+		47FA88221EF8232200AECDFD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AB65290A52A26C3B0E8F4E7F /* Pods-Video.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.debug.xcconfig"; sourceTree = "<group>"; };
 		EFE2F435AFD6761B7D587C44 /* Pods-Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.release.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +194,7 @@
 		474467F51EF19CE900857770 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				47FA88211EF8232200AECDFD /* Common */,
 				47A9772B1EF6998F00621404 /* Model */,
 				47A977251EF6955600621404 /* View */,
 				4744680D1EF19E6400857770 /* CTVideoView */,
@@ -267,8 +260,6 @@
 			children = (
 				474468131EF19E6400857770 /* Download */,
 				474468161EF19E6400857770 /* FullScreen */,
-				474468191EF19E6400857770 /* OperationButtons */,
-				4744681C1EF19E6400857770 /* PlayControl */,
 				474468231EF19E6400857770 /* Time */,
 				474468261EF19E6400857770 /* VideoCoverView */,
 			);
@@ -291,42 +282,6 @@
 				474468181EF19E6400857770 /* CTVideoView+FullScreen.m */,
 			);
 			path = FullScreen;
-			sourceTree = "<group>";
-		};
-		474468191EF19E6400857770 /* OperationButtons */ = {
-			isa = PBXGroup;
-			children = (
-				4744681A1EF19E6400857770 /* CTVideoView+OperationButtons.h */,
-				4744681B1EF19E6400857770 /* CTVideoView+OperationButtons.m */,
-			);
-			path = OperationButtons;
-			sourceTree = "<group>";
-		};
-		4744681C1EF19E6400857770 /* PlayControl */ = {
-			isa = PBXGroup;
-			children = (
-				4744681D1EF19E6400857770 /* Private */,
-				474468201EF19E6400857770 /* Public */,
-			);
-			path = PlayControl;
-			sourceTree = "<group>";
-		};
-		4744681D1EF19E6400857770 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				4744681E1EF19E6400857770 /* CTVideoView+PlayControlPrivate.h */,
-				4744681F1EF19E6400857770 /* CTVideoView+PlayControlPrivate.m */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
-		474468201EF19E6400857770 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				474468211EF19E6400857770 /* CTVideoView+PlayControl.h */,
-				474468221EF19E6400857770 /* CTVideoView+PlayControl.m */,
-			);
-			path = Public;
 			sourceTree = "<group>";
 		};
 		474468231EF19E6400857770 /* Time */ = {
@@ -716,6 +671,15 @@
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/Model;
 			sourceTree = "<group>";
 		};
+		47FA88211EF8232200AECDFD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				47FA88221EF8232200AECDFD /* Constants.h */,
+			);
+			name = Common;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/Common;
+			sourceTree = "<group>";
+		};
 		777D0C1B4272F6885C198567 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,7 +831,6 @@
 				474468A41EF1A01A00857770 /* CTPersistanceDataBase.m in Sources */,
 				474468A51EF1A01A00857770 /* CTPersistanceDatabasePool.m in Sources */,
 				474468491EF19E6400857770 /* CTVideoDataCenter.m in Sources */,
-				474468441EF19E6400857770 /* CTVideoView+PlayControl.m in Sources */,
 				474468A71EF1A01A00857770 /* CTPersistanceVersionTable.m in Sources */,
 				474467FE1EF19CE900857770 /* ViewController.m in Sources */,
 				474468461EF19E6400857770 /* CTVideoView+VideoCoverView.m in Sources */,
@@ -875,7 +838,6 @@
 				474468401EF19E6400857770 /* CTVideoView+Download.m in Sources */,
 				474468A91EF1A01A00857770 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				474468A61EF1A01A00857770 /* CTPersistanceMigrator.m in Sources */,
-				474468431EF19E6400857770 /* CTVideoView+PlayControlPrivate.m in Sources */,
 				474468B11EF1A01A00857770 /* CTPersistanceTable+Insert.m in Sources */,
 				474468411EF19E6400857770 /* CTVideoView+FullScreen.m in Sources */,
 				474467FB1EF19CE900857770 /* AppDelegate.m in Sources */,
@@ -890,7 +852,6 @@
 				474468B41EF1A01A00857770 /* CTPersistanceTransaction.m in Sources */,
 				474468B01EF1A01A00857770 /* CTPersistanceTable+Find.m in Sources */,
 				474468AB1EF1A01A00857770 /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
-				474468421EF19E6400857770 /* CTVideoView+OperationButtons.m in Sources */,
 				4744684A1EF19E6400857770 /* CTVideoRecord.m in Sources */,
 				4744684C1EF19E6400857770 /* CTVideoManager.m in Sources */,
 				474468AC1EF1A01A00857770 /* CTPersistanceQueryCommand+Status.m in Sources */,

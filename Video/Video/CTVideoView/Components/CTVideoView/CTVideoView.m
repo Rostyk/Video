@@ -11,7 +11,6 @@
 #import "CTVideoView+Time.h"
 #import "CTVideoView+Download.h"
 #import "CTVideoView+VideoCoverView.h"
-#import "CTVideoView+OperationButtons.h"
 
 #import "AVAsset+CTVideoView.h"
 
@@ -108,7 +107,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     [self initTime];
     [self initDownload];
     [self initVideoCoverView];
-    [self initOperationButtons];
+    //[self initOperationButtons];
 
     [self stopWithReleaseVideo:YES];
 }
@@ -124,13 +123,13 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     [self deallocTime];
     [self deallocDownload];
     [self deallocVideoCoverView];
-    [self deallocOperationButtons];
+    //[self deallocOperationButtons];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self layoutButtons];
+    //[self layoutButtons];
     [self layoutCoverView];
 }
 
@@ -169,7 +168,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
 - (void)play
 {
-    [self hidePlayButton];
+   // [self hidePlayButton];
     if (self.isPlaying) {
         [self hideCoverView];
         return;
@@ -179,7 +178,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
         [self.operationDelegate videoViewWillStartPlaying:self];
     }
 
-    [self hideRetryButton];
+    //[self hideRetryButton];
     if (self.prepareStatus == CTVideoViewPrepareStatusPrepareFinished) {
         // hide cover view has moved to CTVideoView+Time
         [self willStartPlay];
@@ -201,7 +200,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 - (void)pause
 {
     [self hideCoverView];
-    [self showPlayButton];
+    //[self showPlayButton];
     if (self.isPlaying) {
         if ([self.operationDelegate respondsToSelector:@selector(videoViewWillPause:)]) {
             [self.operationDelegate videoViewWillPause:self];
@@ -215,8 +214,8 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
 - (void)replay
 {
-    [self hidePlayButton];
-    [self hideRetryButton];
+    //[self hidePlayButton];
+    //[self hideRetryButton];
     [self.playerLayer.player seekToTime:kCMTimeZero];
     [self play];
 }
@@ -228,7 +227,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     }
     [self.player pause];
     [self showCoverView];
-    [self showPlayButton];
+    //[self showPlayButton];
     if (shouldReleaseVideo) {
         [self.player replaceCurrentItemWithPlayerItem:nil];
         self.prepareStatus = CTVideoViewPrepareStatusNotPrepared;
@@ -286,7 +285,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
             if ([asset statusOfValueForKey:@"tracks" error:&error] == AVKeyValueStatusFailed) {
                 strongSelf.prepareStatus = CTVideoViewPrepareStatusPrepareFailed;
                 [self showCoverView];
-                [self showRetryButton];
+                //[self showRetryButton];
                 if ([strongSelf.operationDelegate respondsToSelector:@selector(videoViewDidFailPrepare:error:)]) {
                     [strongSelf.operationDelegate videoViewDidFailPrepare:strongSelf error:error];
                 }
@@ -369,7 +368,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
             [self replay];
         } else {
             [self.player seekToTime:kCMTimeZero];
-            [self showPlayButton];
+            //[self showPlayButton];
         }
         
         if ([self.operationDelegate respondsToSelector:@selector(videoViewDidFinishPlaying:)]) {
