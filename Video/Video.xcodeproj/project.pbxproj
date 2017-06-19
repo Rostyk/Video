@@ -54,6 +54,7 @@
 		47A977271EF6956B00621404 /* MTInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A977261EF6956B00621404 /* MTInfoView.xib */; };
 		47A9772A1EF6958000621404 /* MTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A977291EF6958000621404 /* MTInfoView.m */; };
 		47A9772E1EF699A100621404 /* MTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A9772D1EF699A100621404 /* MTInfo.m */; };
+		47FA88251EF840F700AECDFD /* MTOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47FA88241EF840F700AECDFD /* MTOverlayView.m */; };
 		BB7527943AB9C043600CCAD8 /* libPods-Video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E00119268C5C57AFB29ED15 /* libPods-Video.a */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,8 @@
 		47A9772C1EF699A100621404 /* MTInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInfo.h; sourceTree = "<group>"; };
 		47A9772D1EF699A100621404 /* MTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInfo.m; sourceTree = "<group>"; };
 		47FA88221EF8232200AECDFD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		47FA88231EF840F700AECDFD /* MTOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTOverlayView.h; sourceTree = "<group>"; };
+		47FA88241EF840F700AECDFD /* MTOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTOverlayView.m; sourceTree = "<group>"; };
 		AB65290A52A26C3B0E8F4E7F /* Pods-Video.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.debug.xcconfig"; sourceTree = "<group>"; };
 		EFE2F435AFD6761B7D587C44 /* Pods-Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Video.release.xcconfig"; path = "Pods/Target Support Files/Pods-Video/Pods-Video.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,6 +225,8 @@
 		4744680D1EF19E6400857770 /* CTVideoView */ = {
 			isa = PBXGroup;
 			children = (
+				47FA88231EF840F700AECDFD /* MTOverlayView.h */,
+				47FA88241EF840F700AECDFD /* MTOverlayView.m */,
 				474468B71EF1AB2F00857770 /* MTVideoView.h */,
 				474468B81EF1AB2F00857770 /* MTVideoView.m */,
 				47A977221EF44B0C00621404 /* MTPodscastsView.h */,
@@ -835,6 +840,7 @@
 				474468A71EF1A01A00857770 /* CTPersistanceVersionTable.m in Sources */,
 				474467FE1EF19CE900857770 /* ViewController.m in Sources */,
 				474468461EF19E6400857770 /* CTVideoView+VideoCoverView.m in Sources */,
+				47FA88251EF840F700AECDFD /* MTOverlayView.m in Sources */,
 				474468AE1EF1A01A00857770 /* CTPersistanceRecord.m in Sources */,
 				474468401EF19E6400857770 /* CTVideoView+Download.m in Sources */,
 				474468A91EF1A01A00857770 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,

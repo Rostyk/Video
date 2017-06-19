@@ -23,4 +23,11 @@
 
 @property (nonatomic) BOOL leftSwipeDisabled;
 @property (nonatomic) BOOL rightSwipeDisabled;
+
+- (void)handleTouchBegan:(CGFloat)x;
+
+- (void)handleTouchChanged:(CGFloat)x;
+
+- (void)handleTouchEnded:(CGFloat)x;
+
 @end

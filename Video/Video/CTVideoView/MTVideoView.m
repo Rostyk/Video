@@ -10,10 +10,7 @@
 #define STEP_VALUE                        20
 #define LIMIT_DISTANCE                    100
 
-@interface MTVideoView()<UIGestureRecognizerDelegate>
-@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
-@property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
-@property (nonatomic, strong) UISwipeGestureRecognizer *rightSwipeGestureRecognizer;
+@interface MTVideoView()
 @property (nonatomic) CGFloat startX;
 @property (nonatomic) CGFloat currentX;
 
@@ -23,118 +20,58 @@
 
 @implementation MTVideoView
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    [self setup];
-    return self;
+- (void)handleTouchBegan:(CGFloat)x {
+    self.startX = x;
 }
 
-- (void)setup {
-    [self addGestureRecognizer:self.panGestureRecognizer];
+- (void)handleTouchChanged:(CGFloat)x {
+    self.currentX = x;
     
-    [self addGestureRecognizer:self.leftSwipeGestureRecognizer];
-    [self addGestureRecognizer:self.rightSwipeGestureRecognizer];
-}
-
-#pragma mark - getters and setters
-- (UIPanGestureRecognizer *)panGestureRecognizer
-{
-    if (_panGestureRecognizer == nil) {
-        _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizedPanRecognizer:)];
-        _panGestureRecognizer.maximumNumberOfTouches = 1;
-        _panGestureRecognizer.minimumNumberOfTouches = 1;
-        _panGestureRecognizer.delegate = self;
-
+    CGFloat distance = x - self.startX;
+    
+    if (distance > 0) {
+        if (self.rightSwipeDisabled == NO) {
+            [self.delegate isMovingManuallyForDistance:distance
+                                             direction:SwipeRight];
+            [self shrink:distance direction:SwipeRight];
+        }
     }
-    return _panGestureRecognizer;
-}
-
-#pragma mark - getters and setters
-- (UISwipeGestureRecognizer *)leftSwipeGestureRecognizer
-{
-    if (_leftSwipeGestureRecognizer == nil) {
-        _leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizedLeftSwipeRecognizer:)];
-        _leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-        _leftSwipeGestureRecognizer.delegate = self;
-        
+    else {
+        if (self.leftSwipeDisabled == NO) {
+            [self.delegate isMovingManuallyForDistance:distance
+                                             direction:SwipeLeft];
+            [self shrink:fabs(distance) direction:SwipeLeft];
+        }
     }
-    return _leftSwipeGestureRecognizer;
+
 }
 
-- (UISwipeGestureRecognizer *)rightSwipeGestureRecognizer
-{
-    if (_rightSwipeGestureRecognizer == nil) {
-        _rightSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizedRightSwipeRecognizer:)];
-        _rightSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-        _rightSwipeGestureRecognizer.delegate = self;
-        
+- (void)handleTouchEnded:(CGFloat)x {
+    self.currentX = x;
+    NSLog(@"[Pan] ended");
+    
+    CGFloat distance = x - self.startX;
+    
+    if (distance > 0) {
+        if (self.rightSwipeDisabled == NO)
+        [self resolveAnimation:SwipeRight];
     }
-    return _rightSwipeGestureRecognizer;
+    else {
+        if (self.leftSwipeDisabled == NO)
+        [self resolveAnimation:SwipeLeft];
+    }
 }
 
-#pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
 
 #pragma mark - event response
-- (void)didRecognizedPanRecognizer:(UIPanGestureRecognizer *)panRecognizer
+- (void)didRecognizedLeftSwipeRecognizer:(UISwipeGestureRecognizer *)swipeRecognizer
 {
-    //CGPoint velocityPoint = [panRecognizer velocityInView:self];
-    
-    //NSLog(@"[Pan] x: %f", [panRecognizer locationInView:self].x);
-    switch (panRecognizer.state) {
-        case UIGestureRecognizerStateBegan:{
-            self.startX = [panRecognizer locationInView:self].x;
-            break;
-        }
-            
-        case UIGestureRecognizerStateChanged:{
-            CGFloat x = [panRecognizer locationInView:self].x;
-            self.currentX = x;
-            
-            CGFloat distance = x - self.startX;
-            
-            if (distance > 0) {
-                if (self.rightSwipeDisabled == NO) {
-                    [self.delegate isMovingManuallyForDistance:distance
-                                                     direction:SwipeRight];
-                    [self shrink:distance direction:SwipeRight];
-                }
-            }
-            else {
-                if (self.leftSwipeDisabled == NO) {
-                    [self.delegate isMovingManuallyForDistance:distance
-                                                     direction:SwipeLeft];
-                    [self shrink:fabs(distance) direction:SwipeLeft];
-                }
-            }
-            
-            break;
-        }
-            
-        case UIGestureRecognizerStateEnded:{
-            CGFloat x = [panRecognizer locationInView:self].x;
-            self.currentX = x;
-            NSLog(@"[Pan] ended");
-            
-            CGFloat distance = x - self.startX;
-            
-            if (distance > 0) {
-                if (self.rightSwipeDisabled == NO)
-                  [self resolveAnimation:SwipeRight];
-            }
-            else {
-                if (self.leftSwipeDisabled == NO)
-                   [self resolveAnimation:SwipeLeft];
-            }
-            break;
-        }
-            
-        default:
-            break;
-    }
+    NSLog(@"Swiped left");
+}
+
+- (void)didRecognizedRightSwipeRecognizer:(UISwipeGestureRecognizer *)swipeRecognizer
+{
+    NSLog(@"Swiped right");
 }
 
 - (void)resolveAnimation:(SwipeDirection)direction {
@@ -247,17 +184,6 @@
         [self.delegate isAnimatingForDistance:distance direction:SwipeLeft];
         [self shrink:distance direction:SwipeLeft];
     }
-}
-
-#pragma mark - event response
-- (void)didRecognizedLeftSwipeRecognizer:(UISwipeGestureRecognizer *)swipeRecognizer
-{
-    NSLog(@"Swiped left");
-}
-
-- (void)didRecognizedRightSwipeRecognizer:(UISwipeGestureRecognizer *)swipeRecognizer
-{
-    NSLog(@"Swiped right");
 }
 
 - (void)shrink:(CGFloat)distance direction:(SwipeDirection)direction {

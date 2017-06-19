@@ -11,12 +11,14 @@
 #import "MTInfo.h"
 #import "MTInfoView.h"
 #import "HandyFrame/UIView+LayoutMethods.h"
+#import "MTOverlayView.h"
+
 // video takes half of the view
 #define VIDEO_AREA_PROPRTION                                                      0.5
 
 #define VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW                         0.4
 
-@interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate>
+@interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate, MTOverlayDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
 @property (nonatomic, strong) MTVideoView *previousVideoView;
 @property (nonatomic, strong) MTVideoView *currentVideoView;
@@ -28,6 +30,8 @@
 
 @property (nonatomic) NSUInteger currentVideoIndex;
 @property (nonatomic) CGRect viewFrame;
+
+@property (nonatomic, strong) MTOverlayView *overlayView;
 @end
 
 @implementation MTPodscastsView
@@ -67,6 +71,8 @@
     self.nextVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
     
     self.currentInfoView.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
+    
+    self.overlayView.frame = self.bounds;
 }
 
 - (void)commonInit {
@@ -85,16 +91,23 @@
     
     self.currentInfoView = [self createInfoViewWithIndex:0];
     [self addSubview:self.currentInfoView];
+    
+    //Add overlay listening to all the touches
+    self.overlayView = [[MTOverlayView alloc] init];
+    self.overlayView.delegate = self;
+    [self addSubview:self.overlayView];
 }
 
 - (void)keepNextBelowCurrent {
     [self bringSubviewToFront:self.nextVideoView];
     [self bringSubviewToFront:self.currentVideoView];
+    [self bringSubviewToFront:self.overlayView];
 }
 
 - (void)keepPreviousBelowCurrent {
     [self bringSubviewToFront:self.previousVideoView];
     [self bringSubviewToFront:self.currentVideoView];
+    [self bringSubviewToFront:self.overlayView];
 }
 
 - (void)updateUserInteractions {
@@ -184,6 +197,7 @@
     
     [self updateUserInteractions];
     [self bringSubviewToFront:self.currentVideoView];
+    [self bringSubviewToFront:self.overlayView];
     
     self.currentVideoView.rightSwipeDisabled = self.currentVideoIndex == 0;
     self.currentVideoView.leftSwipeDisabled = (self.currentVideoIndex + 1) == [self.datasource numberOfVideos];
@@ -322,6 +336,20 @@
     
     [retryButton rightInContainer:5 shouldResize:NO];
    	[retryButton bottomInContainer:5 shouldResize:NO];
+}
+
+#pragma mark - overlay view
+
+- (void)touchBegan:(CGFloat)x {
+    [self.currentVideoView handleTouchBegan:x];
+}
+
+- (void)touchChanged:(CGFloat)x {
+    [self.currentVideoView handleTouchChanged:x];
+}
+
+- (void)touchEnded:(CGFloat)x {
+    [self.currentVideoView handleTouchEnded:x];
 }
 
 @end

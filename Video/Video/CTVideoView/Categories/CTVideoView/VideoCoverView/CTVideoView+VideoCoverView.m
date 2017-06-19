@@ -38,7 +38,7 @@ static void * CTVideoViewCoverPropertyCoverView;
 - (void)hideCoverView
 {
     if (self.coverView.superview) {
-        [UIView animateWithDuration:0.2f animations:^{
+        [UIView animateWithDuration:0.5f animations:^{
             self.coverView.alpha = 0.0f;
         } completion:^(BOOL finished) {
             if (finished) {
