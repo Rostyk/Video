@@ -732,6 +732,7 @@
 				TargetAttributes = {
 					474467F21EF19CE900857770 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9ULZZ4979Q;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -985,6 +986,7 @@
 			baseConfigurationReference = AB65290A52A26C3B0E8F4E7F /* Pods-Video.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9ULZZ4979Q;
 				INFOPLIST_FILE = Video/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.maliwan.video.Video;
@@ -997,6 +999,7 @@
 			baseConfigurationReference = EFE2F435AFD6761B7D587C44 /* Pods-Video.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9ULZZ4979Q;
 				INFOPLIST_FILE = Video/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.maliwan.video.Video;

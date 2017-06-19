@@ -72,6 +72,12 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
 - (void)performInitProcess
 {
+    UIView *coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 280)];
+    coverView.backgroundColor = [UIColor blackColor];
+    
+    self.shouldShowCoverViewBeforePlay = YES;
+    
+    self.coverView = coverView;
     if (_prepareStatus != CTVideoViewPrepareStatusNotInitiated) {
         return;
     }

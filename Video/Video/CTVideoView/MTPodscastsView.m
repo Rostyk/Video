@@ -135,7 +135,8 @@
      if(direction == SwipeLeft)
         [self moveInfoViewFor:-distance direction:direction];
     
-     [self moveInfoViewFor:-distance direction:direction];
+     else
+     [self moveInfoViewFor:distance direction:direction];
 }
 
 - (void)videoSwiped:(SwipeDirection)direction {
