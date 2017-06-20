@@ -48,8 +48,8 @@
                         <constraint firstAttribute="height" constant="72" id="UUQ-E0-1QZ"/>
                     </constraints>
                 </imageView>
-                <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
-                    <rect key="frame" x="0.0" y="216" width="375" height="667"/>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -57,7 +57,7 @@
             <constraints>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AQ7-Or-YTe"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>
-                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="16" id="DGQ-hH-rwY"/>
+                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" priority="999" constant="16" id="DGQ-hH-rwY"/>
                 <constraint firstItem="dTH-ak-SIH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MVM-xq-UXC"/>
                 <constraint firstAttribute="trailing" secondItem="Xco-tP-lRu" secondAttribute="trailing" id="OA9-Wd-2ng"/>
                 <constraint firstItem="Z1r-8c-BsU" firstAttribute="top" secondItem="Ihk-2E-TQW" secondAttribute="bottom" constant="15" id="Xeg-G7-nPY"/>
@@ -75,6 +75,7 @@
                 <outlet property="channelLabel" destination="vii-5I-Lg5" id="Vx3-nF-TTa"/>
                 <outlet property="dimView" destination="Xco-tP-lRu" id="a6r-RU-gLX"/>
                 <outlet property="titleLabel" destination="Ihk-2E-TQW" id="EBH-Ge-iF6"/>
+                <outlet property="titleLeftMargin" destination="BMB-Ju-PNT" id="Fwq-bi-C2k"/>
             </connections>
             <point key="canvasLocation" x="205.5" y="57.5"/>
         </view>

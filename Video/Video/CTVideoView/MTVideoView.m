@@ -9,6 +9,7 @@
 #import "MTVideoView.h"
 #define STEP_VALUE                        20
 #define LIMIT_DISTANCE                    100
+#define BEVEL_WIDTH                       20
 
 @interface MTVideoView()
 @property (nonatomic) CGFloat startX;
@@ -208,10 +209,12 @@
 - (UIBezierPath *)rectPath:(CGFloat)distance direction:(SwipeDirection)direction{
     UIBezierPath *path = [UIBezierPath bezierPath];
     
+    CGFloat bevel = MIN(distance, BEVEL_WIDTH);
+    
     if (direction == SwipeRight) {
         int x = distance;
         
-        [path moveToPoint:CGPointMake(x + 20, 0)];
+        [path moveToPoint:CGPointMake(x + bevel, 0)];
         [path addLineToPoint:CGPointMake(self.frame.size.width, 0)];
         [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
         [path addLineToPoint:CGPointMake(x, self.frame.size.height)];
@@ -222,7 +225,7 @@
         
         [path moveToPoint:CGPointMake(0, 0)];
         [path addLineToPoint:CGPointMake(self.frame.size.width - x, 0)];
-        [path addLineToPoint:CGPointMake(self.frame.size.width - x - 20, self.frame.size.height)];
+        [path addLineToPoint:CGPointMake(self.frame.size.width - x - bevel, self.frame.size.height)];
         [path addLineToPoint:CGPointMake(0, self.frame.size.height)];
         [path closePath];
     }

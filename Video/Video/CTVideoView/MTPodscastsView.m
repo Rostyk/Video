@@ -274,12 +274,9 @@
 - (void)moveInfoViewFor:(CGFloat)distance direction:(SwipeDirection)direction {
     //Move the current view
     CGFloat x = distance;
-    
     CGRect shiftedFrame = self.currentInfoView.frame;
-    
     shiftedFrame.origin.x = x;
     
-    NSLog(@"Curent info shift: %f", x);
     self.currentInfoView.frame = shiftedFrame;
     
     //Handle the next view
@@ -294,10 +291,13 @@
             [self addSubview:self.nextInfoView];
             
             self.nextInfoView.moveDirection = direction;
+            self.currentInfoView.moveDirection = direction;
             self.nextInfoView.alpha = 0.0;
         }
         else {
-            self.nextInfoView.animationValue = (shiftPercent - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) / (1.0 - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW);
+            CGFloat deviationValue = (shiftPercent - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW) / (1.0 - VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW);
+            
+            self.nextInfoView.animationInValue = deviationValue;
         }
     }
     else {

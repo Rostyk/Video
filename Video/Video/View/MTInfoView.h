@@ -17,6 +17,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *bottomImage;
 
 // from 0 to 1
-@property (nonatomic) CGFloat animationValue;
+@property (nonatomic) CGFloat animationInValue;
 @property (nonatomic) SwipeDirection moveDirection;
 @end
