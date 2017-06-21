@@ -58,11 +58,12 @@
     //dim off
     self.dimView.alpha = 1 - animationInValue;
     
+    /*NSLog(@"Title shift: %f", animationInValue);
     if (self.moveDirection == SwipeLeft)
         self.titleLeftMargin.constant = self.originalTitleMargin + TITLE_DEVIATION * (1 - animationInValue);
     
     if (self.moveDirection == SwipeRight)
-        self.titleLeftMargin.constant = self.originalTitleMargin - TITLE_DEVIATION * (1 - animationInValue);
+        self.titleLeftMargin.constant = self.originalTitleMargin - TITLE_DEVIATION * (1 - animationInValue);*/
 }
 
 @end

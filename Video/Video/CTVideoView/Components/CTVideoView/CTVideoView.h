@@ -54,4 +54,7 @@
 // you will never use this method, it is for category only.
 - (void)refreshUrl;
 
+- (UIButton *)getPlayButton;
+- (UIButton *)getMuteButton;
+
 @end

@@ -225,6 +225,7 @@
         [videoView prepare];
     }
     
+    videoView.tag = 777;
     return videoView;
 }
 

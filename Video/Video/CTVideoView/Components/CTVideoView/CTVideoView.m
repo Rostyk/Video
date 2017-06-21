@@ -24,7 +24,7 @@ NSString * const kCTVideoViewKVOKeyPathLayerReadyForDisplay = @"layer.readyForDi
 
 static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
-@interface CTVideoView ()
+@interface CTVideoView ()<CTVideoViewTimeDelegate>
 
 @property (nonatomic, assign) BOOL isVideoUrlChanged;
 
@@ -37,7 +37,9 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 @property (nonatomic, strong, readwrite) AVURLAsset *asset;
 @property (nonatomic, strong, readwrite) AVPlayerItem *playerItem;
 
-
+@property (nonatomic, strong) UIButton *playButton;
+@property (nonatomic, strong) UIButton *muteButton;
+@property (nonnull, strong) UILabel *timeLabel;
 @end
 
 @implementation CTVideoView
@@ -113,9 +115,59 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     [self initTime];
     [self initDownload];
     [self initVideoCoverView];
+    [self setupPlayButton];
+    [self setupMuteButton];
+    [self setupTimeLabel];
     //[self initOperationButtons];
 
     [self stopWithReleaseVideo:YES];
+}
+
+- (void)setupTimeLabel {
+    self.timeDelegate = self;
+    [self setShouldObservePlayTime:YES withTimeGapToObserve:1.0];
+    
+    self.timeLabel = [[UILabel alloc] init];
+    self.timeLabel.backgroundColor = [UIColor clearColor];
+    self.timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+    self.timeLabel.textColor = [UIColor whiteColor];
+    [self addSubview:self.timeLabel];
+}
+
+- (void)setupPlayButton {
+    self.playButton = [[UIButton alloc] init];
+    [self.playButton setImage:[UIImage imageNamed:@"icon_pause2"] forState:UIControlStateNormal];
+    [self.playButton addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.playButton];
+}
+
+- (void)playButtonClicked:(id)sender {
+    if (self.isPlaying) {
+        [self pause];
+        [self.playButton setImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];
+    }
+    else {
+        [self play];
+        [self.playButton setImage:[UIImage imageNamed:@"icon_pause2"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)setupMuteButton {
+    self.muteButton = [[UIButton alloc] init];
+    [self.muteButton setImage:[UIImage imageNamed:@"icon_speaker_on"] forState:UIControlStateNormal];
+    [self.muteButton addTarget:self action:@selector(muteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.muteButton];
+}
+    
+- (void)muteButtonClicked:(id)sender {
+    if (self.isMuted) {
+        [self setIsMuted:false];
+        [self.muteButton setImage:[UIImage imageNamed:@"icon_speaker_on"] forState:UIControlStateNormal];
+    }
+    else {
+        [self setIsMuted:true];
+        [self.muteButton setImage:[UIImage imageNamed:@"icon_speaker_off"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)dealloc
@@ -135,8 +187,23 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    //[self layoutButtons];
     [self layoutCoverView];
+    
+    int sideMargin = 20;
+    int playWidth = 20, muteWidth = 20; // same as height
+    
+    self.playButton.frame = CGRectMake(sideMargin, self.frame.size.height - playWidth - 8, playWidth, playWidth);
+    self.muteButton.frame = CGRectMake(self.frame.size.width - muteWidth - sideMargin, self.frame.size.height - muteWidth - 8, muteWidth, muteWidth);
+    
+    self.timeLabel.frame = CGRectMake(self.playButton.frame.origin.x + self.playButton.frame.size.width + 8, self.playButton.frame.origin.y + 3, 80, 14);
+}
+
+- (UIButton *)getPlayButton {
+    return _playButton;
+}
+
+- (UIButton *)getMuteButton {
+    return _muteButton;
 }
 
 #pragma mark - methods override
@@ -478,6 +545,30 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     if (videoContentMode == CTVideoViewContentModeResizeAspectFill) {
         self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     }
+}
+
+#pragma mark - CTVideoTimeDelegate
+
+- (void)videoViewDidLoadVideoDuration:(CTVideoView *)videoView {
+    
+}
+
+- (void)videoView:(CTVideoView *)videoView didFinishedMoveToTime:(CMTime)time {
+    
+}
+
+- (void)videoView:(CTVideoView *)videoView didPlayToSecond:(CGFloat)second {
+    
+    int time = self.totalDurationSeconds - self.currentPlaySecond;
+    
+    int hours = time / 3600;
+    int minutes = time / 60 % 60;
+    int seconds = time % 60;
+    
+    if (hours > 0)
+       self.timeLabel.text = [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+    else
+        self.timeLabel.text = [NSString stringWithFormat:@"%02i:%02i", minutes, seconds];
 }
 
 @end

@@ -42,7 +42,7 @@
                                       bottomImage:nil
                                          videoUrl:@"http://techslides.com/demos/sample-videos/small.mp4"];
     
-    MTInfo *info4 = [[MTInfo alloc] initWithTitle:@"Video 4"
+    MTInfo *info4 = [[MTInfo alloc] initWithTitle:@"Video 4. Last video"
                                           channel:@"Another channel"
                                      channelImage:nil
                                       bottomImage:nil

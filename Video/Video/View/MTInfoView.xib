@@ -41,15 +41,15 @@
                         <constraint firstAttribute="width" constant="26" id="ejG-IC-0LG"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom_image" translatesAutoresizingMaskIntoConstraints="NO" id="dTH-ak-SIH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTH-ak-SIH">
                     <rect key="frame" x="151" y="101.5" width="72" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="72" id="9e0-w5-oGT"/>
                         <constraint firstAttribute="height" constant="72" id="UUQ-E0-1QZ"/>
                     </constraints>
                 </imageView>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
+                    <rect key="frame" x="0.0" y="134" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -57,7 +57,7 @@
             <constraints>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AQ7-Or-YTe"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>
-                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" priority="999" constant="16" id="DGQ-hH-rwY"/>
+                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="16" id="DGQ-hH-rwY"/>
                 <constraint firstItem="dTH-ak-SIH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MVM-xq-UXC"/>
                 <constraint firstAttribute="trailing" secondItem="Xco-tP-lRu" secondAttribute="trailing" id="OA9-Wd-2ng"/>
                 <constraint firstItem="Z1r-8c-BsU" firstAttribute="top" secondItem="Ihk-2E-TQW" secondAttribute="bottom" constant="15" id="Xeg-G7-nPY"/>
@@ -81,7 +81,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bottom_image" width="80" height="80"/>
         <image name="channel_image" width="40" height="40"/>
     </resources>
 </document>

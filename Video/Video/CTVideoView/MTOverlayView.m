@@ -7,7 +7,7 @@
 //
 
 #import "MTOverlayView.h"
-
+#import "CTVideoView.h"
 @interface MTOverlayView()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
@@ -107,6 +107,24 @@
         default:
             break;
     }
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    //NSLog(@"Passing all touches to the next view (if any), in the view stack.");
+    for (UIView* subview in self.superview.subviews ) {
+        
+        
+        if ([subview isKindOfClass:[CTVideoView class]]) {
+            CTVideoView *videoView = (CTVideoView *)subview;
+            UIButton *playButton = [videoView getPlayButton];
+            UIButton *muteButton = [videoView getMuteButton];
+            if ([playButton hitTest:[self convertPoint:point toView:playButton] withEvent:event] != nil ||
+                [muteButton hitTest:[self convertPoint:point toView:muteButton] withEvent:event] != nil ) {
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 #pragma mark - event response

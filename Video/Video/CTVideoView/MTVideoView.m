@@ -52,7 +52,7 @@
     self.currentX = x;
     CGFloat distance = x - self.startX;
 
-    NSLog(@"Distnace: %f", distance);
+    //NSLog(@"Distnace: %f", distance);
     
     if (distance > 0) {
         if (self.rightSwipeDisabled == NO)
