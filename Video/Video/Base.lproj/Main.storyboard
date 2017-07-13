@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,21 +22,84 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzG-V2-MUD" customClass="MTPodscastsView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="480" id="vh7-AP-YBD"/>
+                                    <constraint firstAttribute="height" constant="360" id="vh7-AP-YBD"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDs-in-j2i" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z0B-Tq-4Wc">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TED-C1-sHW" customClass="UPCarouselFlowLayout">
+                                            <size key="itemSize" width="60" height="60"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="sideItemScale">
+                                                    <real key="value" value="0.59999999999999998"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="sideItemAlpha">
+                                                    <real key="value" value="0.40000000000000002"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="05t-pi-W0g" customClass="MenuCell">
+                                                <rect key="frame" x="0.0" y="30" width="60" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vlv-MK-gAd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="Vlv-MK-gAd" firstAttribute="top" secondItem="05t-pi-W0g" secondAttribute="top" id="0qp-KU-MED"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Vlv-MK-gAd" secondAttribute="bottom" id="FMY-VQ-FC2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Vlv-MK-gAd" secondAttribute="trailing" id="cKp-Tr-BGC"/>
+                                                    <constraint firstItem="Vlv-MK-gAd" firstAttribute="leading" secondItem="05t-pi-W0g" secondAttribute="leading" id="rvJ-53-f0d"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="Vlv-MK-gAd" id="qgc-i9-ZjE"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="jML-Of-pgP"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="U5I-Zk-7eN"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Z0B-Tq-4Wc" secondAttribute="bottom" id="0QY-e5-c6Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z0B-Tq-4Wc" secondAttribute="trailing" id="1lR-5n-4cl"/>
+                                    <constraint firstAttribute="height" constant="120" id="I1S-tX-eYK"/>
+                                    <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="leading" secondItem="yDs-in-j2i" secondAttribute="leading" id="Ksm-AO-52h"/>
+                                    <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="top" id="bIw-YB-a6a"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZzG-V2-MUD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="01s-qx-SVZ"/>
+                            <constraint firstItem="ZzG-V2-MUD" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="bottom" id="4a6-uN-hG7"/>
+                            <constraint firstItem="yDs-in-j2i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5oH-eV-dFj"/>
+                            <constraint firstAttribute="trailing" secondItem="yDs-in-j2i" secondAttribute="trailing" id="AaK-7L-B5q"/>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jxa-Kd-uBU"/>
+                            <constraint firstItem="yDs-in-j2i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gB0-Tw-F1T"/>
                             <constraint firstAttribute="trailing" secondItem="ZzG-V2-MUD" secondAttribute="trailing" id="t39-T2-alD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="Z0B-Tq-4Wc" id="Ufc-7h-K5k"/>
                         <outlet property="podcastsView" destination="ZzG-V2-MUD" id="BXn-lA-Q0e"/>
                     </connections>
                 </viewController>
