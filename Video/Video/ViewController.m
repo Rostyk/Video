@@ -11,6 +11,7 @@
 #import "MTPodscastsView.h"
 #import "MTInfo.h"
 #import "MenuCell.h"
+#import "MTDataModel.h"
 
 @import UPCarouselFlowLayout;
 
@@ -29,11 +30,12 @@
 }
 
 - (void)setup {
+    [[MTDataModel sharedDatabaseStorage] fetchObjectsForEntityName:@"Yo" withPredicate:nil];
     MTInfo *info1 = [[MTInfo alloc] initWithTitle:@"Some decription of the video goes here. Lorem ipsum"
                                           channel:@"Channel name"
                                      channelImage:nil
                                       bottomImage:nil
-                                         videoUrl:@"https://r2---sn-p5qlsnzd.googlevideo.com/videoplayback?ipbits=0&mm=31&expire=1499978093&mt=1499956406&ei=DYVnWZLlFM_p1gK_95zoAw&requiressl=yes&lmt=1479730735274578&dur=350.296&itag=22&ratebypass=yes&mv=m&initcwndbps=67500&source=youtube&sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&ms=au&pl=24&id=o-AMH-EE540NhaIBpN6Znl51m7czr4d_RYU8Wr0z_Uj7uv&mime=video%2Fmp4&mn=sn-p5qlsnzd&ip=159.253.144.86&key=yt6&signature=AFEA6B7D167FFCCA77D0AD876B75FEA19DCD2ADD.8F90F65CA5B6E52AB60FF5362ED1E38DCACA8330&title=Lionel+Messi+-+Story+with+Argentina"];
+                                         videoUrl:@"http://media.video-cdn.espn.com/motion/2017/0717/dm_170717_nfl_news_elliott_bar_incident/dm_170717_nfl_news_elliott_bar_incident_720p30_2896k.mp4"];
     
     MTInfo *info2 = [[MTInfo alloc] initWithTitle:@"Lorem ipsum dolor sit amet consectetur adipiscing"
                                           channel:@"Here goes the channel name"

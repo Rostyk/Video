@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0467DDBB1F29462D000872E7 /* MTGetLogsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */; };
+		0467DDBC1F29462D000872E7 /* MTGetLogsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD701F29462D000872E7 /* MTGetLogsResponse.m */; };
+		0467DDC11F29462D000872E7 /* MTLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD7A1F29462D000872E7 /* MTLoginRequest.m */; };
+		0467DDC21F29462D000872E7 /* MTLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD7C1F29462D000872E7 /* MTLoginResponse.m */; };
+		0467DDD51F29462D000872E7 /* SDAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDA21F29462D000872E7 /* SDAuth.m */; };
+		0467DDD61F29462D000872E7 /* SDDepotRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDA41F29462D000872E7 /* SDDepotRequestHandler.m */; };
+		0467DDD71F29462D000872E7 /* SDDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDA61F29462D000872E7 /* SDDispatcher.m */; };
+		0467DDD81F29462D000872E7 /* SDRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDA81F29462D000872E7 /* SDRequest.m */; };
+		0467DDD91F29462D000872E7 /* SDRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDAA1F29462D000872E7 /* SDRequestHandler.m */; };
+		0467DDDA1F29462D000872E7 /* SDResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDAC1F29462D000872E7 /* SDResult.m */; };
+		0467DDDB1F29462D000872E7 /* SDServiceRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDAE1F29462D000872E7 /* SDServiceRequestHandler.m */; };
+		0467DDDF1F294680000872E7 /* MTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDDD1F294680000872E7 /* MTDataModel.m */; };
+		0467DDEC1F2948FB000872E7 /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */; };
+		0467DDFE1F294965000872E7 /* NSObject+PNCast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDEF1F294965000872E7 /* NSObject+PNCast.m */; };
+		0467DDFF1F294965000872E7 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDF11F294965000872E7 /* NSString+MTAdditions.m */; };
+		0467DE001F294965000872E7 /* NSString+SDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDF31F294965000872E7 /* NSString+SDAdditions.m */; };
+		0467DE011F294965000872E7 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDF51F294965000872E7 /* NSString+Validation.m */; };
+		0467DE021F294965000872E7 /* SingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDF71F294965000872E7 /* SingleLineTextField.m */; };
+		0467DE031F294965000872E7 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDF91F294965000872E7 /* UIColor+BFPaperColors.m */; };
+		0467DE041F294965000872E7 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDFB1F294965000872E7 /* UIImage+Blur.m */; };
+		0467DE051F294965000872E7 /* UIImage_SDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDFD1F294965000872E7 /* UIImage_SDAdditions.m */; };
+		0467DE0E1F294A91000872E7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE071F294A91000872E7 /* Reachability.m */; };
+		0467DE0F1F294A91000872E7 /* SDInternetConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE091F294A91000872E7 /* SDInternetConnection.m */; };
+		0467DE101F294A91000872E7 /* SDKeyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE0B1F294A91000872E7 /* SDKeyStorage.m */; };
+		0467DE111F294A91000872E7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE0D1F294A91000872E7 /* SDUserSettings.m */; };
 		04C509931F1666E4006A9084 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C509921F1666E4006A9084 /* MenuCell.m */; };
 		04D369A61F0563290058A484 /* MTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D369A51F0563290058A484 /* MTInfo.m */; };
 		04D369AA1F0563720058A484 /* MTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D369A81F0563720058A484 /* MTInfoView.m */; };
@@ -60,6 +85,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0467DD6D1F29462D000872E7 /* MTGetLogsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetLogsRequest.h; sourceTree = "<group>"; };
+		0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetLogsRequest.m; sourceTree = "<group>"; };
+		0467DD6F1F29462D000872E7 /* MTGetLogsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetLogsResponse.h; sourceTree = "<group>"; };
+		0467DD701F29462D000872E7 /* MTGetLogsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetLogsResponse.m; sourceTree = "<group>"; };
+		0467DD791F29462D000872E7 /* MTLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginRequest.h; sourceTree = "<group>"; };
+		0467DD7A1F29462D000872E7 /* MTLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginRequest.m; sourceTree = "<group>"; };
+		0467DD7B1F29462D000872E7 /* MTLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginResponse.h; sourceTree = "<group>"; };
+		0467DD7C1F29462D000872E7 /* MTLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginResponse.m; sourceTree = "<group>"; };
+		0467DDA11F29462D000872E7 /* SDAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAuth.h; sourceTree = "<group>"; };
+		0467DDA21F29462D000872E7 /* SDAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAuth.m; sourceTree = "<group>"; };
+		0467DDA31F29462D000872E7 /* SDDepotRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDDepotRequestHandler.h; sourceTree = "<group>"; };
+		0467DDA41F29462D000872E7 /* SDDepotRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDDepotRequestHandler.m; sourceTree = "<group>"; };
+		0467DDA51F29462D000872E7 /* SDDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDDispatcher.h; sourceTree = "<group>"; };
+		0467DDA61F29462D000872E7 /* SDDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDDispatcher.m; sourceTree = "<group>"; };
+		0467DDA71F29462D000872E7 /* SDRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRequest.h; sourceTree = "<group>"; };
+		0467DDA81F29462D000872E7 /* SDRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRequest.m; sourceTree = "<group>"; };
+		0467DDA91F29462D000872E7 /* SDRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRequestHandler.h; sourceTree = "<group>"; };
+		0467DDAA1F29462D000872E7 /* SDRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRequestHandler.m; sourceTree = "<group>"; };
+		0467DDAB1F29462D000872E7 /* SDResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDResult.h; sourceTree = "<group>"; };
+		0467DDAC1F29462D000872E7 /* SDResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDResult.m; sourceTree = "<group>"; };
+		0467DDAD1F29462D000872E7 /* SDServiceRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDServiceRequestHandler.h; sourceTree = "<group>"; };
+		0467DDAE1F29462D000872E7 /* SDServiceRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDServiceRequestHandler.m; sourceTree = "<group>"; };
+		0467DDDC1F294680000872E7 /* MTDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTDataModel.h; path = Video/Model/MTDataModel.h; sourceTree = SOURCE_ROOT; };
+		0467DDDD1F294680000872E7 /* MTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTDataModel.m; path = Video/Model/MTDataModel.m; sourceTree = SOURCE_ROOT; };
+		0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = Model.xcdatamodel; path = Video/Model/Model.xcdatamodeld/Model.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		0467DDEE1F294965000872E7 /* NSObject+PNCast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PNCast.h"; sourceTree = "<group>"; };
+		0467DDEF1F294965000872E7 /* NSObject+PNCast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PNCast.m"; sourceTree = "<group>"; };
+		0467DDF01F294965000872E7 /* NSString+MTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MTAdditions.h"; sourceTree = "<group>"; };
+		0467DDF11F294965000872E7 /* NSString+MTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MTAdditions.m"; sourceTree = "<group>"; };
+		0467DDF21F294965000872E7 /* NSString+SDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDAdditions.h"; sourceTree = "<group>"; };
+		0467DDF31F294965000872E7 /* NSString+SDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDAdditions.m"; sourceTree = "<group>"; };
+		0467DDF41F294965000872E7 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		0467DDF51F294965000872E7 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		0467DDF61F294965000872E7 /* SingleLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLineTextField.h; sourceTree = "<group>"; };
+		0467DDF71F294965000872E7 /* SingleLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLineTextField.m; sourceTree = "<group>"; };
+		0467DDF81F294965000872E7 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
+		0467DDF91F294965000872E7 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
+		0467DDFA1F294965000872E7 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		0467DDFB1F294965000872E7 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		0467DDFC1F294965000872E7 /* UIImage_SDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_SDAdditions.h; sourceTree = "<group>"; };
+		0467DDFD1F294965000872E7 /* UIImage_SDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_SDAdditions.m; sourceTree = "<group>"; };
+		0467DE061F294A91000872E7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Video/Common/Reachability.h; sourceTree = SOURCE_ROOT; };
+		0467DE071F294A91000872E7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Video/Common/Reachability.m; sourceTree = SOURCE_ROOT; };
+		0467DE081F294A91000872E7 /* SDInternetConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDInternetConnection.h; path = Video/Common/SDInternetConnection.h; sourceTree = SOURCE_ROOT; };
+		0467DE091F294A91000872E7 /* SDInternetConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDInternetConnection.m; path = Video/Common/SDInternetConnection.m; sourceTree = SOURCE_ROOT; };
+		0467DE0A1F294A91000872E7 /* SDKeyStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDKeyStorage.h; path = Video/Common/SDKeyStorage.h; sourceTree = SOURCE_ROOT; };
+		0467DE0B1F294A91000872E7 /* SDKeyStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKeyStorage.m; path = Video/Common/SDKeyStorage.m; sourceTree = SOURCE_ROOT; };
+		0467DE0C1F294A91000872E7 /* SDUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUserSettings.h; path = Video/Common/SDUserSettings.h; sourceTree = SOURCE_ROOT; };
+		0467DE0D1F294A91000872E7 /* SDUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUserSettings.m; path = Video/Common/SDUserSettings.m; sourceTree = SOURCE_ROOT; };
 		04C5094E1F1655F2006A9084 /* Video-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video-Bridging-Header.h"; sourceTree = "<group>"; };
 		04C509911F1666E4006A9084 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		04C509921F1666E4006A9084 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
@@ -180,6 +254,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0467DD531F29462D000872E7 /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				0467DD541F29462D000872E7 /* Requests&Responses */,
+				0467DDA11F29462D000872E7 /* SDAuth.h */,
+				0467DDA21F29462D000872E7 /* SDAuth.m */,
+				0467DDA31F29462D000872E7 /* SDDepotRequestHandler.h */,
+				0467DDA41F29462D000872E7 /* SDDepotRequestHandler.m */,
+				0467DDA51F29462D000872E7 /* SDDispatcher.h */,
+				0467DDA61F29462D000872E7 /* SDDispatcher.m */,
+				0467DDA71F29462D000872E7 /* SDRequest.h */,
+				0467DDA81F29462D000872E7 /* SDRequest.m */,
+				0467DDA91F29462D000872E7 /* SDRequestHandler.h */,
+				0467DDAA1F29462D000872E7 /* SDRequestHandler.m */,
+				0467DDAB1F29462D000872E7 /* SDResult.h */,
+				0467DDAC1F29462D000872E7 /* SDResult.m */,
+				0467DDAD1F29462D000872E7 /* SDServiceRequestHandler.h */,
+				0467DDAE1F29462D000872E7 /* SDServiceRequestHandler.m */,
+			);
+			path = DAL;
+			sourceTree = "<group>";
+		};
+		0467DD541F29462D000872E7 /* Requests&Responses */ = {
+			isa = PBXGroup;
+			children = (
+				0467DD6D1F29462D000872E7 /* MTGetLogsRequest.h */,
+				0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */,
+				0467DD6F1F29462D000872E7 /* MTGetLogsResponse.h */,
+				0467DD701F29462D000872E7 /* MTGetLogsResponse.m */,
+				0467DD791F29462D000872E7 /* MTLoginRequest.h */,
+				0467DD7A1F29462D000872E7 /* MTLoginRequest.m */,
+				0467DD7B1F29462D000872E7 /* MTLoginResponse.h */,
+				0467DD7C1F29462D000872E7 /* MTLoginResponse.m */,
+			);
+			path = "Requests&Responses";
+			sourceTree = "<group>";
+		};
+		0467DDED1F294965000872E7 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				0467DDEE1F294965000872E7 /* NSObject+PNCast.h */,
+				0467DDEF1F294965000872E7 /* NSObject+PNCast.m */,
+				0467DDF01F294965000872E7 /* NSString+MTAdditions.h */,
+				0467DDF11F294965000872E7 /* NSString+MTAdditions.m */,
+				0467DDF21F294965000872E7 /* NSString+SDAdditions.h */,
+				0467DDF31F294965000872E7 /* NSString+SDAdditions.m */,
+				0467DDF41F294965000872E7 /* NSString+Validation.h */,
+				0467DDF51F294965000872E7 /* NSString+Validation.m */,
+				0467DDF61F294965000872E7 /* SingleLineTextField.h */,
+				0467DDF71F294965000872E7 /* SingleLineTextField.m */,
+				0467DDF81F294965000872E7 /* UIColor+BFPaperColors.h */,
+				0467DDF91F294965000872E7 /* UIColor+BFPaperColors.m */,
+				0467DDFA1F294965000872E7 /* UIImage+Blur.h */,
+				0467DDFB1F294965000872E7 /* UIImage+Blur.m */,
+				0467DDFC1F294965000872E7 /* UIImage_SDAdditions.h */,
+				0467DDFD1F294965000872E7 /* UIImage_SDAdditions.m */,
+			);
+			name = Additions;
+			path = Video/Common/Additions;
+			sourceTree = SOURCE_ROOT;
+		};
 		04C509531F1659EF006A9084 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +344,7 @@
 		474467F51EF19CE900857770 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				0467DD531F29462D000872E7 /* DAL */,
 				04C509531F1659EF006A9084 /* Resources */,
 				47FA88211EF8232200AECDFD /* Common */,
 				47A9772B1EF6998F00621404 /* Model */,
@@ -683,6 +819,9 @@
 		47A9772B1EF6998F00621404 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */,
+				0467DDDC1F294680000872E7 /* MTDataModel.h */,
+				0467DDDD1F294680000872E7 /* MTDataModel.m */,
 				04D369A41F0563290058A484 /* MTInfo.h */,
 				04D369A51F0563290058A484 /* MTInfo.m */,
 			);
@@ -693,7 +832,16 @@
 		47FA88211EF8232200AECDFD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0467DDED1F294965000872E7 /* Additions */,
 				04D369A31F0563170058A484 /* Constants.h */,
+				0467DE061F294A91000872E7 /* Reachability.h */,
+				0467DE071F294A91000872E7 /* Reachability.m */,
+				0467DE081F294A91000872E7 /* SDInternetConnection.h */,
+				0467DE091F294A91000872E7 /* SDInternetConnection.m */,
+				0467DE0A1F294A91000872E7 /* SDKeyStorage.h */,
+				0467DE0B1F294A91000872E7 /* SDKeyStorage.m */,
+				0467DE0C1F294A91000872E7 /* SDUserSettings.h */,
+				0467DE0D1F294A91000872E7 /* SDUserSettings.m */,
 			);
 			name = Common;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/Common;
@@ -843,36 +991,59 @@
 			buildActionMask = 2147483647;
 			files = (
 				474468AF1EF1A01A00857770 /* CTPersistanceTable+Delete.m in Sources */,
+				0467DDDB1F29462D000872E7 /* SDServiceRequestHandler.m in Sources */,
+				0467DDBC1F29462D000872E7 /* MTGetLogsResponse.m in Sources */,
+				0467DE021F294965000872E7 /* SingleLineTextField.m in Sources */,
 				4744689F1EF1A01A00857770 /* CTPersistanceAsyncExecutor.m in Sources */,
 				474468AA1EF1A01A00857770 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */,
 				474468531EF19F1900857770 /* UIView+LayoutMethods.m in Sources */,
 				474468A11EF1A01A00857770 /* NSString+ReqularExpression.m in Sources */,
+				0467DE051F294965000872E7 /* UIImage_SDAdditions.m in Sources */,
 				474468481EF19E6400857770 /* CTVideoView.m in Sources */,
+				0467DDDF1F294680000872E7 /* MTDataModel.m in Sources */,
 				474468A41EF1A01A00857770 /* CTPersistanceDataBase.m in Sources */,
 				474468A51EF1A01A00857770 /* CTPersistanceDatabasePool.m in Sources */,
+				0467DE041F294965000872E7 /* UIImage+Blur.m in Sources */,
 				474468491EF19E6400857770 /* CTVideoDataCenter.m in Sources */,
 				474468A71EF1A01A00857770 /* CTPersistanceVersionTable.m in Sources */,
 				474467FE1EF19CE900857770 /* ViewController.m in Sources */,
+				0467DDBB1F29462D000872E7 /* MTGetLogsRequest.m in Sources */,
+				0467DDD61F29462D000872E7 /* SDDepotRequestHandler.m in Sources */,
+				0467DE111F294A91000872E7 /* SDUserSettings.m in Sources */,
+				0467DDC21F29462D000872E7 /* MTLoginResponse.m in Sources */,
 				474468461EF19E6400857770 /* CTVideoView+VideoCoverView.m in Sources */,
 				47FA88251EF840F700AECDFD /* MTOverlayView.m in Sources */,
 				474468AE1EF1A01A00857770 /* CTPersistanceRecord.m in Sources */,
 				474468401EF19E6400857770 /* CTVideoView+Download.m in Sources */,
+				0467DE001F294965000872E7 /* NSString+SDAdditions.m in Sources */,
 				474468A91EF1A01A00857770 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				474468A61EF1A01A00857770 /* CTPersistanceMigrator.m in Sources */,
 				474468B11EF1A01A00857770 /* CTPersistanceTable+Insert.m in Sources */,
+				0467DE011F294965000872E7 /* NSString+Validation.m in Sources */,
 				474468411EF19E6400857770 /* CTVideoView+FullScreen.m in Sources */,
 				474467FB1EF19CE900857770 /* AppDelegate.m in Sources */,
 				474468451EF19E6400857770 /* CTVideoView+Time.m in Sources */,
 				47A977241EF44B0C00621404 /* MTPodscastsView.m in Sources */,
+				0467DDD51F29462D000872E7 /* SDAuth.m in Sources */,
+				0467DE0F1F294A91000872E7 /* SDInternetConnection.m in Sources */,
+				0467DE031F294965000872E7 /* UIColor+BFPaperColors.m in Sources */,
+				0467DDFE1F294965000872E7 /* NSObject+PNCast.m in Sources */,
+				0467DDDA1F29462D000872E7 /* SDResult.m in Sources */,
 				474468AD1EF1A01A00857770 /* CTPersistanceQueryCommand.m in Sources */,
 				474468A31EF1A01A00857770 /* CTPersistanceCriteria.m in Sources */,
 				474468A21EF1A01A00857770 /* NSString+SQL.m in Sources */,
+				0467DE101F294A91000872E7 /* SDKeyStorage.m in Sources */,
+				0467DDFF1F294965000872E7 /* NSString+MTAdditions.m in Sources */,
 				04C509931F1666E4006A9084 /* MenuCell.m in Sources */,
+				0467DDC11F29462D000872E7 /* MTLoginRequest.m in Sources */,
 				474468B21EF1A01A00857770 /* CTPersistanceTable+Update.m in Sources */,
 				474467F81EF19CE900857770 /* main.m in Sources */,
 				474468A81EF1A01A00857770 /* CTPersistanceVersionRecord.m in Sources */,
+				0467DDD81F29462D000872E7 /* SDRequest.m in Sources */,
 				474468B41EF1A01A00857770 /* CTPersistanceTransaction.m in Sources */,
+				0467DDEC1F2948FB000872E7 /* Model.xcdatamodel in Sources */,
+				0467DDD91F29462D000872E7 /* SDRequestHandler.m in Sources */,
 				474468B01EF1A01A00857770 /* CTPersistanceTable+Find.m in Sources */,
 				474468AB1EF1A01A00857770 /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4744684A1EF19E6400857770 /* CTVideoRecord.m in Sources */,
@@ -880,6 +1051,8 @@
 				474468AC1EF1A01A00857770 /* CTPersistanceQueryCommand+Status.m in Sources */,
 				474468A01EF1A01A00857770 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				474468521EF19F1900857770 /* UIView+HandyAutoLayout.m in Sources */,
+				0467DE0E1F294A91000872E7 /* Reachability.m in Sources */,
+				0467DDD71F29462D000872E7 /* SDDispatcher.m in Sources */,
 				04D369AA1F0563720058A484 /* MTInfoView.m in Sources */,
 				04D369A61F0563290058A484 /* MTInfo.m in Sources */,
 				4744683F1EF19E6400857770 /* AVAsset+CTVideoView.m in Sources */,
