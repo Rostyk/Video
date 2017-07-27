@@ -48,7 +48,7 @@ const NSUInteger FDFeedCaptionMaxLength = 255;
 
 + (NSString *)serviceURL
 {
-    NSString *basicURL = /*@"http://52.88.119.213:3000"*/ @"https://api.automatize.chernetsov.space";
+    NSString *basicURL = /*@"http://52.88.119.213:3000"*/ @"http://sportvideo.azurewebsites.net";
     return basicURL;
 }
 

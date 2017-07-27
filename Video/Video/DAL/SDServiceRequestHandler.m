@@ -295,17 +295,8 @@ static NSString * const SDFalseJsonParam                = @"false";
         NSError *error = nil;
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
-        if (!error && ([jsonDict[@"status"] integerValue] != MT_HTTP_SUCCESS && [jsonDict[@"status"] integerValue] != MT_HTTP_STATUS_OK))
-        {
-            NSString *message = jsonDict[@"message"];
-            int statusCode = (int)[jsonDict[@"status"] integerValue];
-            result = [SDResult errorWithCode:statusCode message:message.length > 0 ? message : @"An Error occured"];
-        }
-        else
-        {
-            result = [request emptyResponse];
-            [result parseResponseData:responseData];
-        }
+        result = [request emptyResponse];
+        [result parseResponseData:responseData];
     }
     else
     {

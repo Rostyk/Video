@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0467DDBB1F29462D000872E7 /* MTGetLogsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */; };
-		0467DDBC1F29462D000872E7 /* MTGetLogsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD701F29462D000872E7 /* MTGetLogsResponse.m */; };
+		042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042FC1191F2A3EDD00B6E507 /* Foundation.framework */; };
+		042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1341F2A453200B6E507 /* _MTVideo.m */; };
+		042FC1381F2A453200B6E507 /* MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1361F2A453200B6E507 /* MTVideo.m */; };
+		0467DDBB1F29462D000872E7 /* MTGetVideosRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */; };
+		0467DDBC1F29462D000872E7 /* MTGetVideosResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD701F29462D000872E7 /* MTGetVideosResponse.m */; };
 		0467DDC11F29462D000872E7 /* MTLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD7A1F29462D000872E7 /* MTLoginRequest.m */; };
 		0467DDC21F29462D000872E7 /* MTLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD7C1F29462D000872E7 /* MTLoginResponse.m */; };
 		0467DDD51F29462D000872E7 /* SDAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDA21F29462D000872E7 /* SDAuth.m */; };
@@ -32,6 +35,7 @@
 		0467DE0F1F294A91000872E7 /* SDInternetConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE091F294A91000872E7 /* SDInternetConnection.m */; };
 		0467DE101F294A91000872E7 /* SDKeyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE0B1F294A91000872E7 /* SDKeyStorage.m */; };
 		0467DE111F294A91000872E7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DE0D1F294A91000872E7 /* SDUserSettings.m */; };
+		0467DE221F2A3D9B000872E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0467DE211F2A3D9B000872E7 /* CoreData.framework */; };
 		04C509931F1666E4006A9084 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C509921F1666E4006A9084 /* MenuCell.m */; };
 		04D369A61F0563290058A484 /* MTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D369A51F0563290058A484 /* MTInfo.m */; };
 		04D369AA1F0563720058A484 /* MTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D369A81F0563720058A484 /* MTInfoView.m */; };
@@ -85,10 +89,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0467DD6D1F29462D000872E7 /* MTGetLogsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetLogsRequest.h; sourceTree = "<group>"; };
-		0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetLogsRequest.m; sourceTree = "<group>"; };
-		0467DD6F1F29462D000872E7 /* MTGetLogsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetLogsResponse.h; sourceTree = "<group>"; };
-		0467DD701F29462D000872E7 /* MTGetLogsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetLogsResponse.m; sourceTree = "<group>"; };
+		042FC1191F2A3EDD00B6E507 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		042FC1331F2A453200B6E507 /* _MTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTVideo.h; sourceTree = "<group>"; };
+		042FC1341F2A453200B6E507 /* _MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTVideo.m; sourceTree = "<group>"; };
+		042FC1351F2A453200B6E507 /* MTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideo.h; sourceTree = "<group>"; };
+		042FC1361F2A453200B6E507 /* MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideo.m; sourceTree = "<group>"; };
+		0467DD6D1F29462D000872E7 /* MTGetVideosRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetVideosRequest.h; sourceTree = "<group>"; };
+		0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetVideosRequest.m; sourceTree = "<group>"; };
+		0467DD6F1F29462D000872E7 /* MTGetVideosResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetVideosResponse.h; sourceTree = "<group>"; };
+		0467DD701F29462D000872E7 /* MTGetVideosResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetVideosResponse.m; sourceTree = "<group>"; };
 		0467DD791F29462D000872E7 /* MTLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginRequest.h; sourceTree = "<group>"; };
 		0467DD7A1F29462D000872E7 /* MTLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginRequest.m; sourceTree = "<group>"; };
 		0467DD7B1F29462D000872E7 /* MTLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginResponse.h; sourceTree = "<group>"; };
@@ -134,7 +143,7 @@
 		0467DE0B1F294A91000872E7 /* SDKeyStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKeyStorage.m; path = Video/Common/SDKeyStorage.m; sourceTree = SOURCE_ROOT; };
 		0467DE0C1F294A91000872E7 /* SDUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUserSettings.h; path = Video/Common/SDUserSettings.h; sourceTree = SOURCE_ROOT; };
 		0467DE0D1F294A91000872E7 /* SDUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUserSettings.m; path = Video/Common/SDUserSettings.m; sourceTree = SOURCE_ROOT; };
-		04C5094E1F1655F2006A9084 /* Video-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video-Bridging-Header.h"; sourceTree = "<group>"; };
+		0467DE211F2A3D9B000872E7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04C509911F1666E4006A9084 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		04C509921F1666E4006A9084 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		04D369A31F0563170058A484 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Video/Common/Constants.h; sourceTree = SOURCE_ROOT; };
@@ -246,6 +255,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */,
+				0467DE221F2A3D9B000872E7 /* CoreData.framework in Frameworks */,
 				474468B61EF1A0ED00857770 /* libsqlite3.tbd in Frameworks */,
 				B8778F5614AB9CDA6B91ED47 /* Pods_Video.framework in Frameworks */,
 			);
@@ -254,6 +265,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042FC1261F2A416300B6E507 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				042FC1331F2A453200B6E507 /* _MTVideo.h */,
+				042FC1341F2A453200B6E507 /* _MTVideo.m */,
+				042FC1351F2A453200B6E507 /* MTVideo.h */,
+				042FC1361F2A453200B6E507 /* MTVideo.m */,
+			);
+			name = Classes;
+			path = Video/Model/Classes;
+			sourceTree = SOURCE_ROOT;
+		};
 		0467DD531F29462D000872E7 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,10 +302,10 @@
 		0467DD541F29462D000872E7 /* Requests&Responses */ = {
 			isa = PBXGroup;
 			children = (
-				0467DD6D1F29462D000872E7 /* MTGetLogsRequest.h */,
-				0467DD6E1F29462D000872E7 /* MTGetLogsRequest.m */,
-				0467DD6F1F29462D000872E7 /* MTGetLogsResponse.h */,
-				0467DD701F29462D000872E7 /* MTGetLogsResponse.m */,
+				0467DD6D1F29462D000872E7 /* MTGetVideosRequest.h */,
+				0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */,
+				0467DD6F1F29462D000872E7 /* MTGetVideosResponse.h */,
+				0467DD701F29462D000872E7 /* MTGetVideosResponse.m */,
 				0467DD791F29462D000872E7 /* MTLoginRequest.h */,
 				0467DD7A1F29462D000872E7 /* MTLoginRequest.m */,
 				0467DD7B1F29462D000872E7 /* MTLoginResponse.h */,
@@ -329,7 +352,6 @@
 				474467F41EF19CE900857770 /* Products */,
 				777D0C1B4272F6885C198567 /* Pods */,
 				8BD21D4D88CE4C8B4B2BC6B2 /* Frameworks */,
-				04C5094E1F1655F2006A9084 /* Video-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -819,6 +841,7 @@
 		47A9772B1EF6998F00621404 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				042FC1261F2A416300B6E507 /* Classes */,
 				0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */,
 				0467DDDC1F294680000872E7 /* MTDataModel.h */,
 				0467DDDD1F294680000872E7 /* MTDataModel.m */,
@@ -859,6 +882,8 @@
 		8BD21D4D88CE4C8B4B2BC6B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				042FC1191F2A3EDD00B6E507 /* Foundation.framework */,
+				0467DE211F2A3D9B000872E7 /* CoreData.framework */,
 				474468B51EF1A0ED00857770 /* libsqlite3.tbd */,
 				9AF88BA27DC636111C047CA8 /* Pods_Video.framework */,
 			);
@@ -878,6 +903,7 @@
 				474467F11EF19CE900857770 /* Resources */,
 				D6C1C2601556239961EE3987 /* [CP] Embed Pods Frameworks */,
 				26D16EB6BF6260F60BE14140 /* [CP] Copy Pods Resources */,
+				0467DE121F2A3B84000872E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -938,6 +964,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0467DE121F2A3B84000872E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m Video/Model/Model.xcdatamodeld -O Video/Model/Classes --template-var arc=true\n";
+		};
 		26D16EB6BF6260F60BE14140 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -992,7 +1031,7 @@
 			files = (
 				474468AF1EF1A01A00857770 /* CTPersistanceTable+Delete.m in Sources */,
 				0467DDDB1F29462D000872E7 /* SDServiceRequestHandler.m in Sources */,
-				0467DDBC1F29462D000872E7 /* MTGetLogsResponse.m in Sources */,
+				0467DDBC1F29462D000872E7 /* MTGetVideosResponse.m in Sources */,
 				0467DE021F294965000872E7 /* SingleLineTextField.m in Sources */,
 				4744689F1EF1A01A00857770 /* CTPersistanceAsyncExecutor.m in Sources */,
 				474468AA1EF1A01A00857770 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
@@ -1008,7 +1047,8 @@
 				474468491EF19E6400857770 /* CTVideoDataCenter.m in Sources */,
 				474468A71EF1A01A00857770 /* CTPersistanceVersionTable.m in Sources */,
 				474467FE1EF19CE900857770 /* ViewController.m in Sources */,
-				0467DDBB1F29462D000872E7 /* MTGetLogsRequest.m in Sources */,
+				042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */,
+				0467DDBB1F29462D000872E7 /* MTGetVideosRequest.m in Sources */,
 				0467DDD61F29462D000872E7 /* SDDepotRequestHandler.m in Sources */,
 				0467DE111F294A91000872E7 /* SDUserSettings.m in Sources */,
 				0467DDC21F29462D000872E7 /* MTLoginResponse.m in Sources */,
@@ -1056,6 +1096,7 @@
 				04D369AA1F0563720058A484 /* MTInfoView.m in Sources */,
 				04D369A61F0563290058A484 /* MTInfo.m in Sources */,
 				4744683F1EF19E6400857770 /* AVAsset+CTVideoView.m in Sources */,
+				042FC1381F2A453200B6E507 /* MTVideo.m in Sources */,
 				474468471EF19E6400857770 /* UIPanGestureRecognizer+ExtraMethods.m in Sources */,
 				4744684B1EF19E6400857770 /* CTVideoTable.m in Sources */,
 				474468B31EF1A01A00857770 /* CTPersistanceTable.m in Sources */,
@@ -1188,7 +1229,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.local.foodtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Video-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1206,7 +1247,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.local.foodtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Video-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -9,6 +9,7 @@
 #import <CoreData/CoreData.h>
 
 #import "MTDataModel.h"
+#import "MTVideo.h"
 
 #import "NSObject+PNCast.h"
 
@@ -132,7 +133,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     
-    [request setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES]]];
+    [request setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"videoId" ascending:YES]]];
     
     if(predicate) {
         [request setPredicate:predicate];
@@ -494,6 +495,63 @@
     [self removeAllEntities:@"MTUser"];
 }
 */
+
+- (NSArray *)parseVideos:(NSData *)data {
+    [self removeAllEntities:@"MTVideo"];
+    NSMutableArray *videos = [[NSMutableArray alloc] init];
+    if(data != nil) {
+        NSError *error = nil;
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonArray isKindOfClass:NSArray.class])
+        {
+            NSArray *videosDictionaries = jsonArray;
+            for (NSDictionary *disctrictDict in videosDictionaries) {
+                MTVideo *video = nil;
+                video = (MTVideo *)[self emptyNode:MTVideo.class];
+                [video parseNode:disctrictDict];
+                [videos addObject:video];
+            }
+        }
+    }
+    [self saveContext];
+    
+    return [videos copy];
+}
+
+- (NSArray *)getVideosByCategory:(NSString *)category {
+    NSFetchRequest *allVideos = [[NSFetchRequest alloc] init];
+    [allVideos setEntity:[NSEntityDescription entityForName:@"MTVideo"
+                                        inManagedObjectContext:self.managedObjectContext]];
+    
+    NSError *error = nil;
+    NSArray *districts = [self.managedObjectContext executeFetchRequest:allVideos
+                                                                  error:&error];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSArray *filteredVideos = [districts filteredArrayUsingPredicate:predicate];
+    
+    return [filteredVideos copy];
+}
+
+- (void)removeToken {
+    [self removeAllEntities:@"MTUser"];
+}
+
+- (void)removeAllEntities:(NSString *)entity {
+    NSFetchRequest *allProducts = [[NSFetchRequest alloc] init];
+    [allProducts setEntity:[NSEntityDescription entityForName:entity inManagedObjectContext:self.managedObjectContext]];
+    [allProducts setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError *error = nil;
+    NSArray *objects = [self.managedObjectContext executeFetchRequest:allProducts error:&error];
+    //error handling goes here
+    for (NSManagedObject *object in objects) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    [self saveContext];
+}
+
 #pragma mark - save
 
 - (void)saveContext

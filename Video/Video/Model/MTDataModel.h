@@ -20,6 +20,9 @@
 - (NSArray *)fetchObjectsForEntityName:(NSString *)newEntityName
                          withPredicate:(NSPredicate *)predicate;
 
+- (NSArray *)parseVideos:(NSData *)data;
+- (NSArray *)getVideosByCategory:(NSString *)category;
+
 /*
 - (NSString *)parseLogin:(NSData *)data;
 - (MTPreviousVehicle *)parsePreviousVehicle:(NSData *)data;
