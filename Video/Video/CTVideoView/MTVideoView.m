@@ -7,6 +7,8 @@
 //
 
 #import "MTVideoView.h"
+#import "MTVideScrubber.h"
+
 #define STEP_VALUE                        20
 #define LIMIT_DISTANCE                    100
 #define BEVEL_WIDTH                       20
@@ -20,6 +22,21 @@
 
 
 @implementation MTVideoView
+
+- (id)initWithFrame:(CGRect)frame {
+   self = [super initWithFrame:frame];
+   [self setupScrubber:frame];
+   return self;
+}
+
+- (void)setupScrubber:(CGRect)frame {
+    CGRect rect = CGRectMake(0, frame.origin.y + frame.size.height + 10, self.frame.size.width, 20);
+    MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
+    self.clipsToBounds = NO;
+    scrubber.value = 0.6;
+    [self addSubview:scrubber];
+    [self setScrubber:scrubber];
+}
 
 - (void)handleTouchBegan:(CGFloat)x {
     self.startX = x;

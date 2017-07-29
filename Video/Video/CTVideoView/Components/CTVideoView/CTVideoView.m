@@ -39,6 +39,7 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
 @property (nonatomic, strong) UIButton *playButton;
 @property (nonatomic, strong) UIButton *muteButton;
+@property (nonatomic, strong) UISlider *scrubber;
 @property (nonnull, strong) UILabel *timeLabel;
 @end
 
@@ -204,6 +205,14 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
 
 - (UIButton *)getMuteButton {
     return _muteButton;
+}
+
+- (UISlider *)getScrubber {
+    return _scrubber;
+}
+
+- (void)setScrubber:(UISlider *)scrubber {
+    _scrubber = scrubber;
 }
 
 #pragma mark - methods override

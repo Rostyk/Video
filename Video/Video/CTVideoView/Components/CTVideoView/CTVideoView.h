@@ -56,5 +56,6 @@
 
 - (UIButton *)getPlayButton;
 - (UIButton *)getMuteButton;
-
+- (UISlider *)getScrubber;
+- (void)setScrubber:(UISlider *)scrubber;
 @end

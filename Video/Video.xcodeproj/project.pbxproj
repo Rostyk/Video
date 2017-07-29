@@ -10,6 +10,7 @@
 		042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042FC1191F2A3EDD00B6E507 /* Foundation.framework */; };
 		042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1341F2A453200B6E507 /* _MTVideo.m */; };
 		042FC1381F2A453200B6E507 /* MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1361F2A453200B6E507 /* MTVideo.m */; };
+		043E62DC1F2CB7BE002ECE33 /* MTVideScrubber.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */; };
 		0467DDBB1F29462D000872E7 /* MTGetVideosRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */; };
 		0467DDBC1F29462D000872E7 /* MTGetVideosResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD701F29462D000872E7 /* MTGetVideosResponse.m */; };
 		0467DDC11F29462D000872E7 /* MTLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DD7A1F29462D000872E7 /* MTLoginRequest.m */; };
@@ -94,6 +95,8 @@
 		042FC1341F2A453200B6E507 /* _MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTVideo.m; sourceTree = "<group>"; };
 		042FC1351F2A453200B6E507 /* MTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideo.h; sourceTree = "<group>"; };
 		042FC1361F2A453200B6E507 /* MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideo.m; sourceTree = "<group>"; };
+		043E62DA1F2CB7BE002ECE33 /* MTVideScrubber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideScrubber.h; sourceTree = "<group>"; };
+		043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideScrubber.m; sourceTree = "<group>"; };
 		0467DD6D1F29462D000872E7 /* MTGetVideosRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetVideosRequest.h; sourceTree = "<group>"; };
 		0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetVideosRequest.m; sourceTree = "<group>"; };
 		0467DD6F1F29462D000872E7 /* MTGetVideosResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetVideosResponse.h; sourceTree = "<group>"; };
@@ -396,6 +399,8 @@
 		4744680D1EF19E6400857770 /* CTVideoView */ = {
 			isa = PBXGroup;
 			children = (
+				043E62DA1F2CB7BE002ECE33 /* MTVideScrubber.h */,
+				043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */,
 				47FA88231EF840F700AECDFD /* MTOverlayView.h */,
 				47FA88241EF840F700AECDFD /* MTOverlayView.m */,
 				474468B71EF1AB2F00857770 /* MTVideoView.h */,
@@ -1081,6 +1086,7 @@
 				474467F81EF19CE900857770 /* main.m in Sources */,
 				474468A81EF1A01A00857770 /* CTPersistanceVersionRecord.m in Sources */,
 				0467DDD81F29462D000872E7 /* SDRequest.m in Sources */,
+				043E62DC1F2CB7BE002ECE33 /* MTVideScrubber.m in Sources */,
 				474468B41EF1A01A00857770 /* CTPersistanceTransaction.m in Sources */,
 				0467DDEC1F2948FB000872E7 /* Model.xcdatamodel in Sources */,
 				0467DDD91F29462D000872E7 /* SDRequestHandler.m in Sources */,

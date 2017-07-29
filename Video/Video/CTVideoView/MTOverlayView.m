@@ -118,8 +118,10 @@
             CTVideoView *videoView = (CTVideoView *)subview;
             UIButton *playButton = [videoView getPlayButton];
             UIButton *muteButton = [videoView getMuteButton];
+            UISlider *scrubber = [videoView getScrubber];
             if ([playButton hitTest:[self convertPoint:point toView:playButton] withEvent:event] != nil ||
-                [muteButton hitTest:[self convertPoint:point toView:muteButton] withEvent:event] != nil ) {
+                [muteButton hitTest:[self convertPoint:point toView:muteButton] withEvent:event] != nil ||
+                [scrubber hitTest:[self convertPoint:point toView:scrubber] withEvent:event] != nil ) {
                 return NO;
             }
         }

@@ -34,7 +34,7 @@
 
 - (void)setup {
     __weak typeof(self) weakSelf = self;
-    NSString *category = @"football";
+    NSString *category = @"nba";
     MTGetVideosRequest *getVideosRequest = [MTGetVideosRequest new];
     getVideosRequest.category = category;
     getVideosRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
