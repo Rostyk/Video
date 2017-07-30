@@ -48,12 +48,12 @@
                         <constraint firstAttribute="height" constant="72" id="UUQ-E0-1QZ"/>
                     </constraints>
                 </imageView>
-                <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
-                    <rect key="frame" x="0.0" y="134" width="375" height="667"/>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-tP-lRu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AQ7-Or-YTe"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>

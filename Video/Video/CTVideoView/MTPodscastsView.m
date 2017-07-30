@@ -72,6 +72,7 @@
     
     self.currentInfoView.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
     
+    
     self.overlayView.frame = self.bounds;
 }
 
@@ -87,10 +88,10 @@
     
     self.currentVideoView.rightSwipeDisabled = YES;
     self.currentVideoView.leftSwipeDisabled = [self.datasource numberOfVideos] == 1;
-    [self bringSubviewToFront:self.currentVideoView];
     
     self.currentInfoView = [self createInfoViewWithIndex:0];
     [self addSubview:self.currentInfoView];
+    [self bringSubviewToFront:self.currentVideoView];
     
     //Add overlay listening to all the touches
     self.overlayView = [[MTOverlayView alloc] init];

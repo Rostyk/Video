@@ -18,24 +18,31 @@
 @property (nonatomic) CGFloat currentX;
 
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) BOOL isScrubberInitialized;
 @end
 
 
 @implementation MTVideoView
 
-- (id)initWithFrame:(CGRect)frame {
-   self = [super initWithFrame:frame];
-   [self setupScrubber:frame];
-   return self;
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    
+    [self setupScrubber:frame];
 }
 
 - (void)setupScrubber:(CGRect)frame {
-    CGRect rect = CGRectMake(0, frame.origin.y + frame.size.height + 10, self.frame.size.width, 20);
-    MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
-    self.clipsToBounds = NO;
-    scrubber.value = 0.6;
-    [self addSubview:scrubber];
-    [self setScrubber:scrubber];
+    if (!self.isScrubberInitialized && frame.size.height != 0) {
+        self.clipsToBounds = NO;
+        self.isScrubberInitialized = true;
+        CGRect rect = CGRectMake(0, frame.origin.y + frame.size.height + 10, self.frame.size.width, 20);
+        MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
+        [self setScrubber:scrubber];
+        self.clipsToBounds = NO;
+        scrubber.value = 0.6;
+        [self addSubview:scrubber];
+    }
+    [self layoutSubviews];
 }
 
 - (void)handleTouchBegan:(CGFloat)x {
@@ -216,7 +223,7 @@
     mask.path = path.CGPath;
     
     self.layer.mask = mask;
-    self.clipsToBounds = YES;
+    self.clipsToBounds = NO;
 }
 
 - (void)clearMask {
@@ -249,6 +256,16 @@
     
     
     return path;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (CGRectContainsPoint(self.bounds, point) ||
+        CGRectContainsPoint([self getScrubber].frame, point))
+    {
+        return YES;
+    }
+    return NO;
 }
 
 @end

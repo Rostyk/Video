@@ -18,4 +18,25 @@
 }
 */
 
+- (CGRect)trackRectForBounds:(CGRect)bounds {
+    CGRect thinnerBounds = [super trackRectForBounds:bounds];
+    thinnerBounds.size.height = 1;
+    return thinnerBounds;
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    self.thumbTintColor = [UIColor clearColor];
+    
+    /*(UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 120), NO, 0.0);
+    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //UIImage *empty = [[UIImage alloc] initWith];
+    [self setThumbImage:blank forState:UIControlStateNormal];*/
+    
+    return self;
+}
+
 @end
