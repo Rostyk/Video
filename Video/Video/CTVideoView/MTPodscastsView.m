@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     self.currentVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
     self.nextVideoView.frame = CGRectMake(0, 0, self.viewFrame.size.width, self.viewFrame.size.height * VIDEO_AREA_PROPRTION);
     
-    self.currentInfoView.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
+    self.currentInfoView.frame = [self frameForInfoView];
     
     
     self.overlayView.frame = self.bounds;
@@ -265,8 +265,8 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MTInfoView" owner:self options:nil];
     UIView *view = [subviewArray objectAtIndex:0];
-    
-    view.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
+        
+    view.frame = [self frameForInfoView];
     
     MTInfoView *infoView = (MTInfoView *)view;
     infoView.titleLabel.text = videoInfo.title;
@@ -277,6 +277,9 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     return infoView;
 }
 
+- (CGRect)frameForInfoView {
+    return CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION + INFO_VIEW_VERTICAL_MARGIN_FROM_VIDEO, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION) - INFO_VIEW_VERTICAL_MARGIN_FROM_VIDEO);
+}
 - (void)moveInfoViewFor:(CGFloat)distance direction:(SwipeDirection)direction {
     //Move the current view
     CGFloat x = distance;

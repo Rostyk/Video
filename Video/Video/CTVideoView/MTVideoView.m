@@ -35,7 +35,7 @@
     if (!self.isScrubberInitialized && frame.size.height != 0) {
         self.clipsToBounds = NO;
         self.isScrubberInitialized = true;
-        CGRect rect = CGRectMake(0, frame.origin.y + frame.size.height + 10, self.frame.size.width, 20);
+        CGRect rect = CGRectMake(25, frame.origin.y + frame.size.height + 6, self.frame.size.width - 25*2, 20);
         MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
         [self setScrubber:scrubber];
         self.clipsToBounds = NO;

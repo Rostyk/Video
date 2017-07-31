@@ -14,6 +14,7 @@
 #import "MTGetVideosRequest.h"
 #import "MTGetVideosResponse.h"
 #import "MTVideo.h"
+#import "MTProgressView.h"
 
 @import UPCarouselFlowLayout;
 
@@ -32,6 +33,8 @@
 }
 
 - (void)setup {
+    [[MTProgressView sharedView] showInView:self.view];
+    
     __weak typeof(self) weakSelf = self;
     NSString *category = @"nba";
     MTGetVideosRequest *getVideosRequest = [MTGetVideosRequest new];
@@ -40,6 +43,8 @@
         NSArray *videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:category];
         weakSelf.videos = videos;
         [weakSelf setupVideoLinks];
+        
+        [[MTProgressView sharedView] remove];
     };
     
     [getVideosRequest run];
@@ -61,7 +66,6 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView reloadData];
-    
 }
 
 #pragma mark - MTPodcastDataSource
