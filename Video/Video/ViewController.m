@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "MTVideoView.h"
 #import "MTPodscastsView.h"
-#import "MTInfo.h"
 #import "MenuCell.h"
 #import "MTDataModel.h"
 #import "MTGetVideosRequest.h"
@@ -47,44 +46,28 @@
 }
 
 - (void)setupVideoLinks {
-    NSMutableArray *parsedVideoMetaDatas = [NSMutableArray new];
-    for (MTVideo *video in self.videos) {
-        MTInfo *videoMetaData = [[MTInfo alloc] initWithTitle:@"Some decription of the video goes here. Lorem ipsum"
-                                              channel:@"Channel name"
-                                         channelImage:nil
-                                          bottomImage:nil
-                                             videoUrl:video.url];
-        [parsedVideoMetaDatas addObject:videoMetaData];
-    }
-   
-    self.videos = parsedVideoMetaDatas;
-    
     self.podcastsView.datasource = self;
-   
+    self.icons = @[@"", @"", @"", @"ic_trending", @"ic_NBA", @"ic_NHL", @"ic_MLB", @"ic_CFB", @"ic_EFL", @"ic_NFL", @"ic_CBB", @"ic_skateboarding", @"ic_GOLF", @"ic_surfing", @"", @"", @""];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.icons = @[@"", @"", @"", @"ic_trending", @"ic_NBA", @"ic_NHL", @"ic_MLB", @"ic_CFB", @"ic_EFL", @"ic_NFL", @"ic_CBB", @"ic_skateboarding", @"ic_GOLF", @"ic_surfing", @"", @"", @""];
-        
-        //setup layout
-        UPCarouselFlowLayout *layout = [[UPCarouselFlowLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        layout.minimumInteritemSpacing = 125.0f;
-        layout.sideItemShift = 3.0f;
-        layout.minimumLineSpacing = 5.0f;
-        layout.itemSize = CGSizeMake(52, 52);
-        self.collectionView.collectionViewLayout = layout;
-        
-        self.collectionView.delegate = self;
-        self.collectionView.dataSource = self;
-        [self.collectionView reloadData];
-        
-    });
+    //setup layout
+    UPCarouselFlowLayout *layout = [[UPCarouselFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.minimumInteritemSpacing = 125.0f;
+    layout.sideItemShift = 3.0f;
+    layout.minimumLineSpacing = 5.0f;
+    layout.itemSize = CGSizeMake(52, 52);
+    self.collectionView.collectionViewLayout = layout;
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView reloadData];
+    
 }
 
 #pragma mark - MTPodcastDataSource
 
-- (MTInfo *)videoInfoForIndex:(NSInteger)index {
-    MTInfo *info = self.videos[index];
+- (MTVideo *)videoInfoForIndex:(NSInteger)index {
+    MTVideo *info = self.videos[index];
     return info;
 }
 
@@ -124,6 +107,12 @@
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     // return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
     return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
+}
+
+#pragma mark - grid view
+
+- (IBAction)gridButtonClicked {
+    [self.podcastsView switchVideModes];
 }
 
     

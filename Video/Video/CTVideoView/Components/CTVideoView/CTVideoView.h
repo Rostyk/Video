@@ -57,5 +57,6 @@
 - (UIButton *)getPlayButton;
 - (UIButton *)getMuteButton;
 - (UISlider *)getScrubber;
+- (UILabel *)getTimeTextLabel;
 - (void)setScrubber:(UISlider *)scrubber;
 @end

@@ -16,6 +16,9 @@
     self.isExpired = node[@"isExpire"];
     self.videoId = node[@"id"];
     self.views = node[@"views"];
+    self.title = node[@"title"];
+    self.details = node[@"description"];
+    
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];

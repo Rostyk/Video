@@ -52,6 +52,8 @@
 
 @dynamic date;
 
+@dynamic details;
+
 @dynamic isExpired;
 
 - (BOOL)isExpiredValue {
@@ -73,6 +75,8 @@
 }
 
 @dynamic originUrl;
+
+@dynamic title;
 
 @dynamic url;
 
@@ -125,11 +129,17 @@
 + (NSString *)date {
 	return @"date";
 }
++ (NSString *)details {
+	return @"details";
+}
 + (NSString *)isExpired {
 	return @"isExpired";
 }
 + (NSString *)originUrl {
 	return @"originUrl";
+}
++ (NSString *)title {
+	return @"title";
 }
 + (NSString *)url {
 	return @"url";

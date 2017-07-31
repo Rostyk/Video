@@ -8,7 +8,6 @@
 
 #import "CTVideoView.h"
 #import "Constants.h"
-
 @protocol MTVideoDelegate
 - (void)isMovingManuallyForDistance:(CGFloat)distance
                           direction:(SwipeDirection)direction;
@@ -23,11 +22,13 @@
 
 @property (nonatomic) BOOL leftSwipeDisabled;
 @property (nonatomic) BOOL rightSwipeDisabled;
+@property (nonatomic, strong) NSString *videoId;
 
 - (void)handleTouchBegan:(CGFloat)x;
-
 - (void)handleTouchChanged:(CGFloat)x;
-
 - (void)handleTouchEnded:(CGFloat)x;
+
+- (void)hideExtraUIForGridView;
+- (void)showExtraUIForGridView;
 
 @end

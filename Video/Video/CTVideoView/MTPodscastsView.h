@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MTInfo;
+@class MTVideo;
 
 @protocol MTPodcastDataSource
-- (MTInfo *)videoInfoForIndex:(NSInteger)index;
+- (MTVideo *)videoInfoForIndex:(NSInteger)index;
 - (NSUInteger)numberOfVideos;
 @end
 
 @interface MTPodscastsView : UIView
 @property (nonatomic, weak) id<MTPodcastDataSource> datasource;
+- (void)switchVideModes;
 @end

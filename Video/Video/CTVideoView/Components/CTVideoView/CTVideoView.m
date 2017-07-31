@@ -199,6 +199,10 @@ static void * kCTVideoViewKVOContext = &kCTVideoViewKVOContext;
     self.timeLabel.frame = CGRectMake(self.playButton.frame.origin.x + self.playButton.frame.size.width + 8, self.playButton.frame.origin.y + 3, 80, 14);
 }
 
+- (UILabel *)getTimeTextLabel {
+    return _timeLabel;
+}
+
 - (UIButton *)getPlayButton {
     return _playButton;
 }

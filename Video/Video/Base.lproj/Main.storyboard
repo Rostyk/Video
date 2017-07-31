@@ -49,7 +49,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vlv-MK-gAd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="48" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
@@ -75,14 +75,28 @@
                                     <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="top" id="bIw-YB-a6a"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
+                                <rect key="frame" x="287" y="613" width="88" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="0jm-VK-JXR"/>
+                                    <constraint firstAttribute="width" constant="88" id="5os-Dt-Pjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="#"/>
+                                <connections>
+                                    <action selector="gridButtonClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ac-5x-zF4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="bottom" id="4a6-uN-hG7"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5oH-eV-dFj"/>
                             <constraint firstAttribute="trailing" secondItem="yDs-in-j2i" secondAttribute="trailing" id="AaK-7L-B5q"/>
+                            <constraint firstAttribute="trailing" secondItem="7xJ-jz-QWM" secondAttribute="trailing" id="AgG-J3-ozh"/>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jxa-Kd-uBU"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gB0-Tw-F1T"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xJ-jz-QWM" secondAttribute="bottom" id="ovR-Py-c3S"/>
                             <constraint firstAttribute="trailing" secondItem="ZzG-V2-MUD" secondAttribute="trailing" id="t39-T2-alD"/>
                         </constraints>
                     </view>

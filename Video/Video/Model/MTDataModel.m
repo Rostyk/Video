@@ -506,10 +506,10 @@
         if (!error && [jsonArray isKindOfClass:NSArray.class])
         {
             NSArray *videosDictionaries = jsonArray;
-            for (NSDictionary *disctrictDict in videosDictionaries) {
+            for (NSDictionary *videoDict in videosDictionaries) {
                 MTVideo *video = nil;
                 video = (MTVideo *)[self emptyNode:MTVideo.class];
-                [video parseNode:disctrictDict];
+                [video parseNode:videoDict];
                 [videos addObject:video];
             }
         }
@@ -534,13 +534,34 @@
     return [filteredVideos copy];
 }
 
+- (NSArray *)getVideosByCategory:(NSString *)category minusVideo:(NSString *)videoId {
+    NSFetchRequest *allVideos = [[NSFetchRequest alloc] init];
+    [allVideos setEntity:[NSEntityDescription entityForName:@"MTVideo"
+                                     inManagedObjectContext:self.managedObjectContext]];
+    
+    NSError *error = nil;
+    NSArray *districts = [self.managedObjectContext executeFetchRequest:allVideos
+                                                                  error:&error];
+    
+    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"videoId != %@", @(videoId.integerValue)];
+    
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];
+
+    
+    NSArray *filteredVideos = [districts filteredArrayUsingPredicate:predicate];
+    
+    return [filteredVideos copy];
+}
+
 - (void)removeToken {
     [self removeAllEntities:@"MTUser"];
 }
 
 - (void)removeAllEntities:(NSString *)entity {
     NSFetchRequest *allProducts = [[NSFetchRequest alloc] init];
-    [allProducts setEntity:[NSEntityDescription entityForName:entity inManagedObjectContext:self.managedObjectContext]];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entity inManagedObjectContext:self.managedObjectContext];
+    [allProducts setEntity:entityDescription];
     [allProducts setIncludesPropertyValues:NO]; //only fetch the managedObjectID
     
     NSError *error = nil;

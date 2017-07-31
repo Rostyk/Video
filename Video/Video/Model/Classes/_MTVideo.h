@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSDate* date;
 
+@property (nonatomic, strong, nullable) NSString* details;
+
 @property (nonatomic, strong, nullable) NSNumber* isExpired;
 
 @property (atomic) BOOL isExpiredValue;
@@ -31,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setIsExpiredValue:(BOOL)value_;
 
 @property (nonatomic, strong, nullable) NSString* originUrl;
+
+@property (nonatomic, strong, nullable) NSString* title;
 
 @property (nonatomic, strong, nullable) NSString* url;
 
@@ -56,6 +60,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDate*)primitiveDate;
 - (void)setPrimitiveDate:(nullable NSDate*)value;
 
+- (nullable NSString*)primitiveDetails;
+- (void)setPrimitiveDetails:(nullable NSString*)value;
+
 - (nullable NSNumber*)primitiveIsExpired;
 - (void)setPrimitiveIsExpired:(nullable NSNumber*)value;
 
@@ -64,6 +71,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSString*)primitiveOriginUrl;
 - (void)setPrimitiveOriginUrl:(nullable NSString*)value;
+
+- (nullable NSString*)primitiveTitle;
+- (void)setPrimitiveTitle:(nullable NSString*)value;
 
 - (nullable NSString*)primitiveUrl;
 - (void)setPrimitiveUrl:(nullable NSString*)value;
@@ -85,8 +95,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTVideoAttributes: NSObject 
 + (NSString *)category;
 + (NSString *)date;
++ (NSString *)details;
 + (NSString *)isExpired;
 + (NSString *)originUrl;
++ (NSString *)title;
 + (NSString *)url;
 + (NSString *)videoId;
 + (NSString *)views;

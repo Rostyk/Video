@@ -268,4 +268,20 @@
     return NO;
 }
 
+#pragma mark - grid view
+
+- (void)hideExtraUIForGridView {
+    [self getPlayButton].hidden = YES;
+    [self getScrubber].hidden = YES;
+    [self getMuteButton].hidden = YES;
+    [self getTimeTextLabel].hidden = YES;
+}
+
+- (void)showExtraUIForGridView {
+    [self getPlayButton].hidden = NO;
+    [self getScrubber].hidden = NO;
+    [self getMuteButton].hidden = NO;
+    [self getTimeTextLabel].hidden = NO;
+}
+
 @end

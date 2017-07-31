@@ -22,6 +22,7 @@
 
 - (NSArray *)parseVideos:(NSData *)data;
 - (NSArray *)getVideosByCategory:(NSString *)category;
+- (NSArray *)getVideosByCategory:(NSString *)category minusVideo:(NSString *)videoId;
 
 /*
 - (NSString *)parseLogin:(NSData *)data;

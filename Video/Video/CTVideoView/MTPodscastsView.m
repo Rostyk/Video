@@ -8,15 +8,16 @@
 
 #import "MTPodscastsView.h"
 #import "MTVideoView.h"
-#import "MTInfo.h"
 #import "MTInfoView.h"
 #import "HandyFrame/UIView+LayoutMethods.h"
 #import "MTOverlayView.h"
+#import "MTGridView.h"
+#import "MTVideo.h"
 
-// video takes half of the view
-#define VIDEO_AREA_PROPRTION                                                      0.5
-
-#define VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW                         0.4
+typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
+    MTVideoScreenModeSingleVideo = 0,
+    MTVideoScreenModeTiles
+};
 
 @interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate, MTOverlayDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
@@ -32,6 +33,9 @@
 @property (nonatomic) CGRect viewFrame;
 
 @property (nonatomic, strong) MTOverlayView *overlayView;
+@property (nonatomic) MTVideoScreenMode mode;
+@property (nonatomic) CGRect savedVideoViewRect;
+@property (nonatomic, strong) MTGridView *gridView;
 @end
 
 @implementation MTPodscastsView
@@ -221,12 +225,12 @@
     videoView.delegate = self;
     videoView.videoContentMode = CTVideoViewContentModeResizeAspectFill;
     if (index < [self.datasource numberOfVideos]) {
-        MTInfo *info = [self.datasource videoInfoForIndex:index];
-        videoView.videoUrl = [NSURL URLWithString:info.videoURL];
+        MTVideo *videoInfo = [self.datasource videoInfoForIndex:index];
+        videoView.videoUrl = [NSURL URLWithString:videoInfo.url];
+        videoView.videoId = [videoInfo.videoId stringValue];
         [videoView prepare];
     }
     
-    videoView.tag = 777;
     return videoView;
 }
 
@@ -257,7 +261,7 @@
 #pragma mark - info view
 
 - (MTInfoView *)createInfoViewWithIndex:(NSUInteger)index {
-    MTInfo *info = [self.datasource videoInfoForIndex:index];
+    MTVideo *videoInfo = [self.datasource videoInfoForIndex:index];
     
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MTInfoView" owner:self options:nil];
     UIView *view = [subviewArray objectAtIndex:0];
@@ -265,8 +269,8 @@
     view.frame = CGRectMake(0, self.viewFrame.size.height * VIDEO_AREA_PROPRTION, self.viewFrame.size.width, self.viewFrame.size.height * (1 - VIDEO_AREA_PROPRTION ));
     
     MTInfoView *infoView = (MTInfoView *)view;
-    infoView.titleLabel.text = info.title;
-    infoView.channelLabel.text = info.channel;
+    infoView.titleLabel.text = videoInfo.title;
+    infoView.channelLabel.text = videoInfo.details;
     //infoView.channelImage.image = info.channelImage;
     //infoView.bottomImage.image = info.bottomImage;
     
@@ -353,5 +357,75 @@
 - (void)touchEnded:(CGFloat)x {
     [self.currentVideoView handleTouchEnded:x];
 }
+
+
+#pragma mark - grid view
+
+- (void)switchVideModes {
+    if (self.mode == MTVideoScreenModeSingleVideo) {
+        self.mode = MTVideoScreenModeTiles;
+        
+        self.savedVideoViewRect = self.currentVideoView.frame;
+        self.nextVideoView.hidden = YES;
+        self.previousVideoView.hidden = YES;
+        self.nextInfoView.hidden = YES;
+        self.currentInfoView.hidden = YES;
+        [self.currentVideoView hideExtraUIForGridView];
+        
+        CGFloat tileWidth = [UIScreen mainScreen].bounds.size.width / NUMBER_OF_COLUMNS_IN_MOSAIC_VIEW / 2;
+        
+        CGRect resizedFrame = self.currentVideoView.frame;
+        resizedFrame.size.width = tileWidth;
+        resizedFrame.size.height = tileWidth;
+        
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             self.currentVideoView.frame = resizedFrame;
+                         }
+                         completion:^(BOOL finished) {
+                             [weakSelf showGridView];
+                         }];
+    }
+    else {
+        [self transitToSingleVideo];
+    }
+}
+
+- (void)showGridView {
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MTGridView" owner:self options:nil];
+    self.gridView = (MTGridView *)[subviewArray objectAtIndex:0];
+    
+    [self.currentVideoView removeFromSuperview];
+    self.gridView.firstTileVideoView = self.currentVideoView;
+    self.gridView.category = @"nba";
+    
+    self.gridView.frame = self.bounds;
+    [self addSubview:self.gridView];
+}
+
+- (void)transitToSingleVideo {
+    [self.currentVideoView removeFromSuperview];
+    [self addSubview:self.currentVideoView];
+    [self.currentVideoView showExtraUIForGridView];
+    
+    
+    __weak typeof(self)weakSelf = self;
+    [UIView animateWithDuration:0.8
+                     animations:^{
+                         self.currentVideoView.frame = self.savedVideoViewRect;
+                     }
+                     completion:^(BOOL finished) {
+                         weakSelf.nextVideoView.hidden = NO;
+                         weakSelf.previousVideoView.hidden = NO;
+                         weakSelf.nextInfoView.hidden = NO;
+                         weakSelf.currentInfoView.hidden = NO;
+                         weakSelf.mode = MTVideoScreenModeSingleVideo;
+                         [self bringSubviewToFront:self.overlayView];
+                     }];
+    
+    [self.gridView removeFromSuperview];
+}
+
 
 @end

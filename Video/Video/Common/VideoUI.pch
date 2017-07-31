@@ -1,0 +1,18 @@
+//
+//  PrefixHeader.pch
+//  Video
+//
+//  Created by Apple on 7/31/17.
+//  Copyright © 2017 Rostyslav.Stepanyak. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// video takes half of the view
+#define VIDEO_AREA_PROPRTION                                                      0.5
+
+#define VIDEO_SWIPE_PERCENT_TO_START_SHOWIN_NEW_INFO_VIEW                         0.4
+
+#define NUMBER_OF_COLUMNS_IN_MOSAIC_VIEW                                          3
+#endif /* PrefixHeader_pch */

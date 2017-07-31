@@ -14,16 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FMMosaicLayout (0.1.4)
   - UPCarouselFlowLayout (1.1.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - FMMosaicLayout
   - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FMMosaicLayout: c0febf6876c987c425d7e2176d034fa7a2c98cb5
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
 
-PODFILE CHECKSUM: 5f602d2daa349bab3bcd07fd80228333c46158b2
+PODFILE CHECKSUM: 677fe9db453d61d2326f87d60b1c56043a2c5137
 
 COCOAPODS: 1.2.1
