@@ -11,6 +11,8 @@
 - (void)touchBegan:(CGFloat)x;
 - (void)touchChanged:(CGFloat)x;
 - (void)touchEnded:(CGFloat)x;
+
+- (void)didTapOnVideo;
 @end
 
 @interface MTOverlayView : UIView

@@ -12,6 +12,8 @@
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *rightSwipeGestureRecognizer;
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @end
 
 @implementation MTOverlayView
@@ -30,7 +32,7 @@
 
 - (void)setup {
     [self addGestureRecognizer:self.panGestureRecognizer];
-    
+    [self addGestureRecognizer:self.tapGestureRecognizer];
     [self addGestureRecognizer:self.leftSwipeGestureRecognizer];
     [self addGestureRecognizer:self.rightSwipeGestureRecognizer];
 }
@@ -41,7 +43,6 @@
 {
     if (_panGestureRecognizer == nil) {
         _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizedPanRecognizer:)];
-        _panGestureRecognizer.maximumNumberOfTouches = 1;
         _panGestureRecognizer.minimumNumberOfTouches = 1;
         _panGestureRecognizer.delegate = self;
         
@@ -69,6 +70,16 @@
         
     }
     return _rightSwipeGestureRecognizer;
+}
+
+- (UITapGestureRecognizer *)tapGestureRecognizer
+{
+    if (_tapGestureRecognizer == nil) {
+        _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizeTapRecognizer:)];
+        _tapGestureRecognizer.delegate = self;
+        
+    }
+    return _tapGestureRecognizer;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -109,11 +120,32 @@
     }
 }
 
+- (void)didRecognizeTapRecognizer:(UITapGestureRecognizer *)tapRecognizer {
+    if(tapRecognizer.state != UIGestureRecognizerStateRecognized)
+        return;
+    
+    CGPoint touchPoint = [tapRecognizer locationInView:self];
+    [[self superview] convertPoint:touchPoint toView:[self superview]];
+    
+    for (UIView* subview in self.superview.subviews ) {
+        if ([subview isKindOfClass:[CTVideoView class]]) {
+            CTVideoView *videoView = (CTVideoView *)subview;
+            
+            if (CGRectContainsPoint(videoView.frame, touchPoint)) {
+                [self.delegate didTapOnVideo];
+                break;
+            }
+            else {
+                NSLog(@"tap outside video");
+            }
+        }
+    }
+    
+}
+
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     //NSLog(@"Passing all touches to the next view (if any), in the view stack.");
     for (UIView* subview in self.superview.subviews ) {
-        
-        
         if ([subview isKindOfClass:[CTVideoView class]]) {
             CTVideoView *videoView = (CTVideoView *)subview;
             UIButton *playButton = [videoView getPlayButton];
@@ -121,7 +153,7 @@
             UISlider *scrubber = [videoView getScrubber];
             if ([playButton hitTest:[self convertPoint:point toView:playButton] withEvent:event] != nil ||
                 [muteButton hitTest:[self convertPoint:point toView:muteButton] withEvent:event] != nil ||
-                [scrubber hitTest:[self convertPoint:point toView:scrubber] withEvent:event] != nil ) {
+                [scrubber hitTest:[self convertPoint:point toView:scrubber] withEvent:event] != nil) {
                 return NO;
             }
         }

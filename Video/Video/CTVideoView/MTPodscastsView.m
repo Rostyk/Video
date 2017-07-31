@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     self.nextVideoView.userInteractionEnabled = false;
 }
 
-#pragma mark - MTVIdeoDelegate
+#pragma mark - MTVideoDelegate
 
 - (void)isMovingManuallyForDistance:(CGFloat)distance
                           direction:(SwipeDirection)direction {
@@ -216,6 +216,17 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     if (direction == SwipeRight) {
         [self.previousVideoView pause];
     }
+}
+
+- (void)didTapOnVideo {
+    if (self.currentVideoView.isPlaying) {
+       [self.currentVideoView pause];
+    }
+    else {
+        [self.currentVideoView play];
+    }
+    
+    
 }
 
 #pragma mark - creating/removing video
