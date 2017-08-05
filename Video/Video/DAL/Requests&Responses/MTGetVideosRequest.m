@@ -18,6 +18,9 @@
     NSMutableURLRequest *networkRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:configurationString]];
     [networkRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
+    NSString *bearer = [NSString stringWithFormat:@"Bearer %@", [[MTDataModel sharedDatabaseStorage] getAccessToken]];
+    [networkRequest addValue:bearer forHTTPHeaderField:@"Authorization"];
+    
     /*NSDictionary *tmp = [[NSDictionary alloc] initWithObjectsAndKeys:
                          [[MTDataModel sharedDatabaseStorage] getAccessToken], @"accessToken",
                          nil];

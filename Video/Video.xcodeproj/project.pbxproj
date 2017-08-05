@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0412A7B71F35F3EF009DACDA /* _MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412A7B61F35F3EF009DACDA /* _MTUser.m */; };
+		0412A7BA1F35F99A009DACDA /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412A7B91F35F99A009DACDA /* MTUser.m */; };
 		042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042FC1191F2A3EDD00B6E507 /* Foundation.framework */; };
 		042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1341F2A453200B6E507 /* _MTVideo.m */; };
 		042FC1381F2A453200B6E507 /* MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1361F2A453200B6E507 /* MTVideo.m */; };
@@ -97,6 +99,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0412A7B51F35F3EF009DACDA /* _MTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTUser.h; sourceTree = "<group>"; };
+		0412A7B61F35F3EF009DACDA /* _MTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTUser.m; sourceTree = "<group>"; };
+		0412A7B81F35F99A009DACDA /* MTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUser.h; sourceTree = "<group>"; };
+		0412A7B91F35F99A009DACDA /* MTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUser.m; sourceTree = "<group>"; };
 		042FC1191F2A3EDD00B6E507 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		042FC1331F2A453200B6E507 /* _MTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTVideo.h; sourceTree = "<group>"; };
 		042FC1341F2A453200B6E507 /* _MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTVideo.m; sourceTree = "<group>"; };
@@ -291,6 +297,10 @@
 		042FC1261F2A416300B6E507 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0412A7B51F35F3EF009DACDA /* _MTUser.h */,
+				0412A7B61F35F3EF009DACDA /* _MTUser.m */,
+				0412A7B81F35F99A009DACDA /* MTUser.h */,
+				0412A7B91F35F99A009DACDA /* MTUser.m */,
 				042FC1331F2A453200B6E507 /* _MTVideo.h */,
 				042FC1341F2A453200B6E507 /* _MTVideo.m */,
 				042FC1351F2A453200B6E507 /* MTVideo.h */,
@@ -1119,11 +1129,13 @@
 				474468AA1EF1A01A00857770 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */,
 				474468531EF19F1900857770 /* UIView+LayoutMethods.m in Sources */,
+				0412A7B71F35F3EF009DACDA /* _MTUser.m in Sources */,
 				474468A11EF1A01A00857770 /* NSString+ReqularExpression.m in Sources */,
 				0467DE051F294965000872E7 /* UIImage_SDAdditions.m in Sources */,
 				474468481EF19E6400857770 /* CTVideoView.m in Sources */,
 				043E62ED1F2F6FE8002ECE33 /* MTGridViewCell.m in Sources */,
 				0467DDDF1F294680000872E7 /* MTDataModel.m in Sources */,
+				0412A7BA1F35F99A009DACDA /* MTUser.m in Sources */,
 				474468A41EF1A01A00857770 /* CTPersistanceDataBase.m in Sources */,
 				474468A51EF1A01A00857770 /* CTPersistanceDatabasePool.m in Sources */,
 				0467DE041F294965000872E7 /* UIImage+Blur.m in Sources */,

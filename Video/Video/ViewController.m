@@ -15,6 +15,8 @@
 #import "MTGetVideosResponse.h"
 #import "MTVideo.h"
 #import "MTProgressView.h"
+#import "MTLoginRequest.h"
+#import "MTLoginResponse.h"
 
 @import UPCarouselFlowLayout;
 
@@ -23,6 +25,9 @@
 @property (nonatomic, strong) NSArray *videos;
 @property (nonatomic, strong) NSArray *icons;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, weak) IBOutlet UIButton *gridButton;
+@property (nonatomic, weak) IBOutlet UIButton *homeButton;
 @end
 
 @implementation ViewController
@@ -33,7 +38,26 @@
 }
 
 - (void)setup {
+    [self login];
+}
+
+- (void)login {
+    self.gridButton.alpha = 0.0;
+    self.homeButton.alpha = 0.0;
     [[MTProgressView sharedView] showInView:self.view];
+    
+    __weak typeof(self) weakSelf = self;
+    MTLoginRequest *loginRequest = [MTLoginRequest new];
+    loginRequest.username = @"User1";
+    loginRequest.password = @"user123";
+    loginRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
+        [weakSelf getVideos];
+    };
+    
+    [loginRequest run];
+}
+
+- (void)getVideos {
     
     __weak typeof(self) weakSelf = self;
     NSString *category = @"nba";
@@ -45,6 +69,12 @@
         [weakSelf setupVideoLinks];
         
         [[MTProgressView sharedView] remove];
+        [UIView animateWithDuration:1.8
+                         animations:^{
+                             self.homeButton.alpha = 1.0;
+                             self.gridButton.alpha = 1.0;
+                         }
+                         completion:NULL];
     };
     
     [getVideosRequest run];

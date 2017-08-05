@@ -13,40 +13,21 @@
 
 - (NSMutableURLRequest *)serviceURLRequest
 {
-    NSMutableString *configurationString = [NSMutableString stringWithFormat:@"%@/driverLogin", [SDUserSettings serviceURL]];
+    NSMutableString *configurationString = [NSMutableString stringWithFormat:@"%@/token", [SDUserSettings serviceURL]];
     
     NSMutableURLRequest *networkRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:configurationString]];
-    [networkRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [networkRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *tmp = [[NSDictionary alloc] initWithObjectsAndKeys:
-                         self.email, @"email",
-                         self.password, @"password",
-                         @"1", @"deviceType",
-                         self.deviceId, @"deviceToken",
-                         self.lat, @"lat",
-                         self.lon, @"long",
-                         nil];
-
     NSError *error;
-    NSData *postdata = [NSJSONSerialization dataWithJSONObject:tmp options:0 error:&error];
     
-    networkRequest.HTTPBody = postdata;
+    NSString *post = [NSString stringWithFormat:@"grant_type=password&username=%@&password=%@", self.username, self.password];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    networkRequest.HTTPBody = postData;
     networkRequest.HTTPMethod = @"POST";
     return networkRequest;
 }
 
-NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-- (NSString *)randomStringWithLength: (int) len {
-    
-    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
-    
-    for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
-    }
-    
-    return randomString;
-}
 
 - (SDResult *)emptyResponse
 {

@@ -10,11 +10,8 @@
 
 @interface MTLoginRequest : SDRequest
 
-@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *deviceId;
-@property (nonatomic, strong) NSString *deviceType;
-@property (nonatomic, strong) NSString *lat;
-@property (nonatomic, strong) NSString *lon;
+
 
 @end

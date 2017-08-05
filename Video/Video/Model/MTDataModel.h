@@ -24,6 +24,9 @@
 - (NSArray *)getVideosByCategory:(NSString *)category;
 - (NSArray *)getVideosByCategory:(NSString *)category minusVideo:(NSString *)videoId;
 
+- (NSString *)parseLogin:(NSData *)data;
+- (NSString *)getAccessToken;
+
 /*
 - (NSString *)parseLogin:(NSData *)data;
 - (MTPreviousVehicle *)parsePreviousVehicle:(NSData *)data;

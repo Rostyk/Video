@@ -13,7 +13,7 @@
 - (void)parseResponseData:(NSData *)responseData
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        //self.accessToken = [[MTDataModel sharedDatabaseStorage] parseLogin:responseData];
+        self.accessToken = [[MTDataModel sharedDatabaseStorage] parseLogin:responseData];
     });
 }
 

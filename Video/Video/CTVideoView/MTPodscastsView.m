@@ -225,8 +225,6 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     else {
         [self.currentVideoView play];
     }
-    
-    
 }
 
 #pragma mark - creating/removing video

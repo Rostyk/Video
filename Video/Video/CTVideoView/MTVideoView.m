@@ -37,9 +37,10 @@
         self.isScrubberInitialized = true;
         CGRect rect = CGRectMake(25, frame.origin.y + frame.size.height + 6, self.frame.size.width - 25*2, 20);
         MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
+        scrubber.tintColor = [UIColor whiteColor];
         [self setScrubber:scrubber];
         self.clipsToBounds = NO;
-        scrubber.value = 0.6;
+        scrubber.value = 0.04;
         [self addSubview:scrubber];
     }
     [self layoutSubviews];

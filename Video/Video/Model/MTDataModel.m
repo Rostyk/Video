@@ -10,6 +10,7 @@
 
 #import "MTDataModel.h"
 #import "MTVideo.h"
+#import "MTUser.h"
 
 #import "NSObject+PNCast.h"
 
@@ -495,6 +496,36 @@
     [self removeAllEntities:@"MTUser"];
 }
 */
+
+
+- (NSString *)getAccessToken {
+    NSFetchRequest *allUsers = [[NSFetchRequest alloc] init];
+    [allUsers setEntity:[NSEntityDescription entityForName:@"MTUser" inManagedObjectContext:self.managedObjectContext]];
+    
+    NSError *error = nil;
+    NSArray *users = [self.managedObjectContext executeFetchRequest:allUsers
+                                                              error:&error];
+    
+    return [((MTUser *)users.firstObject).accessToken copy];
+}
+
+- (NSString *)parseLogin:(NSData *)data {
+    [self removeAllEntities:@"MTUser"];
+    MTUser *user = nil;
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
+        {
+            user = (MTUser *)[self emptyNode:MTUser.class];
+            [user parseNode:jsonDict];
+        }
+    }
+    [self saveContext];
+    
+    return [user.accessToken copy];
+}
 
 - (NSArray *)parseVideos:(NSData *)data {
     [self removeAllEntities:@"MTVideo"];

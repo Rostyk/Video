@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z0B-Tq-4Wc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="25" width="375" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="TED-C1-sHW">
                                             <size key="itemSize" width="48" height="48"/>
@@ -42,7 +42,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="05t-pi-W0g" customClass="MenuCell">
-                                                <rect key="frame" x="0.0" y="18.5" width="48" height="48"/>
+                                                <rect key="frame" x="0.0" y="6" width="48" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -72,20 +72,29 @@
                                     <constraint firstAttribute="trailing" secondItem="Z0B-Tq-4Wc" secondAttribute="trailing" id="1lR-5n-4cl"/>
                                     <constraint firstAttribute="height" constant="120" id="I1S-tX-eYK"/>
                                     <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="leading" secondItem="yDs-in-j2i" secondAttribute="leading" id="Ksm-AO-52h"/>
-                                    <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="top" id="bIw-YB-a6a"/>
+                                    <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="top" constant="25" id="bIw-YB-a6a"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
-                                <rect key="frame" x="287" y="613" width="88" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="0jm-VK-JXR"/>
-                                    <constraint firstAttribute="width" constant="88" id="5os-Dt-Pjo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="#"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
+                                <rect key="frame" x="222" y="599" width="42" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_grid">
+                                    <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="gridButtonClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ac-5x-zF4"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COT-cc-WTa">
+                                <rect key="frame" x="101" y="591" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_home">
+                                    <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,15 +102,15 @@
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="bottom" id="4a6-uN-hG7"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5oH-eV-dFj"/>
                             <constraint firstAttribute="trailing" secondItem="yDs-in-j2i" secondAttribute="trailing" id="AaK-7L-B5q"/>
-                            <constraint firstAttribute="trailing" secondItem="7xJ-jz-QWM" secondAttribute="trailing" id="AgG-J3-ozh"/>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jxa-Kd-uBU"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gB0-Tw-F1T"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xJ-jz-QWM" secondAttribute="bottom" id="ovR-Py-c3S"/>
                             <constraint firstAttribute="trailing" secondItem="ZzG-V2-MUD" secondAttribute="trailing" id="t39-T2-alD"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Z0B-Tq-4Wc" id="Ufc-7h-K5k"/>
+                        <outlet property="gridButton" destination="7xJ-jz-QWM" id="i73-9U-LAL"/>
+                        <outlet property="homeButton" destination="COT-cc-WTa" id="hbE-d5-gHn"/>
                         <outlet property="podcastsView" destination="ZzG-V2-MUD" id="BXn-lA-Q0e"/>
                     </connections>
                 </viewController>
@@ -110,4 +119,8 @@
             <point key="canvasLocation" x="136.80000000000001" y="95.802098950524751"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_grid" width="100" height="100"/>
+        <image name="ic_home" width="128" height="128"/>
+    </resources>
 </document>
