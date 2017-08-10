@@ -17,10 +17,18 @@
 #import "MTProgressView.h"
 #import "MTLoginRequest.h"
 #import "MTLoginResponse.h"
+#import "GMImagePickerController.h"
+#import "AssetToDataConverter.h"
+#import "MTUploadVideoRequest.h"
+#import "MTUploadVideoResponse.h"
+#import "MTProgressHUD.h"
+#import "JVFloatLabeledTextView.h"
+#import "JVFloatLabeledTextField.h"
+#import "MTInputVideoInfoViewController.h"
 
 @import UPCarouselFlowLayout;
 
-@interface ViewController () <MTPodcastDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <MTPodcastDataSource, UICollectionViewDataSource, UICollectionViewDelegate, GMImagePickerControllerDelegate>
 @property (nonatomic, weak) IBOutlet MTPodscastsView *podcastsView;
 @property (nonatomic, strong) NSArray *videos;
 @property (nonatomic, strong) NSArray *icons;
@@ -58,7 +66,6 @@
 }
 
 - (void)getVideos {
-    
     __weak typeof(self) weakSelf = self;
     NSString *category = @"nba";
     MTGetVideosRequest *getVideosRequest = [MTGetVideosRequest new];
@@ -149,6 +156,108 @@
     [self.podcastsView switchVideModes];
 }
 
+#pragma mark - upload video
+
+- (IBAction)uploadVideButtonClicked:(id)sender {
+    MTInputVideoInfoViewController *vvv = [MTInputVideoInfoViewController new];
+    [self presentViewController:vvv animated:YES completion:NULL];
+    return;
+    
+    GMImagePickerController *picker = [[GMImagePickerController alloc] init];
+    
+    //Display or not the selection info Toolbar:
+    picker.displaySelectionInfoToolbar = YES;
+    
+    //Display or not the number of assets in each album:
+    picker.displayAlbumsNumberOfAssets = YES;
+    
+    //Customize the picker title and prompt (helper message over the title)
+    picker.title = @"";
+    picker.customNavigationBarPrompt = @"Please pick the video to upload";
+    
+    //Customize the number of cols depending on orientation and the inter-item spacing
+    picker.colsInPortrait = 3;
+    picker.colsInLandscape = 5;
+    picker.minimumInteritemSpacing = 2.0;
+    
+    //You can pick the smart collections you want to show:
+    /*_customSmartCollections = @[@(PHAssetCollectionSubtypeSmartAlbumFavorites),
+                                @(PHAssetCollectionSubtypeSmartAlbumRecentlyAdded),
+                                @(PHAssetCollectionSubtypeSmartAlbumVideos),
+                                @(PHAssetCollectionSubtypeSmartAlbumSlomoVideos),
+                                @(PHAssetCollectionSubtypeSmartAlbumTimelapses),
+                                @(PHAssetCollectionSubtypeSmartAlbumBursts),
+                                @(PHAssetCollectionSubtypeSmartAlbumPanoramas)];*/
+    
+    
+    //Disable multiple selecion
+    picker.allowsMultipleSelection = NO;
+    
+    //Show a promt to confirm single selection
+    picker.confirmSingleSelection = YES;
+    picker.confirmSingleSelectionPrompt = @"Do you want to upload this video?";
+    
+    //Camera integration
+    picker.showCameraButton = YES;
+    picker.autoSelectCameraImages = YES;
+    
+    //Select the media types you want to show and filter out the rest
+    picker.mediaTypes = @[@(PHAssetMediaTypeVideo)];
+    
+    //UI color & text customizations
+    picker.pickerBackgroundColor = [UIColor blackColor];
+    picker.pickerTextColor = [UIColor whiteColor];
+    picker.toolbarBarTintColor = [UIColor colorWithRed:120./255. green:120./255. blue:120./255. alpha:0.3];
+    picker.toolbarTextColor = [UIColor whiteColor];
+    picker.toolbarTintColor = [UIColor whiteColor];
+    picker.navigationBarBackgroundColor = [UIColor blackColor];
+    picker.navigationBarTextColor = [UIColor whiteColor];
+    picker.navigationBarTintColor = [UIColor whiteColor];
+    picker.pickerFontName = @"HelveticaNeue-Light";
+    picker.pickerBoldFontName = @"HelveticaNeue-Thin";
+    picker.pickerFontNormalSize = 14.f;
+    picker.pickerFontHeaderSize = 17.0f;
+    picker.pickerStatusBarStyle = UIStatusBarStyleLightContent;
+    picker.useCustomFontForNavigationBar = YES;
+    
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - GMImagePickerControllerDelegate
+
+- (void)assetsPickerController:(GMImagePickerController *)picker didFinishPickingAssets:(NSArray *)assetArray {
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    PHAsset *asset = [assetArray firstObject];
+    __weak typeof(self) weakSelf = self;
+    [AssetToDataConverter convertAsset:asset completion:^(NSData *data, NSString *path) {
+        [weakSelf uploadVideoData:data path:path];
+    }];
+    
+    NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
+}
+
+- (void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker {
+    NSLog(@"GMImagePicker: User pressed cancel button");
+}
+
+#pragma mark - upload video request
+
+- (void)uploadVideoData:(NSData *)data path:(NSString *)path{
+    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
+    
+    __weak typeof(self) weakSelf = self;
+    MTUploadVideoRequest *uploadRequest = [MTUploadVideoRequest new];
+    uploadRequest.path = path;
+    uploadRequest.videoData = data;
+    uploadRequest.category = @"nba";
+    uploadRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
+        [weakSelf getVideos];
+    };
+    
+    [uploadRequest run];
+}
     
 
 @end

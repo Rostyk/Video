@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DGActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMMosaicLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GMImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JVFloatLabeledTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,17 +42,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A79483C13AB3D2D8BF6217D959B2200</key>
+		<key>2560C55CE7F981FD5A58A869EDF3E9E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2D31683EB1C59B56F7E7CEC2721778F1</key>
+		<key>2A4448146C785C426971111F117D773C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3814077B60A225441E135CD435F07186</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>84CACE4181AEB862C66D1066D7B32746</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A31007AF1A034D60F6E77DBC52B43088</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE09193F4D9949768840E6F7F91A5CF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

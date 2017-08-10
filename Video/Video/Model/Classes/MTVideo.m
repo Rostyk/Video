@@ -17,7 +17,9 @@
     self.videoId = node[@"id"];
     self.views = node[@"views"];
     self.title = node[@"title"];
-    self.details = node[@"description"];
+    
+    if (node[@"description"] && ![node[@"description"] isKindOfClass:[NSNull class]])
+        self.details = node[@"description"];
     
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

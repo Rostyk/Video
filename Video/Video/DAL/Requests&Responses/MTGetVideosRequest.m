@@ -21,14 +21,6 @@
     NSString *bearer = [NSString stringWithFormat:@"Bearer %@", [[MTDataModel sharedDatabaseStorage] getAccessToken]];
     [networkRequest addValue:bearer forHTTPHeaderField:@"Authorization"];
     
-    /*NSDictionary *tmp = [[NSDictionary alloc] initWithObjectsAndKeys:
-                         [[MTDataModel sharedDatabaseStorage] getAccessToken], @"accessToken",
-                         nil];
-    
-    NSError *error;
-    NSData *postdata = [NSJSONSerialization dataWithJSONObject:tmp options:0 error:&error];
-    
-    networkRequest.HTTPBody = postdata;*/
     networkRequest.HTTPMethod = @"GET";
     return networkRequest;
 }

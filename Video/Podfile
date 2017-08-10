@@ -8,4 +8,7 @@ target 'Video' do
  pod 'AFNetworking'
  pod "UPCarouselFlowLayout"
  pod "FMMosaicLayout"
+ pod 'GMImagePicker', '~> 0.0.2'
+ pod 'DGActivityIndicatorView'
+ pod 'JVFloatLabeledTextField'
 end

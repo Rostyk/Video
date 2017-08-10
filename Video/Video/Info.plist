@@ -44,5 +44,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>TLOS wants to access your video library</string>
+    <key>NSCameraUsageDescription</key>
+    <string>TLOS wants to access your camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>TLOS wants to access your microphone</string>
 </dict>
 </plist>

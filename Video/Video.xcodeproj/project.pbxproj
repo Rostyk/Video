@@ -31,11 +31,20 @@
 		0412A8191F35FD1B009DACDA /* CTPersistanceTable+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412A8001F35FD1B009DACDA /* CTPersistanceTable+Update.m */; };
 		0412A81A1F35FD1B009DACDA /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412A8021F35FD1B009DACDA /* CTPersistanceTable.m */; };
 		0412A81B1F35FD1B009DACDA /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412A8051F35FD1B009DACDA /* CTPersistanceTransaction.m */; };
+		0422FE891F3BA2E100EBCE16 /* MTUploadVideoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE861F3BA2E100EBCE16 /* MTUploadVideoRequest.m */; };
+		0422FE8A1F3BA2E100EBCE16 /* MTUploadVideoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE881F3BA2E100EBCE16 /* MTUploadVideoResponse.m */; };
+		0422FE8D1F3BA3E800EBCE16 /* SDMultipartRequestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE8C1F3BA3E800EBCE16 /* SDMultipartRequestUtility.m */; };
+		0422FE901F3BA46C00EBCE16 /* MultipartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE8F1F3BA46C00EBCE16 /* MultipartItem.m */; };
+		0422FE931F3BB9D700EBCE16 /* AssetToDataConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE921F3BB9D700EBCE16 /* AssetToDataConverter.m */; };
+		0422FE991F3C971C00EBCE16 /* IMGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE961F3C971C00EBCE16 /* IMGActivityIndicator.m */; };
+		0422FE9A1F3C971C00EBCE16 /* MTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE981F3C971C00EBCE16 /* MTProgressHUD.m */; };
+		0422FE9E1F3C9D1400EBCE16 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FE9D1F3C9D1400EBCE16 /* ViewController.m */; };
+		0422FEA11F3C9D2800EBCE16 /* MTInputVideoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FEA01F3C9D2800EBCE16 /* MTInputVideoInfoViewController.m */; };
+		0422FEA51F3CB7E800EBCE16 /* TLTagsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422FEA41F3CB7E800EBCE16 /* TLTagsControl.m */; };
 		042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042FC1191F2A3EDD00B6E507 /* Foundation.framework */; };
 		042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1341F2A453200B6E507 /* _MTVideo.m */; };
 		042FC1381F2A453200B6E507 /* MTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042FC1361F2A453200B6E507 /* MTVideo.m */; };
 		043E62DC1F2CB7BE002ECE33 /* MTVideScrubber.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */; };
-		043E62E51F2F6C6B002ECE33 /* GridController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62E41F2F6C6B002ECE33 /* GridController.m */; };
 		043E62E81F2F6CF6002ECE33 /* MTGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62E71F2F6CF6002ECE33 /* MTGridView.m */; };
 		043E62EA1F2F6D11002ECE33 /* MTGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043E62E91F2F6D11002ECE33 /* MTGridView.xib */; };
 		043E62ED1F2F6FE8002ECE33 /* MTGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62EC1F2F6FE8002ECE33 /* MTGridViewCell.m */; };
@@ -74,7 +83,6 @@
 		04D369AB1F0563720058A484 /* MTInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D369A91F0563720058A484 /* MTInfoView.xib */; };
 		474467F81EF19CE900857770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 474467F71EF19CE900857770 /* main.m */; };
 		474467FB1EF19CE900857770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 474467FA1EF19CE900857770 /* AppDelegate.m */; };
-		474467FE1EF19CE900857770 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474467FD1EF19CE900857770 /* ViewController.m */; };
 		474468011EF19CE900857770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474467FF1EF19CE900857770 /* Main.storyboard */; };
 		474468031EF19CE900857770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 474468021EF19CE900857770 /* Assets.xcassets */; };
 		474468061EF19CE900857770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474468041EF19CE900857770 /* LaunchScreen.storyboard */; };
@@ -151,6 +159,26 @@
 		0412A8021F35FD1B009DACDA /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
 		0412A8041F35FD1B009DACDA /* CTPersistanceTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTransaction.h; sourceTree = "<group>"; };
 		0412A8051F35FD1B009DACDA /* CTPersistanceTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTransaction.m; sourceTree = "<group>"; };
+		0422FE851F3BA2E100EBCE16 /* MTUploadVideoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUploadVideoRequest.h; sourceTree = "<group>"; };
+		0422FE861F3BA2E100EBCE16 /* MTUploadVideoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUploadVideoRequest.m; sourceTree = "<group>"; };
+		0422FE871F3BA2E100EBCE16 /* MTUploadVideoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUploadVideoResponse.h; sourceTree = "<group>"; };
+		0422FE881F3BA2E100EBCE16 /* MTUploadVideoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUploadVideoResponse.m; sourceTree = "<group>"; };
+		0422FE8B1F3BA3E800EBCE16 /* SDMultipartRequestUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMultipartRequestUtility.h; path = Video/Common/SDMultipartRequestUtility.h; sourceTree = SOURCE_ROOT; };
+		0422FE8C1F3BA3E800EBCE16 /* SDMultipartRequestUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMultipartRequestUtility.m; path = Video/Common/SDMultipartRequestUtility.m; sourceTree = SOURCE_ROOT; };
+		0422FE8E1F3BA46C00EBCE16 /* MultipartItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartItem.h; path = Video/Common/MultipartItem.h; sourceTree = SOURCE_ROOT; };
+		0422FE8F1F3BA46C00EBCE16 /* MultipartItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartItem.m; path = Video/Common/MultipartItem.m; sourceTree = SOURCE_ROOT; };
+		0422FE911F3BB9D700EBCE16 /* AssetToDataConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetToDataConverter.h; path = Video/Common/AssetToDataConverter.h; sourceTree = SOURCE_ROOT; };
+		0422FE921F3BB9D700EBCE16 /* AssetToDataConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetToDataConverter.m; path = Video/Common/AssetToDataConverter.m; sourceTree = SOURCE_ROOT; };
+		0422FE951F3C971C00EBCE16 /* IMGActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMGActivityIndicator.h; sourceTree = "<group>"; };
+		0422FE961F3C971C00EBCE16 /* IMGActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMGActivityIndicator.m; sourceTree = "<group>"; };
+		0422FE971F3C971C00EBCE16 /* MTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTProgressHUD.h; sourceTree = "<group>"; };
+		0422FE981F3C971C00EBCE16 /* MTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTProgressHUD.m; sourceTree = "<group>"; };
+		0422FE9C1F3C9D1400EBCE16 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0422FE9D1F3C9D1400EBCE16 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0422FE9F1F3C9D2800EBCE16 /* MTInputVideoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInputVideoInfoViewController.h; sourceTree = "<group>"; };
+		0422FEA01F3C9D2800EBCE16 /* MTInputVideoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInputVideoInfoViewController.m; sourceTree = "<group>"; };
+		0422FEA31F3CB7E800EBCE16 /* TLTagsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTagsControl.h; sourceTree = "<group>"; };
+		0422FEA41F3CB7E800EBCE16 /* TLTagsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTagsControl.m; sourceTree = "<group>"; };
 		042FC1191F2A3EDD00B6E507 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		042FC1331F2A453200B6E507 /* _MTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTVideo.h; sourceTree = "<group>"; };
 		042FC1341F2A453200B6E507 /* _MTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTVideo.m; sourceTree = "<group>"; };
@@ -159,8 +187,6 @@
 		043E62DA1F2CB7BE002ECE33 /* MTVideScrubber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideScrubber.h; sourceTree = "<group>"; };
 		043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideScrubber.m; sourceTree = "<group>"; };
 		043E62DD1F2F61CC002ECE33 /* VideoUI.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoUI.pch; path = Video/Common/VideoUI.pch; sourceTree = SOURCE_ROOT; };
-		043E62E31F2F6C6B002ECE33 /* GridController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GridController.h; path = Module/GridView/GridController.h; sourceTree = "<group>"; };
-		043E62E41F2F6C6B002ECE33 /* GridController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GridController.m; path = Module/GridView/GridController.m; sourceTree = "<group>"; };
 		043E62E61F2F6CF6002ECE33 /* MTGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGridView.h; sourceTree = "<group>"; };
 		043E62E71F2F6CF6002ECE33 /* MTGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGridView.m; sourceTree = "<group>"; };
 		043E62E91F2F6D11002ECE33 /* MTGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTGridView.xib; sourceTree = "<group>"; };
@@ -233,8 +259,6 @@
 		474467F71EF19CE900857770 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		474467F91EF19CE900857770 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		474467FA1EF19CE900857770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		474467FC1EF19CE900857770 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		474467FD1EF19CE900857770 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		474468001EF19CE900857770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		474468021EF19CE900857770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		474468051EF19CE900857770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -558,6 +582,37 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
+		0422FE941F3C971C00EBCE16 /* MTProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				0422FE951F3C971C00EBCE16 /* IMGActivityIndicator.h */,
+				0422FE961F3C971C00EBCE16 /* IMGActivityIndicator.m */,
+				0422FE971F3C971C00EBCE16 /* MTProgressHUD.h */,
+				0422FE981F3C971C00EBCE16 /* MTProgressHUD.m */,
+			);
+			path = MTProgressHud;
+			sourceTree = "<group>";
+		};
+		0422FE9B1F3C9CF700EBCE16 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0422FE9F1F3C9D2800EBCE16 /* MTInputVideoInfoViewController.h */,
+				0422FEA01F3C9D2800EBCE16 /* MTInputVideoInfoViewController.m */,
+				0422FE9C1F3C9D1400EBCE16 /* ViewController.h */,
+				0422FE9D1F3C9D1400EBCE16 /* ViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0422FEA21F3CB7E800EBCE16 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				0422FEA31F3CB7E800EBCE16 /* TLTagsControl.h */,
+				0422FEA41F3CB7E800EBCE16 /* TLTagsControl.m */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
 		042FC1261F2A416300B6E507 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,23 +660,6 @@
 			name = GridView;
 			sourceTree = "<group>";
 		};
-		043E62E11F2F6C2C002ECE33 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				043E62E21F2F6C3B002ECE33 /* GridView */,
-			);
-			name = Module;
-			sourceTree = "<group>";
-		};
-		043E62E21F2F6C3B002ECE33 /* GridView */ = {
-			isa = PBXGroup;
-			children = (
-				043E62E31F2F6C6B002ECE33 /* GridController.h */,
-				043E62E41F2F6C6B002ECE33 /* GridController.m */,
-			);
-			name = GridView;
-			sourceTree = "<group>";
-		};
 		0467DD531F29462D000872E7 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +685,10 @@
 		0467DD541F29462D000872E7 /* Requests&Responses */ = {
 			isa = PBXGroup;
 			children = (
+				0422FE851F3BA2E100EBCE16 /* MTUploadVideoRequest.h */,
+				0422FE861F3BA2E100EBCE16 /* MTUploadVideoRequest.m */,
+				0422FE871F3BA2E100EBCE16 /* MTUploadVideoResponse.h */,
+				0422FE881F3BA2E100EBCE16 /* MTUploadVideoResponse.m */,
 				0467DD6D1F29462D000872E7 /* MTGetVideosRequest.h */,
 				0467DD6E1F29462D000872E7 /* MTGetVideosRequest.m */,
 				0467DD6F1F29462D000872E7 /* MTGetVideosResponse.h */,
@@ -711,7 +753,7 @@
 		474467F51EF19CE900857770 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				043E62E11F2F6C2C002ECE33 /* Module */,
+				0422FE9B1F3C9CF700EBCE16 /* ViewController */,
 				0467DD531F29462D000872E7 /* DAL */,
 				04C509531F1659EF006A9084 /* Resources */,
 				47FA88211EF8232200AECDFD /* Common */,
@@ -720,8 +762,6 @@
 				4744680D1EF19E6400857770 /* CTVideoView */,
 				474467F91EF19CE900857770 /* AppDelegate.h */,
 				474467FA1EF19CE900857770 /* AppDelegate.m */,
-				474467FC1EF19CE900857770 /* ViewController.h */,
-				474467FD1EF19CE900857770 /* ViewController.m */,
 				474467FF1EF19CE900857770 /* Main.storyboard */,
 				474468021EF19CE900857770 /* Assets.xcassets */,
 				474468041EF19CE900857770 /* LaunchScreen.storyboard */,
@@ -914,6 +954,8 @@
 		47A977251EF6955600621404 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0422FEA21F3CB7E800EBCE16 /* Tags */,
+				0422FE941F3C971C00EBCE16 /* MTProgressHud */,
 				043E62E01F2F6BE6002ECE33 /* GridView */,
 				043E62DF1F2F6B78002ECE33 /* MenuCell */,
 				043E62DE1F2F6B6A002ECE33 /* InfoView */,
@@ -937,6 +979,10 @@
 			isa = PBXGroup;
 			children = (
 				0467DDED1F294965000872E7 /* Additions */,
+				0422FE8E1F3BA46C00EBCE16 /* MultipartItem.h */,
+				0422FE8F1F3BA46C00EBCE16 /* MultipartItem.m */,
+				0422FE8B1F3BA3E800EBCE16 /* SDMultipartRequestUtility.h */,
+				0422FE8C1F3BA3E800EBCE16 /* SDMultipartRequestUtility.m */,
 				043E62F71F2FB1F0002ECE33 /* TLOS.plist */,
 				043E62F11F2FAEC1002ECE33 /* BarItem.h */,
 				043E62F21F2FAEC1002ECE33 /* BarItem.m */,
@@ -954,6 +1000,8 @@
 				0467DE0D1F294A91000872E7 /* SDUserSettings.m */,
 				043E62EE1F2FAC43002ECE33 /* MTProgressView.h */,
 				043E62EF1F2FAC43002ECE33 /* MTProgressView.m */,
+				0422FE911F3BB9D700EBCE16 /* AssetToDataConverter.h */,
+				0422FE921F3BB9D700EBCE16 /* AssetToDataConverter.m */,
 			);
 			name = Common;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Video/Video/Video/Common;
@@ -1014,7 +1062,7 @@
 				TargetAttributes = {
 					474467F21EF19CE900857770 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 77QD7V8745;
+						DevelopmentTeam = 9ULZZ4979Q;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -1122,8 +1170,10 @@
 			files = (
 				043E62F51F2FAEC1002ECE33 /* BarItem.m in Sources */,
 				0467DDDB1F29462D000872E7 /* SDServiceRequestHandler.m in Sources */,
+				0422FE8D1F3BA3E800EBCE16 /* SDMultipartRequestUtility.m in Sources */,
 				0467DDBC1F29462D000872E7 /* MTGetVideosResponse.m in Sources */,
 				043E62E81F2F6CF6002ECE33 /* MTGridView.m in Sources */,
+				0422FE9A1F3C971C00EBCE16 /* MTProgressHUD.m in Sources */,
 				0467DE021F294965000872E7 /* SingleLineTextField.m in Sources */,
 				474468B91EF1AB2F00857770 /* MTVideoView.m in Sources */,
 				0412A8131F35FD1B009DACDA /* CTPersistanceQueryCommand+Status.m in Sources */,
@@ -1139,9 +1189,9 @@
 				0467DE041F294965000872E7 /* UIImage+Blur.m in Sources */,
 				474468491EF19E6400857770 /* CTVideoDataCenter.m in Sources */,
 				0412A8181F35FD1B009DACDA /* CTPersistanceTable+Insert.m in Sources */,
+				0422FEA11F3C9D2800EBCE16 /* MTInputVideoInfoViewController.m in Sources */,
 				0412A8091F35FD1B009DACDA /* NSString+SQL.m in Sources */,
 				0412A80B1F35FD1B009DACDA /* CTPersistanceDataBase.m in Sources */,
-				474467FE1EF19CE900857770 /* ViewController.m in Sources */,
 				042FC1371F2A453200B6E507 /* _MTVideo.m in Sources */,
 				0412A8111F35FD1B009DACDA /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				0467DDBB1F29462D000872E7 /* MTGetVideosRequest.m in Sources */,
@@ -1153,28 +1203,33 @@
 				0412A8081F35FD1B009DACDA /* NSString+ReqularExpression.m in Sources */,
 				0412A8121F35FD1B009DACDA /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				474468461EF19E6400857770 /* CTVideoView+VideoCoverView.m in Sources */,
+				0422FE9E1F3C9D1400EBCE16 /* ViewController.m in Sources */,
 				47FA88251EF840F700AECDFD /* MTOverlayView.m in Sources */,
 				474468401EF19E6400857770 /* CTVideoView+Download.m in Sources */,
 				0467DE001F294965000872E7 /* NSString+SDAdditions.m in Sources */,
 				0467DE011F294965000872E7 /* NSString+Validation.m in Sources */,
+				0422FE901F3BA46C00EBCE16 /* MultipartItem.m in Sources */,
 				474468411EF19E6400857770 /* CTVideoView+FullScreen.m in Sources */,
 				0412A8141F35FD1B009DACDA /* CTPersistanceQueryCommand.m in Sources */,
 				474467FB1EF19CE900857770 /* AppDelegate.m in Sources */,
 				0412A8171F35FD1B009DACDA /* CTPersistanceTable+Find.m in Sources */,
+				0422FE991F3C971C00EBCE16 /* IMGActivityIndicator.m in Sources */,
 				474468451EF19E6400857770 /* CTVideoView+Time.m in Sources */,
 				47A977241EF44B0C00621404 /* MTPodscastsView.m in Sources */,
 				0467DDD51F29462D000872E7 /* SDAuth.m in Sources */,
+				0422FE8A1F3BA2E100EBCE16 /* MTUploadVideoResponse.m in Sources */,
 				0467DE0F1F294A91000872E7 /* SDInternetConnection.m in Sources */,
 				0467DE031F294965000872E7 /* UIColor+BFPaperColors.m in Sources */,
 				0412A8101F35FD1B009DACDA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
+				0422FE931F3BB9D700EBCE16 /* AssetToDataConverter.m in Sources */,
 				0467DDFE1F294965000872E7 /* NSObject+PNCast.m in Sources */,
 				0412A8061F35FD1B009DACDA /* CTPersistanceAsyncExecutor.m in Sources */,
 				0467DDDA1F29462D000872E7 /* SDResult.m in Sources */,
 				0412A80D1F35FD1B009DACDA /* CTPersistanceMigrator.m in Sources */,
 				0467DE101F294A91000872E7 /* SDKeyStorage.m in Sources */,
-				043E62E51F2F6C6B002ECE33 /* GridController.m in Sources */,
 				0467DDFF1F294965000872E7 /* NSString+MTAdditions.m in Sources */,
 				04C509931F1666E4006A9084 /* MenuCell.m in Sources */,
+				0422FE891F3BA2E100EBCE16 /* MTUploadVideoRequest.m in Sources */,
 				0467DDC11F29462D000872E7 /* MTLoginRequest.m in Sources */,
 				474467F81EF19CE900857770 /* main.m in Sources */,
 				0467DDD81F29462D000872E7 /* SDRequest.m in Sources */,
@@ -1197,6 +1252,7 @@
 				474468471EF19E6400857770 /* UIPanGestureRecognizer+ExtraMethods.m in Sources */,
 				0412A8191F35FD1B009DACDA /* CTPersistanceTable+Update.m in Sources */,
 				0412A80C1F35FD1B009DACDA /* CTPersistanceDatabasePool.m in Sources */,
+				0422FEA51F3CB7E800EBCE16 /* TLTagsControl.m in Sources */,
 				4744684B1EF19E6400857770 /* CTVideoTable.m in Sources */,
 				0412A80A1F35FD1B009DACDA /* CTPersistanceCriteria.m in Sources */,
 			);
@@ -1323,7 +1379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77QD7V8745;
+				DEVELOPMENT_TEAM = 9ULZZ4979Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Video/Common/VideoUI.pch";
 				INFOPLIST_FILE = Video/Info.plist;
@@ -1343,7 +1399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77QD7V8745;
+				DEVELOPMENT_TEAM = 9ULZZ4979Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Video/Common/VideoUI.pch";
 				INFOPLIST_FILE = Video/Info.plist;
