@@ -21,7 +21,6 @@
     if (node[@"description"] && ![node[@"description"] isKindOfClass:[NSNull class]])
         self.details = node[@"description"];
     
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
     

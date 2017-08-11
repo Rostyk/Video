@@ -10,7 +10,7 @@
 
 @interface MTUploadVideoRequest : SDRequest
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *descriptionString;
 
 @property (nonatomic, strong) NSData *videoData;
 @property (nonatomic, strong) NSString *path;

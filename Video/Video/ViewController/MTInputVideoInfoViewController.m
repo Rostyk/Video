@@ -29,6 +29,9 @@
 #import "JVFloatLabeledTextField.h"
 #import "JVFloatLabeledTextView.h"
 #import "TLTagsControl.h"
+#import "MTProgressHUD.h"
+#import "MTUploadVideoRequest.h"
+#import "MTUploadVideoResponse.h"
 
 const static CGFloat kJVFieldHeight = 44.0f;
 const static CGFloat kJVFieldHMargin = 10.0f;
@@ -37,8 +40,12 @@ const static CGFloat kJVFieldFontSize = 16.0f;
 
 const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
 
-@interface MTInputVideoInfoViewController ()
+@interface MTInputVideoInfoViewController ()<UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, strong) TLTagsControl *tagControl;
+@property (nonatomic, strong) UIButton *postButton;
+
+@property (nonatomic, strong) JVFloatLabeledTextField *titleField;
+@property (nonatomic, strong) JVFloatLabeledTextView *descriptionField;
 @end
 
 @implementation MTInputVideoInfoViewController
@@ -61,19 +68,21 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     int margin = 20;
     int height = 30;
     
-    UIButton *postButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    postButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - width - margin, margin, width, 20);
-    postButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.postButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.postButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - width - margin, margin, width, 20);
+    self.postButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    postButton.backgroundColor = [UIColor lightGrayColor];
-    [postButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    postButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    [postButton setTitle:@"Upload" forState:UIControlStateNormal];
-    [self.view addSubview:postButton];
+    self.postButton.backgroundColor = [UIColor lightGrayColor];
+    [self.postButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.postButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    [self.postButton setTitle:@"Upload" forState:UIControlStateNormal];
+    self.postButton.userInteractionEnabled = NO;
+    [self.postButton addTarget:self action:@selector(pushVideo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.postButton];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(margin)-[postButton(height)]|" options:0 metrics:@{@"margin": @(margin), @"height": @(height)} views:NSDictionaryOfVariableBindings(postButton)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(margin)-[_postButton(height)]|" options:0 metrics:@{@"margin": @(margin), @"height": @(height)} views:NSDictionaryOfVariableBindings(_postButton)]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(margin)-[postButton(==width)]|" options:0 metrics:@{@"margin": @([UIScreen mainScreen].bounds.size.width - width - margin), @"width": @(width)} views:NSDictionaryOfVariableBindings(postButton)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(margin)-[_postButton(==width)]|" options:0 metrics:@{@"margin": @([UIScreen mainScreen].bounds.size.width - width - margin), @"width": @(width)} views:NSDictionaryOfVariableBindings(_postButton)]];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor blackColor];
@@ -87,18 +96,22 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     
     UIColor *floatingLabelColor = [UIColor whiteColor];
     
-    JVFloatLabeledTextField *titleField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
-    titleField.textColor = textColor;
-    titleField.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:kJVFieldFontSize];
-    titleField.attributedPlaceholder =
+    self.titleField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
+    [self.titleField addTarget:self
+                  action:@selector(textFieldDidChange:)
+        forControlEvents:UIControlEventEditingChanged];
+    
+    self.titleField.textColor = textColor;
+    self.titleField.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:kJVFieldFontSize];
+    self.titleField.attributedPlaceholder =
     [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Title for video", @"")
                                     attributes:@{NSForegroundColorAttributeName: placeholderColor}];
-    titleField.floatingLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:kJVFieldFloatingLabelFontSize];
-    titleField.floatingLabelTextColor = floatingLabelColor;
-    titleField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:titleField];
-    titleField.translatesAutoresizingMaskIntoConstraints = NO;
-    titleField.keepBaseline = YES;
+    self.titleField.floatingLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:kJVFieldFloatingLabelFontSize];
+    self.titleField.floatingLabelTextColor = floatingLabelColor;
+    self.titleField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view addSubview:self.titleField];
+    self.titleField.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleField.keepBaseline = YES;
 
     UIView *div1 = [UIView new];
     div1.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
@@ -106,18 +119,6 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     div1.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self createTags];
-
-    //JVFloatLabeledTextField *priceField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
-    /*priceField.textColor = textColor;
-    
-    priceField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
-    priceField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Tag", @"")
-                                                                       attributes:@{NSForegroundColorAttributeName: placeholderColor}];
-    priceField.floatingLabelFont = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
-    priceField.floatingLabelTextColor = floatingLabelColor;
-    [self.view addSubview:priceField];
-    
-    priceField.translatesAutoresizingMaskIntoConstraints = NO;*/
     
     TLTagsControl *tagsControl = self.tagControl;
 
@@ -125,47 +126,36 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     div2.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div2];
     div2.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    /*JVFloatLabeledTextField *locationField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
-    locationField.textColor = textColor;
-    locationField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
-    locationField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Specific Location (optional)", @"")
-                                                                          attributes:@{NSForegroundColorAttributeName: placeholderColor}];
-    locationField.floatingLabelFont = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
-    locationField.floatingLabelTextColor = floatingLabelColor;
-    [self.view addSubview:locationField];
-    locationField.translatesAutoresizingMaskIntoConstraints = NO;*/
 
     UIView *div3 = [UIView new];
     div3.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div3];
     div3.translatesAutoresizingMaskIntoConstraints = NO;
 
-    JVFloatLabeledTextView *descriptionField = [[JVFloatLabeledTextView alloc] initWithFrame:CGRectZero];
-    descriptionField.textColor = textColor;
-    descriptionField.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:kJVFieldFontSize];
-    descriptionField.placeholder = NSLocalizedString(@"Description for your video", @"");
-    descriptionField.placeholderTextColor = placeholderColor;
-    descriptionField.floatingLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:kJVFieldFloatingLabelFontSize];
-    descriptionField.floatingLabelTextColor = floatingLabelColor;
-    descriptionField.backgroundColor = [UIColor blackColor];
+    self.descriptionField = [[JVFloatLabeledTextView alloc] initWithFrame:CGRectZero];
+    self.descriptionField.delegate = self;
+    self.descriptionField.textColor = textColor;
+    self.descriptionField.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:kJVFieldFontSize];
+    self.descriptionField.placeholder = NSLocalizedString(@"Description for your video", @"");
+    self.descriptionField.placeholderTextColor = placeholderColor;
+    self.descriptionField.floatingLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:kJVFieldFloatingLabelFontSize];
+    self.descriptionField.floatingLabelTextColor = floatingLabelColor;
+    self.descriptionField.backgroundColor = [UIColor blackColor];
     
-    [self.view addSubview:descriptionField];
-    descriptionField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.descriptionField];
+    self.descriptionField.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[titleField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(titleField)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[_titleField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(_titleField)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div1]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div1)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[tagsControl]-(xMargin)-[div2(1)]-(0)-|" options:NSLayoutFormatAlignAllCenterY metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(tagsControl, div2)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[div3]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(div3)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[descriptionField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(descriptionField)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(xMargin)-[_descriptionField]-(xMargin)-|" options:0 metrics:@{@"xMargin": @(kJVFieldHMargin)} views:NSDictionaryOfVariableBindings(_descriptionField)]];
 
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(70)-[tagsControl(==tagsHeight)]-[div1(1)]-[titleField(>=minHeight)]-[div3(1)]-[descriptionField]|" options:0 metrics:@{@"minHeight": @(kJVFieldHeight), @"tagsHeight" : @(42)} views:NSDictionaryOfVariableBindings(tagsControl, div1, titleField, div3, descriptionField)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(70)-[tagsControl(==tagsHeight)]-[div1(1)]-[_titleField(>=minHeight)]-[div3(1)]-[_descriptionField]|" options:0 metrics:@{@"minHeight": @(kJVFieldHeight), @"tagsHeight" : @(42)} views:NSDictionaryOfVariableBindings(tagsControl, div1, _titleField, div3, _descriptionField)]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tagsControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:div2 attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
-    
-    /*[self.view addConstraint:[NSLayoutConstraint constraintWithItem:tagsControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:locationField attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];*/
 
-    [titleField becomeFirstResponder];
+    [self.titleField becomeFirstResponder];
     
 }
 
@@ -189,10 +179,55 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     [self.view addSubview:self.tagControl];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)canUploadVideo {
+    if (self.titleField.text.length > 0 && self.descriptionField.text.length > 0) {
+        self.postButton.userInteractionEnabled = YES;
+        return true;
+    }
+    
+    return false;
+}
+
+#pragma mark - UITextFiledDelegate
+
+- (void)textFieldDidChange:(UITextField *)sender {
+    if ([self canUploadVideo]) {
+        self.postButton.enabled = true;
+    }
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if ([self canUploadVideo]) {
+        self.postButton.enabled = true;
+    }
+}
+
+#pragma mark - Upload video
+
+- (void)pushVideo {
+    [self.titleField resignFirstResponder];
+    [self.descriptionField resignFirstResponder];
+    
+    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
+    
+    __weak typeof(self) weakSelf = self;
+    MTUploadVideoRequest *uploadRequest = [MTUploadVideoRequest new];
+    uploadRequest.path = self.path;
+    uploadRequest.videoData = self.videoData;
+    uploadRequest.category = @"nba";
+    uploadRequest.title = self.titleField.text;
+    uploadRequest.descriptionString = self.descriptionField.text;
+    
+    uploadRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
+        MTUploadVideoResponse *uploadResponse = (MTUploadVideoResponse *)response;
+        
+        [weakSelf.delegate onVideoUploadedWithId:uploadResponse.videoId];
+        [weakSelf dismissViewControllerAnimated:YES completion:NULL];
+    };
+    
+    [uploadRequest run];
 }
 
 @end

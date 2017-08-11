@@ -29,7 +29,7 @@
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             [[MTDataModel sharedDatabaseStorage] getAccessToken], @"accessToken",
                             self.title, @"title",
-                            self.description, @"description",
+                            self.descriptionString, @"description",
                             self.category, @"category",
                             nil];
     

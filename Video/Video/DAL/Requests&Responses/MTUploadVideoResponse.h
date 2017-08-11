@@ -11,4 +11,6 @@
 @interface MTUploadVideoResponse : SDResult
 @property (nonatomic) BOOL success;
 - (void)parseResponseData:(NSData *)responseData;
+
+@property (nonatomic, strong) NSNumber *videoId;
 @end

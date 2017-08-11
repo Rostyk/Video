@@ -16,12 +16,8 @@
         NSError *error = nil;
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            if ([jsonDict[@"status"] integerValue] == 200) {
-                self.success = true;
-            }
-        }
+        self.videoId = jsonDict[@"id"];
+        
     });
 }
 

@@ -27,6 +27,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTInputVideoInfoViewController : UIViewController
+@protocol MTInputVideoInfoDelegate <NSObject>
+- (void)onVideoUploadedWithId:(NSNumber *)videoId;
+@end
 
+@interface MTInputVideoInfoViewController : UIViewController
+@property (nonatomic, strong) NSString *category;
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSData *videoData;
+
+@property (nonatomic, weak) id<MTInputVideoInfoDelegate>delegate;
 @end

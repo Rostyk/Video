@@ -28,7 +28,7 @@
 
 @import UPCarouselFlowLayout;
 
-@interface ViewController () <MTPodcastDataSource, UICollectionViewDataSource, UICollectionViewDelegate, GMImagePickerControllerDelegate>
+@interface ViewController () <MTPodcastDataSource, UICollectionViewDataSource, UICollectionViewDelegate, GMImagePickerControllerDelegate, MTInputVideoInfoDelegate>
 @property (nonatomic, weak) IBOutlet MTPodscastsView *podcastsView;
 @property (nonatomic, strong) NSArray *videos;
 @property (nonatomic, strong) NSArray *icons;
@@ -109,6 +109,10 @@
 
 - (MTVideo *)videoInfoForIndex:(NSInteger)index {
     MTVideo *info = self.videos[index];
+    
+    NSString *videoUrl = info.url;
+    NSString *title = info.title;
+    NSString *description = info.title;
     return info;
 }
 
@@ -159,10 +163,6 @@
 #pragma mark - upload video
 
 - (IBAction)uploadVideButtonClicked:(id)sender {
-    MTInputVideoInfoViewController *vvv = [MTInputVideoInfoViewController new];
-    [self presentViewController:vvv animated:YES completion:NULL];
-    return;
-    
     GMImagePickerController *picker = [[GMImagePickerController alloc] init];
     
     //Display or not the selection info Toolbar:
@@ -232,7 +232,7 @@
     PHAsset *asset = [assetArray firstObject];
     __weak typeof(self) weakSelf = self;
     [AssetToDataConverter convertAsset:asset completion:^(NSData *data, NSString *path) {
-        [weakSelf uploadVideoData:data path:path];
+        [weakSelf showVideoDetailsControllerForUploadVideoData:data path:path];
     }];
     
     NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
@@ -242,21 +242,56 @@
     NSLog(@"GMImagePicker: User pressed cancel button");
 }
 
-#pragma mark - upload video request
+#pragma mark - input data details presentation
 
-- (void)uploadVideoData:(NSData *)data path:(NSString *)path{
-    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
+- (void)showVideoDetailsControllerForUploadVideoData:(NSData *)data path:(NSString *)path{
+    MTInputVideoInfoViewController *inputVideoInfoViewController = [MTInputVideoInfoViewController new];
+    inputVideoInfoViewController.path = path;
+    inputVideoInfoViewController.category = @"nba";
+    inputVideoInfoViewController.videoData = data;
+    inputVideoInfoViewController.delegate = self;
     
+    [self presentViewController:inputVideoInfoViewController animated:YES completion:NULL];
+}
+
+#pragma mark - MTInputVideViewDelegate
+
+- (void)onVideoUploadedWithId:(NSNumber *)videoId {
     __weak typeof(self) weakSelf = self;
-    MTUploadVideoRequest *uploadRequest = [MTUploadVideoRequest new];
-    uploadRequest.path = path;
-    uploadRequest.videoData = data;
-    uploadRequest.category = @"nba";
-    uploadRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
-        [weakSelf getVideos];
+    NSString *category = @"nba";
+    
+    NSMutableArray *ids = [NSMutableArray new];
+    for (MTVideo *video in self.videos) {
+        [ids addObject:video.videoId];
+    }
+    
+    [[MTProgressHUD sharedHUD] showOnView:self.view
+                               percentage:false];
+    
+    MTGetVideosRequest *getVideosRequest = [MTGetVideosRequest new];
+    getVideosRequest.category = category;
+    getVideosRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
+        NSArray *videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:category];
+        
+        if (videos.count - self.videos.count == 1) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.videoId == %@", videoId];
+            NSArray *newVideo = [videos filteredArrayUsingPredicate:predicate];
+            
+            NSMutableArray *newArray = [[NSMutableArray alloc] init];
+            for (NSString *oldVideoId in ids) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.videoId == %@", oldVideoId];
+                NSArray *videoFromNewPack = [videos filteredArrayUsingPredicate:predicate];
+                [newArray addObject:videoFromNewPack.firstObject];
+            }
+            
+            [newArray addObject:newVideo.firstObject];
+            weakSelf.videos = newArray;
+        }
+        
+        [[MTProgressHUD sharedHUD] dismiss];
     };
     
-    [uploadRequest run];
+    [getVideosRequest run];
 }
     
 
