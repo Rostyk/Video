@@ -26,6 +26,8 @@
 #import "JVFloatLabeledTextField.h"
 #import "MTInputVideoInfoViewController.h"
 
+#import <Crashlytics/Crashlytics.h>
+
 @import UPCarouselFlowLayout;
 
 @interface ViewController () <MTPodcastDataSource, UICollectionViewDataSource, UICollectionViewDelegate, GMImagePickerControllerDelegate, MTInputVideoInfoDelegate>
@@ -35,7 +37,7 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, weak) IBOutlet UIButton *gridButton;
-@property (nonatomic, weak) IBOutlet UIButton *homeButton;
+@property (nonatomic, weak) IBOutlet UIButton *uploadButton;
 @end
 
 @implementation ViewController
@@ -51,7 +53,7 @@
 
 - (void)login {
     self.gridButton.alpha = 0.0;
-    self.homeButton.alpha = 0.0;
+    self.uploadButton.alpha = 0.0;
     [[MTProgressView sharedView] showInView:self.view];
     
     __weak typeof(self) weakSelf = self;
@@ -78,7 +80,7 @@
         [[MTProgressView sharedView] remove];
         [UIView animateWithDuration:1.8
                          animations:^{
-                             self.homeButton.alpha = 1.0;
+                             self.uploadButton.alpha = 1.0;
                              self.gridButton.alpha = 1.0;
                          }
                          completion:NULL];

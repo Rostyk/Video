@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,9 +76,12 @@
                                     <constraint firstItem="Z0B-Tq-4Wc" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="top" constant="25" id="bIw-YB-a6a"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
-                                <rect key="frame" x="116" y="597" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
+                                <rect key="frame" x="120" y="597" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="hab-K1-vQn"/>
+                                    <constraint firstAttribute="width" constant="32" id="wFe-tp-07o"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_grid">
                                     <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,11 +91,14 @@
                                     <action selector="gridButtonClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ac-5x-zF4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-02-BOW">
-                                <rect key="frame" x="218" y="593" width="36" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-02-BOW">
+                                <rect key="frame" x="222" y="595" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Gz5-lE-sbs"/>
+                                    <constraint firstAttribute="width" constant="36" id="vMA-hI-gGe"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_camera">
+                                <state key="normal" image="ic_upload">
                                     <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -99,21 +106,36 @@
                                     <action selector="uploadVideButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="evq-Xq-0WL"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ8-qr-bkQ">
+                                <rect key="frame" x="186" y="539" width="2" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Qrl-gp-h4j"/>
+                                    <constraint firstAttribute="width" constant="2" id="yfY-Z0-LSr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QZ8-qr-bkQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="030-bI-O4m"/>
+                            <constraint firstItem="kGL-02-BOW" firstAttribute="leading" secondItem="QZ8-qr-bkQ" secondAttribute="trailing" constant="34" id="0W4-tA-aoz"/>
+                            <constraint firstItem="QZ8-qr-bkQ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="4IR-Lu-K0P"/>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="top" secondItem="yDs-in-j2i" secondAttribute="bottom" id="4a6-uN-hG7"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5oH-eV-dFj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kGL-02-BOW" secondAttribute="bottom" constant="36" id="9hm-IZ-u1t"/>
                             <constraint firstAttribute="trailing" secondItem="yDs-in-j2i" secondAttribute="trailing" id="AaK-7L-B5q"/>
                             <constraint firstItem="ZzG-V2-MUD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jxa-Kd-uBU"/>
+                            <constraint firstItem="QZ8-qr-bkQ" firstAttribute="leading" secondItem="7xJ-jz-QWM" secondAttribute="trailing" constant="34" id="fLF-mc-XMt"/>
                             <constraint firstItem="yDs-in-j2i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gB0-Tw-F1T"/>
                             <constraint firstAttribute="trailing" secondItem="ZzG-V2-MUD" secondAttribute="trailing" id="t39-T2-alD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xJ-jz-QWM" secondAttribute="bottom" constant="38" id="zI1-FY-3aO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Z0B-Tq-4Wc" id="Ufc-7h-K5k"/>
                         <outlet property="gridButton" destination="7xJ-jz-QWM" id="i73-9U-LAL"/>
                         <outlet property="podcastsView" destination="ZzG-V2-MUD" id="BXn-lA-Q0e"/>
+                        <outlet property="uploadButton" destination="kGL-02-BOW" id="nab-d1-zBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,7 +144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_camera" width="40" height="40"/>
         <image name="ic_grid" width="100" height="100"/>
+        <image name="ic_upload" width="40" height="40"/>
     </resources>
 </document>

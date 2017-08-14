@@ -67,8 +67,10 @@ static NSString * const SDFalseJsonParam                = @"false";
         self.securityToken = token;
         [self updateWithSecurityToken:token];
         
-        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfiguration.HTTPMaximumConnectionsPerHost = 63;
+        sessionConfiguration.timeoutIntervalForRequest = 120;
+        sessionConfiguration.timeoutIntervalForResource = 180;
     
         requestSession_ = [NSURLSession sessionWithConfiguration:sessionConfiguration  delegate:self delegateQueue:nil];
 
@@ -155,8 +157,8 @@ static NSString * const SDFalseJsonParam                = @"false";
 {
     SDResult *result = nil;
     
-    if ([SDInternetConnection networkStatus] != NotReachable)
-    {
+    //if ([SDInternetConnection networkStatus] != NotReachable)
+    //{
             NSURLRequest *networkRequest = nil;
             
             networkRequest = [self serviceURLRequestWithRequest:request];
@@ -191,16 +193,6 @@ static NSString * const SDFalseJsonParam                = @"false";
                 
                 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
                 
-//                double timePassed = [requestStart timeIntervalSinceNow] * -1000.0;
-//                
-//                if (timePassed > 500)
-//                {
-//                    // request took more than 0.5sec to complete
-//                    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createTimingWithCategory:request.description
-//                                                                                                     interval:[NSNumber numberWithFloat:timePassed]
-//                                                                                                         name:[NSString stringWithFormat:@"requestSuccess:%@",[result isSuccess] ? @"YES" : @"NO"]
-//                                                                                                        label:[NSString stringWithFormat:@"responseTime:%f", timePassed]] build]];
-//                }
                 
                 if ([request isCanceled])
                 {
@@ -222,11 +214,11 @@ static NSString * const SDFalseJsonParam                = @"false";
                 // TODO: revise?
                 result = [SDResult errorWithCode:0];
             }
-    }
-    else
-    {
-        result = [SDResult errorWithCode:0 message:@"No internet connection"];
-    }
+    //}
+    //else
+    //{
+        //result = [SDResult errorWithCode:0 message:@"No internet connection"];
+    //}
     
     return result;
 }
