@@ -50,9 +50,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhP-Mp-VJb">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xJ-jz-QWM">
                                         <rect key="frame" x="251" y="17" width="26" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="NrL-b7-rH9"/>
+                                            <constraint firstAttribute="width" constant="26" id="Qdl-55-cxU"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" backgroundImage="ic_grid">
                                             <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,19 +65,36 @@
                                             <action selector="gridButtonClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ac-5x-zF4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-02-BOW">
-                                        <rect key="frame" x="89" y="17" width="26" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-02-BOW">
+                                        <rect key="frame" x="98" y="17" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="dbk-vS-3nc"/>
+                                            <constraint firstAttribute="height" constant="26" id="fFN-JF-AMB"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" backgroundImage="ic_home">
                                             <color key="titleColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6K-8R-5ik" userLabel="Separator">
+                                        <rect key="frame" x="186.5" y="0.0" width="2" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="2" id="6r2-QL-Leg"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="P6K-8R-5ik" firstAttribute="leading" secondItem="kGL-02-BOW" secondAttribute="trailing" constant="62.5" id="4Z0-GD-hRf"/>
+                                    <constraint firstItem="7xJ-jz-QWM" firstAttribute="centerY" secondItem="mhP-Mp-VJb" secondAttribute="centerY" id="74H-mW-V9u"/>
+                                    <constraint firstItem="7xJ-jz-QWM" firstAttribute="leading" secondItem="P6K-8R-5ik" secondAttribute="trailing" constant="62.5" id="A7C-PM-de0"/>
+                                    <constraint firstAttribute="bottom" secondItem="P6K-8R-5ik" secondAttribute="bottom" id="SFf-xi-cMC"/>
+                                    <constraint firstItem="kGL-02-BOW" firstAttribute="centerY" secondItem="mhP-Mp-VJb" secondAttribute="centerY" id="Tp6-dS-iN1"/>
+                                    <constraint firstItem="P6K-8R-5ik" firstAttribute="top" secondItem="mhP-Mp-VJb" secondAttribute="top" id="aHa-bz-3Px"/>
                                     <constraint firstAttribute="height" constant="60" id="cCK-oV-Jhy"/>
+                                    <constraint firstItem="P6K-8R-5ik" firstAttribute="centerX" secondItem="mhP-Mp-VJb" secondAttribute="centerX" id="iEK-ED-SdC"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE0-Kv-SEZ">

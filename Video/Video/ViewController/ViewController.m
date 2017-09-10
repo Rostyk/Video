@@ -359,7 +359,7 @@
         self.bgView.alpha = 0;
     }];
     
-    [UIView animateWithDuration:1.8
+    [UIView animateWithDuration:0.8
                      animations:^{
                          self.bottomView.alpha = 1.0;
                          self.topbBadgeView.alpha = 1.0;

@@ -16,4 +16,6 @@
 
 #define NUMBER_OF_COLUMNS_IN_MOSAIC_VIEW                                   3
 #define INFO_VIEW_VERTICAL_MARGIN_FROM_VIDEO                               30
+
+#define MARGIN                                                             5
 #endif /* PrefixHeader_pch */

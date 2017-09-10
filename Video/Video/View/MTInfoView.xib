@@ -37,8 +37,8 @@
                         <constraint firstAttribute="height" constant="9" id="asx-9b-u1W"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ihk-2E-TQW" customClass="PaddingLabel">
-                    <rect key="frame" x="16" y="22" width="343" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihk-2E-TQW" customClass="PaddingLabel">
+                    <rect key="frame" x="16" y="22" width="275" height="26"/>
                     <color key="backgroundColor" red="0.72156862745098038" green="0.60784313725490191" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Zlk-sn-saW"/>
@@ -47,8 +47,8 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vii-5I-Lg5" customClass="PaddingLabel">
-                    <rect key="frame" x="16" y="62" width="343" height="24"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vii-5I-Lg5" customClass="PaddingLabel">
+                    <rect key="frame" x="16" y="62" width="275" height="24"/>
                     <color key="backgroundColor" red="0.72156862749999995" green="0.60784313729999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="uKn-Wr-0kH"/>
@@ -67,8 +67,8 @@
             <constraints>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AQ7-Or-YTe"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>
-                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="16" id="DGQ-hH-rwY"/>
-                <constraint firstAttribute="trailing" secondItem="vii-5I-Lg5" secondAttribute="trailing" constant="16" id="MwO-pF-RQ4"/>
+                <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="84" id="DGQ-hH-rwY"/>
+                <constraint firstAttribute="trailing" secondItem="vii-5I-Lg5" secondAttribute="trailing" constant="84" id="MwO-pF-RQ4"/>
                 <constraint firstAttribute="trailing" secondItem="Xco-tP-lRu" secondAttribute="trailing" id="OA9-Wd-2ng"/>
                 <constraint firstItem="YOi-Jn-BIK" firstAttribute="leading" secondItem="gi3-Pw-PgW" secondAttribute="trailing" constant="6" id="S8q-n5-wjK"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="top" secondItem="gi3-Pw-PgW" secondAttribute="bottom" constant="13" id="cUb-9L-lr4"/>
@@ -86,7 +86,7 @@
                 <outlet property="titleLabel" destination="Ihk-2E-TQW" id="EBH-Ge-iF6"/>
                 <outlet property="titleLeftMargin" destination="BMB-Ju-PNT" id="Fwq-bi-C2k"/>
             </connections>
-            <point key="canvasLocation" x="279" y="99"/>
+            <point key="canvasLocation" x="278.5" y="98.5"/>
         </view>
     </objects>
     <resources>
