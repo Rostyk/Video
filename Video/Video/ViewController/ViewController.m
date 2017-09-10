@@ -39,9 +39,13 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *gridButton;
 @property (nonatomic, weak) IBOutlet UIButton *uploadButton;
+@property (nonatomic, weak) IBOutlet UIButton *homeButton;
+@property (nonatomic, weak) IBOutlet UIView *bottomView;
 
 @property (nonatomic) NSUInteger currentPage;
-@property (nonatomic) NSUInteger currentCategory;
+@property (nonatomic, weak) IBOutlet UIImageView *bgView;
+@property (nonatomic, weak) IBOutlet UIImageView *topbBadgeView;
+@property (nonatomic, weak) IBOutlet UIButton *searchButton;
 @end
 
 @implementation ViewController
@@ -49,16 +53,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
+    [self setupAnimation];
+}
+
+- (void)setupAnimation {
+    self.bgView.image = [UIImage imageNamed:@"bg_frame3"];
+    
+    CABasicAnimation *theAnimation;
+    
+    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    theAnimation.duration=1.0;
+    theAnimation.repeatCount=HUGE_VALF;
+    theAnimation.autoreverses=YES;
+    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    theAnimation.toValue=[NSNumber numberWithFloat:0.0];
+    [self.bgView.layer addAnimation:theAnimation forKey:@"animateOpacity"];
 }
 
 - (void)setup {
+    _currentPage = 2;
     [self login];
 }
 
 - (void)login {
-    self.gridButton.alpha = 0.0;
-    self.uploadButton.alpha = 0.0;
-    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
+    self.bottomView.alpha = 0.0;
+    self.topbBadgeView.alpha = 0.0;
+    self.searchButton.alpha = 0.0;
+   // [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
     
     __weak typeof(self) weakSelf = self;
     MTLoginRequest *loginRequest = [MTLoginRequest new];
@@ -79,13 +100,8 @@
          weakSelf.videos = videos;
          [weakSelf setupVideoLinks];
          
-         [[MTProgressHUD sharedHUD] dismiss];
-         [UIView animateWithDuration:1.8
-         animations:^{
-             self.uploadButton.alpha = 1.0;
-             self.gridButton.alpha = 1.0;
-         }
-         completion:NULL];
+         //[[MTProgressHUD sharedHUD] dismiss];
+         [weakSelf hideBgView];
     }];
     
 }
@@ -335,6 +351,21 @@
     self.videos = videos;
     
     [self.podcastsView reload];
+}
+
+- (void)hideBgView {
+    [self.bgView.layer removeAllAnimations];
+    [UIView animateWithDuration:0.4 animations:^{
+        self.bgView.alpha = 0;
+    }];
+    
+    [UIView animateWithDuration:1.8
+                     animations:^{
+                         self.bottomView.alpha = 1.0;
+                         self.topbBadgeView.alpha = 1.0;
+                         self.searchButton.alpha = 1.0;
+                     }
+                     completion:NULL];
 }
 
 
