@@ -58,7 +58,7 @@
 - (void)login {
     self.gridButton.alpha = 0.0;
     self.uploadButton.alpha = 0.0;
-    [[MTProgressView sharedView] showInView:self.view];
+    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
     
     __weak typeof(self) weakSelf = self;
     MTLoginRequest *loginRequest = [MTLoginRequest new];
@@ -79,7 +79,7 @@
          weakSelf.videos = videos;
          [weakSelf setupVideoLinks];
          
-         [[MTProgressView sharedView] remove];
+         [[MTProgressHUD sharedHUD] dismiss];
          [UIView animateWithDuration:1.8
          animations:^{
              self.uploadButton.alpha = 1.0;
