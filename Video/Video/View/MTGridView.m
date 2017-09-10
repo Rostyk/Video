@@ -34,10 +34,10 @@
     [self.collectionView registerClass:[MTGridViewCell class] forCellWithReuseIdentifier:MTGridViewCellReuseID];
 }
 
-- (void)setCategory:(NSString *)category {
-    _category = category;
+- (void)setCategoryId:(NSUInteger)categoryId {
+    _categoryId = categoryId;
     
-    self.videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:_category
+    self.videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:categoryId
                                                                 minusVideo:self.firstTileVideoView.videoId];
     FMMosaicLayout *mosaicLayout = [[FMMosaicLayout alloc] init];
     self.collectionView.collectionViewLayout = mosaicLayout;

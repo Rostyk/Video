@@ -20,7 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTVideoID *objectID;
 
-@property (nonatomic, strong, nullable) NSString* category;
+@property (nonatomic, strong, nullable) NSNumber* categoryId;
+
+@property (atomic) int32_t categoryIdValue;
+- (int32_t)categoryIdValue;
+- (void)setCategoryIdValue:(int32_t)value_;
 
 @property (nonatomic, strong, nullable) NSDate* date;
 
@@ -54,8 +58,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTVideo (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveCategory;
-- (void)setPrimitiveCategory:(nullable NSString*)value;
+- (nullable NSNumber*)primitiveCategoryId;
+- (void)setPrimitiveCategoryId:(nullable NSNumber*)value;
+
+- (int32_t)primitiveCategoryIdValue;
+- (void)setPrimitiveCategoryIdValue:(int32_t)value_;
 
 - (nullable NSDate*)primitiveDate;
 - (void)setPrimitiveDate:(nullable NSDate*)value;
@@ -93,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface MTVideoAttributes: NSObject 
-+ (NSString *)category;
++ (NSString *)categoryId;
 + (NSString *)date;
 + (NSString *)details;
 + (NSString *)isExpired;

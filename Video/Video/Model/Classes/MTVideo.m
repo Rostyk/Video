@@ -12,7 +12,7 @@
 
 - (void)parseNode:(NSDictionary *)node {
     self.url = node[@"url"];
-    self.category = node[@"categoryName"];
+    self.categoryId = node[@"categoryId"];
     self.isExpired = node[@"isExpire"];
     self.videoId = node[@"id"];
     self.views = node[@"views"];

@@ -528,7 +528,6 @@
 }
 
 - (NSArray *)parseVideos:(NSData *)data {
-    [self removeAllEntities:@"MTVideo"];
     NSMutableArray *videos = [[NSMutableArray alloc] init];
     if(data != nil) {
         NSError *error = nil;
@@ -550,7 +549,7 @@
     return [videos copy];
 }
 
-- (NSArray *)getVideosByCategory:(NSString *)category {
+- (NSArray *)getVideosByCategory:(NSUInteger)categoryId {
     NSFetchRequest *allVideos = [[NSFetchRequest alloc] init];
     [allVideos setEntity:[NSEntityDescription entityForName:@"MTVideo"
                                         inManagedObjectContext:self.managedObjectContext]];
@@ -559,13 +558,13 @@
     NSArray *districts = [self.managedObjectContext executeFetchRequest:allVideos
                                                                   error:&error];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"categoryId == %@", @(categoryId)];
     NSArray *filteredVideos = [districts filteredArrayUsingPredicate:predicate];
     
     return [filteredVideos copy];
 }
 
-- (NSArray *)getVideosByCategory:(NSString *)category minusVideo:(NSString *)videoId {
+- (NSArray *)getVideosByCategory:(NSUInteger)categoryId minusVideo:(NSString *)videoId {
     NSFetchRequest *allVideos = [[NSFetchRequest alloc] init];
     [allVideos setEntity:[NSEntityDescription entityForName:@"MTVideo"
                                      inManagedObjectContext:self.managedObjectContext]];
@@ -574,7 +573,7 @@
     NSArray *districts = [self.managedObjectContext executeFetchRequest:allVideos
                                                                   error:&error];
     
-    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"categoryId == %@", @(categoryId)];
     NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"videoId != %@", @(videoId.integerValue)];
     
     NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];
@@ -625,6 +624,10 @@
             abort();
         }
     }
+}
+
+- (void)clearAllVideos {
+    [self removeAllEntities:@"MTVideo"];
 }
 
 @end

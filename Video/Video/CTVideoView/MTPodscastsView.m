@@ -80,6 +80,22 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     self.overlayView.frame = self.bounds;
 }
 
+- (void)reload {
+    self.currentVideoIndex = 0;
+    [self.currentVideoView stopWithReleaseVideo:YES];
+    [self.previousVideoView stopWithReleaseVideo:YES];
+    [self.nextVideoView stopWithReleaseVideo:YES];
+    [self.currentVideoView removeFromSuperview];
+    [self.nextInfoView removeFromSuperview];
+    [self.previousVideoView removeFromSuperview];
+    
+    [self.currentInfoView removeFromSuperview];
+    [self.nextInfoView removeFromSuperview];
+    [self.overlayView removeFromSuperview];
+    
+    [self commonInit];
+}
+
 - (void)commonInit {
     self.viewFrame = CGRectZero;
     
@@ -410,7 +426,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     
     [self.currentVideoView removeFromSuperview];
     self.gridView.firstTileVideoView = self.currentVideoView;
-    self.gridView.category = @"nba";
+    self.gridView.categoryId = [self.datasource categoryId];
     
     self.gridView.frame = self.bounds;
     [self addSubview:self.gridView];

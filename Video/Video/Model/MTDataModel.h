@@ -21,11 +21,12 @@
                          withPredicate:(NSPredicate *)predicate;
 
 - (NSArray *)parseVideos:(NSData *)data;
-- (NSArray *)getVideosByCategory:(NSString *)category;
-- (NSArray *)getVideosByCategory:(NSString *)category minusVideo:(NSString *)videoId;
+- (NSArray *)getVideosByCategory:(NSUInteger)categoryId;
+- (NSArray *)getVideosByCategory:(NSUInteger)categoryId minusVideo:(NSString *)videoId;
 
 - (NSString *)parseLogin:(NSData *)data;
 - (NSString *)getAccessToken;
+- (void)clearAllVideos;
 
 /*
 - (NSString *)parseLogin:(NSData *)data;

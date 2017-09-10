@@ -11,7 +11,7 @@
 
 @interface MTGridView : UIView
 @property (nonatomic, strong) MTVideoView *firstTileVideoView;
-@property (nonatomic, strong) NSString *category;
+@property (nonatomic) NSUInteger categoryId;
 
 - (CGSize)firstCellSize;
 @end

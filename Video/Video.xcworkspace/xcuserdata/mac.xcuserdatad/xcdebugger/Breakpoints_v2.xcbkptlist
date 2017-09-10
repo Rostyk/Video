@@ -51,29 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Video/ViewController/ViewController.m"
-            timestampString = "524264079.125296"
+            filePath = "Video/Model/MTDataModel.m"
+            timestampString = "524839400.075864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-onVideoUploadedWithId:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Video/DAL/SDServiceRequestHandler.m"
-            timestampString = "524263170.842726"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-initWithSecurityToken:"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
+            landmarkName = "-getVideosByCategory:minusVideo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

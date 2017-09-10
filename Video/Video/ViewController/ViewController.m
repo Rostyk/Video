@@ -25,6 +25,7 @@
 #import "JVFloatLabeledTextView.h"
 #import "JVFloatLabeledTextField.h"
 #import "MTInputVideoInfoViewController.h"
+#import "MTVideoLinksFetcher.h"
 
 #import <Crashlytics/Crashlytics.h>
 
@@ -38,6 +39,9 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *gridButton;
 @property (nonatomic, weak) IBOutlet UIButton *uploadButton;
+
+@property (nonatomic) NSUInteger currentPage;
+@property (nonatomic) NSUInteger currentCategory;
 @end
 
 @implementation ViewController
@@ -69,29 +73,26 @@
 
 - (void)getVideos {
     __weak typeof(self) weakSelf = self;
-    NSString *category = @"nba";
-    MTGetVideosRequest *getVideosRequest = [MTGetVideosRequest new];
-    getVideosRequest.category = category;
-    getVideosRequest.completionBlock = ^(SDRequest *request, SDResult *response) {
-        NSArray *videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:category];
-        weakSelf.videos = videos;
-        [weakSelf setupVideoLinks];
-        
-        [[MTProgressView sharedView] remove];
-        [UIView animateWithDuration:1.8
-                         animations:^{
-                             self.uploadButton.alpha = 1.0;
-                             self.gridButton.alpha = 1.0;
-                         }
-                         completion:NULL];
-    };
+
+    [[MTVideoLinksFetcher fetcher] fetch:^(BOOL success, NSError *error) {
+         NSArray *videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:self.currentPage + 1];
+         weakSelf.videos = videos;
+         [weakSelf setupVideoLinks];
+         
+         [[MTProgressView sharedView] remove];
+         [UIView animateWithDuration:1.8
+         animations:^{
+             self.uploadButton.alpha = 1.0;
+             self.gridButton.alpha = 1.0;
+         }
+         completion:NULL];
+    }];
     
-    [getVideosRequest run];
 }
 
 - (void)setupVideoLinks {
     self.podcastsView.datasource = self;
-    self.icons = @[@"", @"", @"", @"ic_trending", @"ic_NBA", @"ic_NHL", @"ic_MLB", @"ic_CFB", @"ic_EFL", @"ic_NFL", @"ic_CBB", @"ic_skateboarding", @"ic_GOLF", @"ic_surfing", @"", @"", @""];
+    self.icons = @[@"ic_NFL", @"ic_NHL", @"ic_NBA", @"ic_MLB", @"ic_CFB", @"ic_CBB", @"ic_GOLF"];
     
     //setup layout
     UPCarouselFlowLayout *layout = [[UPCarouselFlowLayout alloc] init];
@@ -110,18 +111,21 @@
 #pragma mark - MTPodcastDataSource
 
 - (MTVideo *)videoInfoForIndex:(NSInteger)index {
-    MTVideo *info = self.videos[index];
+    if (index < self.videos.count) {
+        MTVideo *info = self.videos[index];
+        return info;
+    }
     
-    NSString *videoUrl = info.url;
-    NSString *title = info.title;
-    NSString *description = info.title;
-    return info;
+    return nil;
 }
 
 - (NSUInteger)numberOfVideos {
     return self.videos.count;
 }
-    
+
+- (NSUInteger)categoryId {
+    return self.currentPage + 1;
+}
 
 #pragma mark - CollectionView data source
 
@@ -149,12 +153,40 @@
     return 0.0;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    UPCarouselFlowLayout *layout = (UPCarouselFlowLayout *)self.collectionView.collectionViewLayout;
+    CGFloat pageSide = (layout.scrollDirection == UICollectionViewScrollDirectionHorizontal) ? [self pageSize].width : [self pageSize].height;
+    CGFloat offset = (layout.scrollDirection == UICollectionViewScrollDirectionHorizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y;
+    
+    self.currentPage = (NSUInteger)(floor((offset - pageSide / 2.) / pageSide) + 1);
+    [self changeSection];
+}
+
+- (CGSize)pageSize {
+    UPCarouselFlowLayout *layout = (UPCarouselFlowLayout *)self.collectionView.collectionViewLayout;
+    CGSize pageSize = CGSizeMake(48, 48);
+    if (layout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        pageSize.width += 2;
+    } else {
+        pageSize.height += 2;
+    }
+    return pageSize;
+}
+
+- (UIDeviceOrientation)orientation {
+   return [UIDevice currentDevice].orientation;
+}
+
 // Layout: Set Edges
-- (UIEdgeInsets)collectionView:
+/*- (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     // return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
     return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
-}
+}*/
 
 #pragma mark - grid view
 
@@ -258,6 +290,7 @@
 
 #pragma mark - MTInputVideViewDelegate
 
+/*
 - (void)onVideoUploadedWithId:(NSNumber *)videoId {
     __weak typeof(self) weakSelf = self;
     NSString *category = @"nba";
@@ -294,7 +327,15 @@
     };
     
     [getVideosRequest run];
-}
+}*/
+
+- (void)changeSection {
+    NSLog(@"Current page: %ld", self.currentPage);
+    NSArray *videos = [[MTDataModel sharedDatabaseStorage] getVideosByCategory:(self.currentPage + 1)];
+    self.videos = videos;
     
+    [self.podcastsView reload];
+}
+
 
 @end

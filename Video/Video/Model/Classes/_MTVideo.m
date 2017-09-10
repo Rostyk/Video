@@ -29,6 +29,11 @@
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
+	if ([key isEqualToString:@"categoryIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"categoryId"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"isExpiredValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"isExpired"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -48,7 +53,25 @@
 	return keyPaths;
 }
 
-@dynamic category;
+@dynamic categoryId;
+
+- (int32_t)categoryIdValue {
+	NSNumber *result = [self categoryId];
+	return [result intValue];
+}
+
+- (void)setCategoryIdValue:(int32_t)value_ {
+	[self setCategoryId:@(value_)];
+}
+
+- (int32_t)primitiveCategoryIdValue {
+	NSNumber *result = [self primitiveCategoryId];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCategoryIdValue:(int32_t)value_ {
+	[self setPrimitiveCategoryId:@(value_)];
+}
 
 @dynamic date;
 
@@ -123,8 +146,8 @@
 @end
 
 @implementation MTVideoAttributes 
-+ (NSString *)category {
-	return @"category";
++ (NSString *)categoryId {
+	return @"categoryId";
 }
 + (NSString *)date {
 	return @"date";

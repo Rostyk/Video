@@ -13,7 +13,7 @@
 
 - (NSMutableURLRequest *)serviceURLRequest
 {
-    NSMutableString *configurationString = [NSMutableString stringWithFormat:@"%@/urls/video/category?categoryName=%@", [SDUserSettings serviceURL], self.category];
+    NSMutableString *configurationString = [NSMutableString stringWithFormat:@"%@/urls/video/category?categoryId=%@", [SDUserSettings serviceURL], self.category];
     
     NSMutableURLRequest *networkRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:configurationString]];
     [networkRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
