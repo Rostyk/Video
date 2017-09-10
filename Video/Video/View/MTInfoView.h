@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaddingLabel.h"
+
 #import "Constants.h"
 
 @interface MTInfoView : UIView
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *channelLabel;
+@property (nonatomic, weak) IBOutlet PaddingLabel *titleLabel;
+@property (nonatomic, weak) IBOutlet PaddingLabel *channelLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *channelImage;
 
 @property (nonatomic, weak) IBOutlet UIImageView *bottomImage;

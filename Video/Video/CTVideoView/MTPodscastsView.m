@@ -294,7 +294,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     view.frame = [self frameForInfoView];
     
     MTInfoView *infoView = (MTInfoView *)view;
-    infoView.titleLabel.text = videoInfo.title;
+    infoView.titleLabel.text = [videoInfo.title uppercaseString];
     infoView.channelLabel.text = videoInfo.details;
     //infoView.channelImage.image = info.channelImage;
     //infoView.bottomImage.image = info.bottomImage;

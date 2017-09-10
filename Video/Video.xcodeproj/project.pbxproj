@@ -47,6 +47,7 @@
 		043870AF1F65534600DC3C77 /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043870A91F65534600DC3C77 /* ProximaNova-Light.otf */; };
 		043870B01F65534600DC3C77 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043870AA1F65534600DC3C77 /* ProximaNova-Regular.otf */; };
 		043870B11F65534600DC3C77 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043870AB1F65534600DC3C77 /* ProximaNova-Semibold.otf */; };
+		043870B91F6560C900DC3C77 /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043870B81F6560C900DC3C77 /* PaddingLabel.m */; };
 		043E62DC1F2CB7BE002ECE33 /* MTVideScrubber.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */; };
 		043E62E81F2F6CF6002ECE33 /* MTGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E62E71F2F6CF6002ECE33 /* MTGridView.m */; };
 		043E62EA1F2F6D11002ECE33 /* MTGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043E62E91F2F6D11002ECE33 /* MTGridView.xib */; };
@@ -193,6 +194,8 @@
 		043870A91F65534600DC3C77 /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
 		043870AA1F65534600DC3C77 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		043870AB1F65534600DC3C77 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		043870B71F6560C900DC3C77 /* PaddingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
+		043870B81F6560C900DC3C77 /* PaddingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		043E62DA1F2CB7BE002ECE33 /* MTVideScrubber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideScrubber.h; sourceTree = "<group>"; };
 		043E62DB1F2CB7BE002ECE33 /* MTVideScrubber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideScrubber.m; sourceTree = "<group>"; };
 		043E62E61F2F6CF6002ECE33 /* MTGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGridView.h; sourceTree = "<group>"; };
@@ -663,6 +666,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		043870B61F6560BD00DC3C77 /* LabelWithPadding */ = {
+			isa = PBXGroup;
+			children = (
+				043870B71F6560C900DC3C77 /* PaddingLabel.h */,
+				043870B81F6560C900DC3C77 /* PaddingLabel.m */,
+			);
+			path = LabelWithPadding;
+			sourceTree = "<group>";
+		};
 		043E62DE1F2F6B6A002ECE33 /* InfoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1035,7 @@
 		47A977251EF6955600621404 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				043870B61F6560BD00DC3C77 /* LabelWithPadding */,
 				0422FEA21F3CB7E800EBCE16 /* Tags */,
 				0422FE941F3C971C00EBCE16 /* MTProgressHud */,
 				043E62E01F2F6BE6002ECE33 /* GridView */,
@@ -1277,6 +1290,7 @@
 				0412A8101F35FD1B009DACDA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				045A6AC91F4849DA00F1E191 /* MTVideoLinksFetcher.m in Sources */,
 				0412A8061F35FD1B009DACDA /* CTPersistanceAsyncExecutor.m in Sources */,
+				043870B91F6560C900DC3C77 /* PaddingLabel.m in Sources */,
 				0467DDDA1F29462D000872E7 /* SDResult.m in Sources */,
 				0412A80D1F35FD1B009DACDA /* CTPersistanceMigrator.m in Sources */,
 				045A6AB61F48497500F1E191 /* UIImage+Blur.m in Sources */,
