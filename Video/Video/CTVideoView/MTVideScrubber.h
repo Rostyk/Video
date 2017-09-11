@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MTVideScrubber : UISlider
-
+- (void)grow;
 @end

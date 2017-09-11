@@ -8,12 +8,13 @@
 
 #import "MTVideoView.h"
 #import "MTVideScrubber.h"
-
+#import "CTVideoView+Time.h"
 #define STEP_VALUE                        20
 #define LIMIT_DISTANCE                    100
 #define BEVEL_WIDTH                       20
 
-@interface MTVideoView()
+@interface MTVideoView()<CTVideoViewTimeDelegate>
+@property (nonatomic) CGFloat duration;
 @property (nonatomic) CGFloat startX;
 @property (nonatomic) CGFloat currentX;
 
@@ -37,11 +38,17 @@
         self.isScrubberInitialized = true;
         CGRect rect = CGRectMake(5, frame.origin.y + frame.size.height + 6, self.frame.size.width - 5*2, 20);
         MTVideScrubber *scrubber = [[MTVideScrubber alloc] initWithFrame:rect];
+        scrubber.userInteractionEnabled = false;
+        scrubber.value = 0.0;
+        
         scrubber.tintColor = [UIColor whiteColor];
         [self setScrubber:scrubber];
         self.clipsToBounds = NO;
-        scrubber.value = 0.04;
         [self addSubview:scrubber];
+        
+        [scrubber addTarget:self action:@selector(scrubbedToValue:) forControlEvents:UIControlEventValueChanged];
+        [self setShouldObservePlayTime:YES withTimeGapToObserve:1.0];
+        self.timeDelegate = self;
     }
     [self layoutSubviews];
 }
@@ -283,6 +290,31 @@
     [self getScrubber].hidden = NO;
     [self getMuteButton].hidden = NO;
     [self getTimeTextLabel].hidden = NO;
+}
+
+#pragma mark - CTVideoViewTimeDelegate
+
+- (void)videoViewDidLoadVideoDuration:(CTVideoView *)videoView {
+    UISlider *scrubber = [self getScrubber];
+    scrubber.userInteractionEnabled = true;
+    
+    self.duration = videoView.totalDurationSeconds;
+}
+
+- (void)videoView:(CTVideoView *)videoView didFinishedMoveToTime:(CMTime)time {
+    
+}
+
+- (void)videoView:(CTVideoView *)videoView didPlayToSecond:(CGFloat)second {
+    UISlider *scrubber = [self getScrubber];
+    scrubber.value = second / self.duration;
+}
+
+- (void)scrubbedToValue:(UISlider *)slider {
+    CGFloat second = self.duration * slider.value;
+    
+    [self moveToSecond:second shouldPlay:true];
+    //[slider grow];
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import "MTVideScrubber.h"
 
+@interface MTVideScrubber()
+@property (nonatomic) CGFloat scrubberHeight;
+@end
+
 @implementation MTVideScrubber
 
 /*
@@ -18,9 +22,23 @@
 }
 */
 
+- (void)grow {
+    [UIView animateWithDuration:2 animations:^{
+        CGRect frame = self.frame;
+        frame.size.height = 3;
+        self.scrubberHeight = 3;
+    } completion:NULL];
+}
+
 - (CGRect)trackRectForBounds:(CGRect)bounds {
     CGRect thinnerBounds = [super trackRectForBounds:bounds];
-    thinnerBounds.size.height = 1;
+    thinnerBounds.size.height = self.scrubberHeight;
+    return thinnerBounds;
+}
+
+- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value {
+    CGRect thinnerBounds = [super thumbRectForBounds:bounds trackRect:rect value:value];
+    thinnerBounds.size.width = 1;
     return thinnerBounds;
 }
 

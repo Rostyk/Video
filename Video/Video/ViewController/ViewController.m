@@ -57,6 +57,7 @@
 }
 
 - (void)setupAnimation {
+    [self.bgView removeFromSuperview];
     self.bgView.image = [UIImage imageNamed:@"bg_frame3"];
     
     CABasicAnimation *theAnimation;
