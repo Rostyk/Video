@@ -18,6 +18,7 @@
 @end
 
 @interface MTVideoView : CTVideoView
+@property (nonatomic) BOOL isVisisble;
 @property (nonatomic, weak) id<MTVideoDelegate>delegate;
 
 @property (nonatomic) BOOL leftSwipeDisabled;
@@ -30,5 +31,7 @@
 
 - (void)hideExtraUIForGridView;
 - (void)showExtraUIForGridView;
+
+- (void)shrinkScrubberImmediately;
 
 @end

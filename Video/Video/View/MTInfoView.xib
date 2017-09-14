@@ -23,6 +23,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4G0-bT-h5I" userLabel="Bar">
+                    <rect key="frame" x="324" y="54" width="22" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="7QS-G7-3K0"/>
+                        <constraint firstAttribute="height" constant="1" id="v4W-EN-M4e"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgO-JM-hLH">
+                    <rect key="frame" x="307" y="24" width="52" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="Mbl-q5-fZg"/>
+                        <constraint firstAttribute="height" constant="28" id="cN7-n6-Gbz"/>
+                    </constraints>
+                    <state key="normal" image="ic_linkedin"/>
+                    <connections>
+                        <action selector="shareButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="neE-05-lwb"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_trending_badge" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-Pw-PgW">
                     <rect key="frame" x="16" y="0.0" width="40" height="9"/>
                     <constraints>
@@ -62,12 +81,51 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujH-QN-qXs">
+                    <rect key="frame" x="320" y="60" width="32" height="108"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5R-Bg-G36">
+                            <rect key="frame" x="0.0" y="42" width="32" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_twitter"/>
+                            <connections>
+                                <action selector="twitterButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="h4K-XK-pfp"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiO-u2-9ge">
+                            <rect key="frame" x="0.0" y="12" width="32" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_facebook"/>
+                            <connections>
+                                <action selector="facebookButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="vX5-IG-i5N"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8x-2P-I7c">
+                            <rect key="frame" x="0.0" y="78" width="32" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_instagram"/>
+                            <connections>
+                                <action selector="instagramButtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="TQ2-ym-iam"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="33r-7j-jbq"/>
+                        <constraint firstAttribute="height" constant="108" id="5c0-B5-3vm"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="SgO-JM-hLH" firstAttribute="leading" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="16" id="0G0-gI-C8J"/>
+                <constraint firstItem="4G0-bT-h5I" firstAttribute="top" secondItem="SgO-JM-hLH" secondAttribute="bottom" constant="2" id="0Mn-ab-m19"/>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AQ7-Or-YTe"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BMB-Ju-PNT"/>
                 <constraint firstAttribute="trailing" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="84" id="DGQ-hH-rwY"/>
+                <constraint firstItem="4G0-bT-h5I" firstAttribute="leading" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="33" id="FRv-fc-YLx"/>
+                <constraint firstItem="SgO-JM-hLH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="L3B-A3-6bC"/>
+                <constraint firstItem="ujH-QN-qXs" firstAttribute="top" secondItem="4G0-bT-h5I" secondAttribute="bottom" constant="5" id="Lag-nR-Sva"/>
                 <constraint firstAttribute="trailing" secondItem="vii-5I-Lg5" secondAttribute="trailing" constant="84" id="MwO-pF-RQ4"/>
                 <constraint firstAttribute="trailing" secondItem="Xco-tP-lRu" secondAttribute="trailing" id="OA9-Wd-2ng"/>
                 <constraint firstItem="YOi-Jn-BIK" firstAttribute="leading" secondItem="gi3-Pw-PgW" secondAttribute="trailing" constant="6" id="S8q-n5-wjK"/>
@@ -75,14 +133,19 @@
                 <constraint firstItem="gi3-Pw-PgW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="edD-P9-dO0"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="top" secondItem="YOi-Jn-BIK" secondAttribute="bottom" constant="13" id="ilC-MO-sUR"/>
                 <constraint firstAttribute="bottom" secondItem="Xco-tP-lRu" secondAttribute="bottom" id="jeb-ig-LcD"/>
+                <constraint firstItem="ujH-QN-qXs" firstAttribute="leading" secondItem="Ihk-2E-TQW" secondAttribute="trailing" constant="29" id="kHj-fI-mIO"/>
                 <constraint firstItem="Ihk-2E-TQW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="oUA-b8-Hv4"/>
                 <constraint firstItem="Xco-tP-lRu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="put-Jd-Baf"/>
                 <constraint firstItem="vii-5I-Lg5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="rc6-8f-lUu"/>
                 <constraint firstItem="vii-5I-Lg5" firstAttribute="top" secondItem="Ihk-2E-TQW" secondAttribute="bottom" constant="14" id="ze4-UO-Qxh"/>
             </constraints>
             <connections>
+                <outlet property="barBelowShareButton" destination="4G0-bT-h5I" id="MFz-gA-1Sp"/>
                 <outlet property="channelLabel" destination="vii-5I-Lg5" id="Vx3-nF-TTa"/>
                 <outlet property="dimView" destination="Xco-tP-lRu" id="a6r-RU-gLX"/>
+                <outlet property="shareButton" destination="SgO-JM-hLH" id="9Tg-wW-vV8"/>
+                <outlet property="shareButtonView" destination="ujH-QN-qXs" id="pBO-Hl-NZk"/>
+                <outlet property="shareButtonViewHeight" destination="5c0-B5-3vm" id="euX-0L-LRb"/>
                 <outlet property="titleLabel" destination="Ihk-2E-TQW" id="EBH-Ge-iF6"/>
                 <outlet property="titleLeftMargin" destination="BMB-Ju-PNT" id="Fwq-bi-C2k"/>
             </connections>
@@ -90,7 +153,11 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_facebook" width="10" height="18"/>
+        <image name="ic_instagram" width="19" height="19"/>
+        <image name="ic_linkedin" width="24" height="24"/>
         <image name="ic_nba_badge" width="19" height="8"/>
         <image name="ic_trending_badge" width="40" height="8"/>
+        <image name="ic_twitter" width="17" height="14"/>
     </resources>
 </document>

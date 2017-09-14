@@ -10,4 +10,5 @@
 
 @interface MTVideScrubber : UISlider
 - (void)grow;
+- (void)shrinkImmediately:(BOOL)immediately;
 @end

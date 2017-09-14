@@ -88,6 +88,7 @@
 		0467DDDF1F294680000872E7 /* MTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDDD1F294680000872E7 /* MTDataModel.m */; };
 		0467DDEC1F2948FB000872E7 /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */; };
 		0467DE221F2A3D9B000872E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0467DE211F2A3D9B000872E7 /* CoreData.framework */; };
+		0472E1781F69D6EF00E84E31 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0472E1771F69D6EF00E84E31 /* Social.framework */; };
 		04C509931F1666E4006A9084 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C509921F1666E4006A9084 /* MenuCell.m */; };
 		04D369AA1F0563720058A484 /* MTInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D369A81F0563720058A484 /* MTInfoView.m */; };
 		04D369AB1F0563720058A484 /* MTInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D369A91F0563720058A484 /* MTInfoView.xib */; };
@@ -272,6 +273,7 @@
 		0467DDDD1F294680000872E7 /* MTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTDataModel.m; path = Video/Model/MTDataModel.m; sourceTree = SOURCE_ROOT; };
 		0467DDEB1F2948FB000872E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = Model.xcdatamodel; path = Video/Model/Model.xcdatamodeld/Model.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		0467DE211F2A3D9B000872E7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0472E1771F69D6EF00E84E31 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		04C509911F1666E4006A9084 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		04C509921F1666E4006A9084 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		04D369A71F0563720058A484 /* MTInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInfoView.h; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0472E1781F69D6EF00E84E31 /* Social.framework in Frameworks */,
 				042FC11A1F2A3EDD00B6E507 /* Foundation.framework in Frameworks */,
 				045A6AC51F48498400F1E191 /* Crashlytics.framework in Frameworks */,
 				0467DE221F2A3D9B000872E7 /* CoreData.framework in Frameworks */,
@@ -1069,6 +1072,7 @@
 		8BD21D4D88CE4C8B4B2BC6B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0472E1771F69D6EF00E84E31 /* Social.framework */,
 				042FC1191F2A3EDD00B6E507 /* Foundation.framework */,
 				0467DE211F2A3D9B000872E7 /* CoreData.framework */,
 				474468B51EF1A0ED00857770 /* libsqlite3.tbd */,

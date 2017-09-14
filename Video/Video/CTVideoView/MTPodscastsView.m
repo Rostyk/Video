@@ -13,13 +13,14 @@
 #import "MTOverlayView.h"
 #import "MTGridView.h"
 #import "MTVideo.h"
+#import <Social/Social.h>
 
 typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     MTVideoScreenModeSingleVideo = 0,
     MTVideoScreenModeTiles
 };
 
-@interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate, MTOverlayDelegate>
+@interface MTPodscastsView() <MTVideoDelegate, CTVideoViewButtonDelegate, MTOverlayDelegate, MTInfoShareDelegate>
 @property (nonatomic, strong) MTVideoView *nextVideoView;
 @property (nonatomic, strong) MTVideoView *previousVideoView;
 @property (nonatomic, strong) MTVideoView *currentVideoView;
@@ -137,6 +138,11 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     self.nextVideoView.userInteractionEnabled = false;
 }
 
+- (void)updateScrubberHeights {
+    [self.previousVideoView shrinkScrubberImmediately];
+    [self.nextVideoView shrinkScrubberImmediately];
+}
+
 #pragma mark - MTVideoDelegate
 
 - (void)isMovingManuallyForDistance:(CGFloat)distance
@@ -205,6 +211,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
         self.nextVideoView = self.currentVideoView;
         self.currentVideoView = self.previousVideoView;
         
+        
         //loading previous view
         if (self.currentVideoIndex > 0) {
             self.previousVideoView = [self createVideoForIndex:self.currentVideoIndex - 1];
@@ -217,6 +224,7 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     }
     
     [self updateUserInteractions];
+    [self updateScrubberHeights];
     [self bringSubviewToFront:self.currentVideoView];
     [self bringSubviewToFront:self.overlayView];
     
@@ -296,9 +304,8 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
     MTInfoView *infoView = (MTInfoView *)view;
     infoView.titleLabel.text = [videoInfo.title uppercaseString];
     infoView.channelLabel.text = videoInfo.details;
-    //infoView.channelImage.image = info.channelImage;
-    //infoView.bottomImage.image = info.bottomImage;
-    
+    infoView.shareDelegate = self;
+  
     return infoView;
 }
 
@@ -453,6 +460,78 @@ typedef NS_ENUM(NSInteger, MTVideoScreenMode) {
                      }];
     
     [self.gridView removeFromSuperview];
+}
+
+#pragma mark - MTInfoSharDelegate
+
+- (void)facebookShare {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        MTVideo *videoInfo = [self.datasource videoInfoForIndex:self.currentVideoIndex];
+        [mySLComposerSheet setInitialText:videoInfo.title];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"ic_share_icon"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:videoInfo.url]];
+        
+        [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+            
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"Post Canceled");
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"Post Sucessful");
+                    break;
+                    
+                default:
+                    break;
+            }
+        }];
+        
+        [self.mainViewController presentViewController:mySLComposerSheet animated:YES completion:nil];
+    }
+    else {
+        SLComposeViewController *fbSignInDialog = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [self.mainViewController presentViewController:fbSignInDialog animated:NO completion:nil];
+    }
+}
+
+- (void)twitterShare {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        MTVideo *videoInfo = [self.datasource videoInfoForIndex:self.currentVideoIndex];
+        [mySLComposerSheet setInitialText:videoInfo.title];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"ic_share_icon"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:videoInfo.url]];
+        
+        [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+            
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"Post Canceled");
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"Post Sucessful");
+                    break;
+                    
+                default:
+                    break;
+            }
+        }];
+        
+        [self.mainViewController presentViewController:mySLComposerSheet animated:YES completion:nil];
+    }
+    else {
+        SLComposeViewController *twitterSignInDialog = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [self.mainViewController presentViewController:twitterSignInDialog animated:NO completion:nil];
+    }
+
+}
+
+- (void)instagramShare {
 }
 
 

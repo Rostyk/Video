@@ -9,7 +9,7 @@
 #import "MTVideScrubber.h"
 
 @interface MTVideScrubber()
-@property (nonatomic) CGFloat scrubberHeight;
+@property (nonatomic) int currentScale;
 @end
 
 @implementation MTVideScrubber
@@ -23,16 +23,42 @@
 */
 
 - (void)grow {
-    [UIView animateWithDuration:2 animations:^{
-        CGRect frame = self.frame;
-        frame.size.height = 3;
-        self.scrubberHeight = 3;
-    } completion:NULL];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(shrink) object:nil];
+    
+    self.currentScale = 2;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.transform = CGAffineTransformMakeScale(1, self.currentScale);
+    }];
+    
+    [self performSelector:@selector(shrink) withObject:nil afterDelay:3.0];
+}
+
+- (void)shrink {
+    [self shrinkImmediately:false];
+}
+
+- (void)shrinkImmediately:(BOOL)immediately {
+    //Already shrunk
+    if (self.currentScale == 1) {
+        return;
+    }
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(shrink) object:nil];
+    
+    self.currentScale = 1;
+    if (immediately) {
+        self.transform = CGAffineTransformMakeScale(1, 0.5);
+    }
+    else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.transform = CGAffineTransformMakeScale(1, 0.5);
+        }];
+    }
 }
 
 - (CGRect)trackRectForBounds:(CGRect)bounds {
     CGRect thinnerBounds = [super trackRectForBounds:bounds];
-    thinnerBounds.size.height = self.scrubberHeight;
+    thinnerBounds.size.height = 2;
     return thinnerBounds;
 }
 
@@ -44,9 +70,10 @@
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
     self.thumbTintColor = [UIColor clearColor];
-    
+    self.minimumTrackTintColor = [UIColor whiteColor];
+    self.maximumTrackTintColor = [UIColor grayColor];
+
     /*(UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 120), NO, 0.0);
     UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

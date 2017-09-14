@@ -13,13 +13,14 @@
 #define LIMIT_DISTANCE                    100
 #define BEVEL_WIDTH                       20
 
-@interface MTVideoView()<CTVideoViewTimeDelegate>
+@interface MTVideoView()<CTVideoViewTimeDelegate, CTVideoViewOperationDelegate>
 @property (nonatomic) CGFloat duration;
 @property (nonatomic) CGFloat startX;
 @property (nonatomic) CGFloat currentX;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL isScrubberInitialized;
+@property (nonatomic) BOOL isScrubbing;
 @end
 
 
@@ -30,6 +31,12 @@
     [super setFrame:frame];
     
     [self setupScrubber:frame];
+    self.operationDelegate = self;
+}
+
+- (void)setIsVisisble:(BOOL)isVisisble {
+    _isVisisble = isVisisble;
+    [[self getScrubber] setUserInteractionEnabled:true];
 }
 
 - (void)setupScrubber:(CGRect)frame {
@@ -46,8 +53,11 @@
         self.clipsToBounds = NO;
         [self addSubview:scrubber];
         
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
+        [self addGestureRecognizer:tapGestureRecognizer];
+        
         [scrubber addTarget:self action:@selector(scrubbedToValue:) forControlEvents:UIControlEventValueChanged];
-        [self setShouldObservePlayTime:YES withTimeGapToObserve:1.0];
+        [self setShouldObservePlayTime:YES withTimeGapToObserve:10];
         self.timeDelegate = self;
     }
     [self layoutSubviews];
@@ -276,6 +286,11 @@
     return NO;
 }
 
+- (void)shrinkScrubberImmediately {
+    MTVideScrubber *scrubber = (MTVideScrubber *)[self getScrubber];
+    [scrubber shrinkImmediately:true];
+}
+
 #pragma mark - grid view
 
 - (void)hideExtraUIForGridView {
@@ -302,19 +317,82 @@
 }
 
 - (void)videoView:(CTVideoView *)videoView didFinishedMoveToTime:(CMTime)time {
-    
+    self.isScrubbing = false;
 }
 
 - (void)videoView:(CTVideoView *)videoView didPlayToSecond:(CGFloat)second {
+    if (self.isScrubbing) {
+        return;
+    }
+    
     UISlider *scrubber = [self getScrubber];
     scrubber.value = second / self.duration;
 }
 
-- (void)scrubbedToValue:(UISlider *)slider {
+- (void)scrubbedToValue:(MTVideScrubber *)slider {
     CGFloat second = self.duration * slider.value;
     
+    self.isScrubbing = true;
     [self moveToSecond:second shouldPlay:true];
-    //[slider grow];
+    [slider grow];
 }
+
+- (void)sliderTapped:(UIGestureRecognizer *)gestureRecognizer {
+    MTVideScrubber *scrubber = [self getScrubber];
+    
+    CGPoint  pointTaped = [gestureRecognizer locationInView:gestureRecognizer.view];
+    CGPoint positionOfSlider = scrubber.frame.origin;
+    float widthOfSlider = scrubber.frame.size.width;
+    float newValue = ((pointTaped.x - positionOfSlider.x) * scrubber.maximumValue) / widthOfSlider;
+    [scrubber setValue:newValue];
+    
+    [self scrubbedToValue:scrubber];
+}
+
+#pragma mark - Operation Delegate
+
+- (void)videoViewWillStartPrepare:(CTVideoView *)videoView {
+    NSLog(@"videoViewWillStartPrepare");
+}
+
+- (void)videoViewDidFinishPrepare:(CTVideoView *)videoView {
+    NSLog(@"videoViewDidFinishPrepare");
+}
+
+- (void)videoViewDidFailPrepare:(CTVideoView *)videoView error:(NSError *)error {
+    NSLog(@"videoViewDidFailPrepare");
+}
+
+- (void)videoViewWillStartPlaying:(CTVideoView *)videoView {
+    NSLog(@"videoViewWillStartPlaying");
+}
+- (void)videoViewDidStartPlaying:(CTVideoView *)videoView {
+    NSLog(@"videoViewDidStartPlaying");
+}
+
+- (void)videoViewStalledWhilePlaying:(CTVideoView *)videoView {
+    NSLog(@"videoViewStalledWhilePlaying");
+}
+
+- (void)videoViewDidFinishPlaying:(CTVideoView *)videoView {
+    NSLog(@"videoViewDidFinishPlaying");
+}
+
+- (void)videoViewWillPause:(CTVideoView *)videoView {
+    NSLog(@"videoViewWillPause");
+}
+
+- (void)videoViewDidPause:(CTVideoView *)videoView {
+    NSLog(@"videoViewDidPause");
+}
+
+- (void)videoViewWillStop:(CTVideoView *)videoView {
+    NSLog(@"videoViewWillStop");
+}
+
+- (void)videoViewDidStop:(CTVideoView *)videoView {
+    NSLog(@"videoViewWillStop");
+}
+
 
 @end

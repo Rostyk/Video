@@ -16,6 +16,12 @@
 @property (nonatomic, weak)IBOutlet UIView *dimView;
 @property (nonatomic) CGRect originFrame;
 @property (nonatomic) CGFloat originalTitleMargin;
+
+@property (nonatomic) BOOL isShareViewShown;
+@property (nonatomic, weak) IBOutlet UIButton *shareButton;
+@property (nonatomic, weak) IBOutlet UIView *barBelowShareButton;
+@property (nonatomic, weak) IBOutlet UIView *shareButtonView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *shareButtonViewHeight;
 @end
 
 @implementation MTInfoView
@@ -29,8 +35,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (_originalTitleMargin == 0)
+    if (_originalTitleMargin == 0) {
         _originalTitleMargin = self.titleLeftMargin.constant;
+        self.barBelowShareButton.alpha = 0.0;
+        self.shareButtonViewHeight.constant = 0;
+    }
 }
 
 - (void)setAnimationInValue:(CGFloat)animationInValue {
@@ -64,6 +73,58 @@
     
     if (self.moveDirection == SwipeRight)
         self.titleLeftMargin.constant = self.originalTitleMargin - TITLE_DEVIATION * (1 - animationInValue);*/
+}
+
+- (IBAction)shareButtonClicked:(id)sender {
+    if (self.isShareViewShown) {
+        [self hideShareView];
+    }
+    else {
+      [self showShareView];
+    }
+}
+
+- (void)showShareView {
+    self.isShareViewShown = true;
+    
+    self.shareButtonViewHeight.constant = 108;
+    [UIView animateWithDuration:0.6 animations:^{
+        self.barBelowShareButton.alpha = 1.0;
+        [self layoutSubviews];
+    }];
+}
+
+- (void)hideShareView {
+    self.isShareViewShown = false;
+    self.shareButtonViewHeight.constant = 0;
+    
+    [UIView animateWithDuration:0.6 animations:^{
+        self.barBelowShareButton.alpha = 0.0;
+        [self layoutSubviews];
+    }];
+}
+
+
+- (UIView *)getShareView {
+    return _shareButtonView;
+}
+
+- (UIButton *)getShareButton {
+    return _shareButton;
+}
+
+#pragma mark - share button handlers
+
+- (IBAction)facebookButtonClicked:(id)sender {
+    [self.shareDelegate facebookShare];
+}
+
+- (IBAction)twitterButtonClicked:(id)sender {
+    [self.shareDelegate twitterShare];
+}
+
+- (IBAction)instagramButtnClicked:(id)sender {
+    [self.shareDelegate instagramShare];
 }
 
 @end

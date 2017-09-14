@@ -16,6 +16,7 @@
 @end
 
 @interface MTPodscastsView : UIView
+@property (nonatomic, weak) IBOutlet UIViewController *mainViewController;
 @property (nonatomic, weak) id<MTPodcastDataSource> datasource;
 - (void)switchVideModes;
 - (void)reload;

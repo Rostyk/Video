@@ -8,6 +8,8 @@
 
 #import "MTOverlayView.h"
 #import "CTVideoView.h"
+#import "MTInfoView.h"
+
 @interface MTOverlayView()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
@@ -154,6 +156,17 @@
             if ([playButton hitTest:[self convertPoint:point toView:playButton] withEvent:event] != nil ||
                 [muteButton hitTest:[self convertPoint:point toView:muteButton] withEvent:event] != nil ||
                 [scrubber hitTest:[self convertPoint:point toView:scrubber] withEvent:event] != nil) {
+                return NO;
+            }
+        }
+        
+        if ([subview isKindOfClass:[MTInfoView class]]) {
+            MTInfoView *infoView = (MTInfoView *)subview;
+            UIButton *shareButton = [infoView getShareButton];
+            UIView *shareView = [infoView getShareView];
+            
+            if ([shareButton hitTest:[self convertPoint:point toView:shareButton] withEvent:event] != nil ||
+                [shareView hitTest:[self convertPoint:point toView:shareView] withEvent:event] != nil) {
                 return NO;
             }
         }

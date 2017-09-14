@@ -34,7 +34,7 @@ static void * CTVideoViewTimePrivatePropertyVideoStartTimeObserverToken;
         [self removeTimeObserver];
     }
     WeakSelf;
-    self.timeObserverToken = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(self.timeGapToObserve, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+    self.timeObserverToken = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(self.timeGapToObserve, 30) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         StrongSelf;
         if ([strongSelf.timeDelegate respondsToSelector:@selector(videoView:didPlayToSecond:)]) {
             [strongSelf.timeDelegate videoView:strongSelf didPlayToSecond:CMTimeGetSeconds(time)];
